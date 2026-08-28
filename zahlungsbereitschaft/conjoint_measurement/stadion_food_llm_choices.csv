@@ -1,0 +1,37 @@
+RespondentID,TaskID,AltID,Produkt,Preis,Portion,Genusszeit,Verfügbarkeit,Chosen
+OLLAMA_R1,1,A1,Burger,12 CHF,Mittel,Schnell,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,1,A2,Hotdog,15 CHF,Klein,Genussvoll,Im VIP-Bereich,0
+OLLAMA_R1,1,A3,Chicken Wrap,6 CHF,Gross,Feierlich,Im Haupteingang,1
+OLLAMA_R1,2,A1,Pommes Frites,9 CHF,Klein,Genussvoll,Im VIP-Bereich,1
+OLLAMA_R1,2,A2,Pizza Margherita,12 CHF,Gross,Feierlich,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,2,A3,Chicken Wrap,9 CHF,Mittel,Schnell,Im Haupteingang,0
+OLLAMA_R1,3,A1,Pizza Margherita,15 CHF,Mittel,Schnell,Im Haupteingang,0
+OLLAMA_R1,3,A2,Burger,6 CHF,Klein,Genussvoll,Stand direkt neben dem Spielfeld,1
+OLLAMA_R1,3,A3,Pommes Frites,12 CHF,Gross,Feierlich,Im VIP-Bereich,0
+OLLAMA_R1,4,A1,Hotdog,15 CHF,Gross,Genussvoll,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,4,A2,Chicken Wrap,9 CHF,Klein,Feierlich,Im VIP-Bereich,0
+OLLAMA_R1,4,A3,Hotdog,6 CHF,Mittel,Schnell,Im Haupteingang,1
+OLLAMA_R1,5,A1,Pommes Frites,15 CHF,Mittel,Genussvoll,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,5,A2,Burger,6 CHF,Gross,Schnell,Im Haupteingang,1
+OLLAMA_R1,5,A3,Pizza Margherita,9 CHF,Klein,Feierlich,Im VIP-Bereich,0
+OLLAMA_R1,6,A1,Hotdog,12 CHF,Klein,Schnell,Im VIP-Bereich,0
+OLLAMA_R1,6,A2,Burger,12 CHF,Mittel,Genussvoll,Stand direkt neben dem Spielfeld,1
+OLLAMA_R1,6,A3,Chicken Wrap,6 CHF,Gross,Feierlich,Im Haupteingang,0
+OLLAMA_R1,7,A1,Pizza Margherita,15 CHF,Gross,Schnell,Im VIP-Bereich,0
+OLLAMA_R1,7,A2,Pommes Frites,9 CHF,Mittel,Genussvoll,Im Haupteingang,1
+OLLAMA_R1,7,A3,Pommes Frites,15 CHF,Klein,Feierlich,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,8,A1,Hotdog,9 CHF,Klein,Schnell,Im Haupteingang,0
+OLLAMA_R1,8,A2,Chicken Wrap,6 CHF,Mittel,Feierlich,Im VIP-Bereich,1
+OLLAMA_R1,8,A3,Pizza Margherita,12 CHF,Gross,Genussvoll,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,9,A1,Burger,6 CHF,Klein,Feierlich,Im Haupteingang,1
+OLLAMA_R1,9,A2,Hotdog,15 CHF,Gross,Schnell,Im VIP-Bereich,0
+OLLAMA_R1,9,A3,Pommes Frites,12 CHF,Mittel,Genussvoll,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,10,A1,Pizza Margherita,9 CHF,Gross,Feierlich,Im VIP-Bereich,1
+OLLAMA_R1,10,A2,Chicken Wrap,12 CHF,Mittel,Schnell,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,10,A3,Burger,15 CHF,Klein,Genussvoll,Im Haupteingang,0
+OLLAMA_R1,11,A1,Burger,6 CHF,Mittel,Genussvoll,Im Haupteingang,1
+OLLAMA_R1,11,A2,Pommes Frites,9 CHF,Klein,Schnell,Im VIP-Bereich,0
+OLLAMA_R1,11,A3,Hotdog,9 CHF,Gross,Feierlich,Stand direkt neben dem Spielfeld,0
+OLLAMA_R1,12,A1,Pizza Margherita,12 CHF,Mittel,Schnell,Im Haupteingang,0
+OLLAMA_R1,12,A2,Chicken Wrap,6 CHF,Gross,Feierlich,Stand direkt neben dem Spielfeld,1
+OLLAMA_R1,12,A3,Pommes Frites,15 CHF,Klein,Genussvoll,Im VIP-Bereich,0
