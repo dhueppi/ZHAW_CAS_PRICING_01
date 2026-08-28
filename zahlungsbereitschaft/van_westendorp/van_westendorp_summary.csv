@@ -1,0 +1,5 @@
+metric,price,meaning
+Point of marginal cheapness,199.03333333333333,"Point of marginal cheapness: Preis, bei dem die Kurve 'too cheap' 50 % erreicht; ab hier wird der Preis als marginal eher noch akzeptabel empfunden."
+Optimal price,299.2005141388175,Optimaler Preis: Schnittpunkt von 'cheap' und 'expensive'; hier ist der Preis für die meisten Kunden am ehesten passend.
+Point of marginal expensiveness,399.9166666666667,"Point of marginal expensiveness: Preis, bei dem die Kurve 'too expensive' 50 % erreicht; ab hier wird der Preis als marginal zu teuer empfunden."
+Acceptable price,299.2005141388175,"Acceptable price: Schnittpunkt der 'not cheap' und 'not expensive'-Kurven; der Preisbereich, in dem die meisten Kunden den Preis als vertretbar ansehen."
