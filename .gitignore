@@ -1,0 +1,23 @@
+# Python virtual environments
+.venv/
+.venv_*/
+venv/
+env/
+ENV/
+*.venv/
+*.venv_*/
+
+# Python build / install artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+site/
+
+# Local editor / OS files
+.DS_Store
