@@ -7,7 +7,12 @@ CAS Pricing ZHAW · Fallstudie **Kultur- und Eventveranstalter** · Dr. Nina Hei
 **Interview:** 10:15 – 10:45 Uhr, 1 Proband, via Teams (ZHAW-Account!) über Testing Time.
 Danach ist der Zugang weg.
 
-## Tagesablauf
+## Ablaufplan
+
+→ **`ABLAUFPLAN.md`** im Hauptordner: Minutenplan, Checklisten je Phase, Rollen,
+Aufwandsschätzungen und die fünf typischen Stolperstellen.
+
+## Tagesablauf (Kursvorgabe)
 
 | Zeit | Phase | Ordner |
 |---|---|---|
@@ -24,6 +29,7 @@ Danach ist der Zugang weg.
 
 ```
 preisempfehlung/
+├── ABLAUFPLAN.md                      Minutenplan + Checkliste für den Tag
 ├── Dynamic Pricing Decision Lab.pdf   Originalbriefing
 ├── 00_Admin/                          Teams-Link, Rollen, Einwilligung
 ├── 01_Arbeitsauftrag/                 Briefing verdichtet, Forschungsfragen, Hypothesen

@@ -1,70 +1,98 @@
 # Ergebnispräsentation – Pricing Board (11:45 – 12:15)
 
-**Format: max. 5 Minuten inklusive Q&A.** Das heisst realistisch: **3 Minuten sprechen,
-2 Minuten Fragen.** Also rund **5 Slides**, nicht mehr. Alles Weitere in den Anhang.
+**Format: max. 5 Minuten inklusive Q&A.** Realistisch: **rund 3:50 sprechen, gut 1 Minute Fragen.**
+
+> **Die Slides liegen als `Ergebnispraesentation_Struktur.pptx` daneben** – 9 Slides,
+> Platzhalter statt Inhalt, Timing und Quellenverweis in den Notizen jeder Slide.
+> Dieses Dokument ist die inhaltliche Denkstütze dazu.
 
 ## Die eine Botschaft
 
 > [Ein Satz, den das Board nach der Präsentation weitererzählen kann.]
 
-Sie steht auf Slide 2 und wird auf Slide 5 wiederholt. Wenn sie sich nicht in einen Satz
+Sie steht auf Slide 2 und wird auf Slide 8 wiederholt. Wenn sie sich nicht in einen Satz
 fassen lässt, ist die Analyse noch nicht fertig.
 
 ---
 
 ## Slides
 
-| # | Slide | Kernaussage | Inhalt |
+| Slide | Kapitel | Zeit | Kernaussage |
 |---|---|---|---|
-| 1 | **Empfehlung** | Antwort zuerst | Go / Go mit Einschränkung / No-Go – plus der Ein-Satz-Grund. Kein Titelslide mit Agenda, dafür ist keine Zeit. |
-| 2 | **Warum – die Insights** | Was der Kunde uns gezeigt hat | Max. 3 Insights, je ein wörtliches Zitat daneben |
-| 3 | **Die Regeln** | Was das Modell darf und was nicht | Zwei Spalten: erlaubte Faktoren / verbotene Faktoren + 2–3 Guardrails |
-| 4 | **Was wir noch nicht wissen** | Ehrlichkeit als Stärke | 2–3 offene Fragen mit der jeweils passenden quantitativen Methode |
-| 5 | **Entscheidungsvorschlag** | Der nächste Schritt | Was das Board heute entscheiden soll, was danach passiert |
-| A | *Anhang* | | Leitfaden, Zitatliste, Faktoren-Matrix, Kontext des Probanden |
+| 1 | Titel | 0:10 | Team und Thema, keine Agenda |
+| 2 | **01 Unsere Empfehlung** | 0:35 | Go / Go mit Auflagen / No-Go + Ein-Satz-Grund |
+| 3 | **02 Ausgangslage & Auftrag** | 0:20 | Kennzahlen, Entscheidungsfrage, Stakeholder-Erwartungen |
+| 4 | **03 Ergebnisse entlang der Forschungsfragen** | 0:50 | RQ 1–4, je ein Befund und dessen Pricing-Bedeutung |
+| 5 | **04 Deep Dive** | 0:40 | Der vertiefte Befund – unser Beitrag, den kein anderes Team liefert |
+| 6 | **05 Die Regeln** | 0:35 | erlaubte / verbotene Faktoren + 3 Guardrails |
+| 7 | **06 Was wir noch nicht wissen** | 0:25 | 3 offene Fragen mit Methode – nie streichen |
+| 8 | **07 Was wir vom Board brauchen** | 0:15 | Beschluss + nächste Schritte |
+| 9 | *Backup* | – | Leitfaden, Befunde je RQ, Faktoren-Matrix, Hypothesen, Methodik |
 
 ---
 
-## Sprechtext-Gerüst (ca. 3 Minuten)
+## Befunde statt Gesprächsprotokoll
 
-**Slide 1 (25 Sek.)** – „Unsere Empfehlung lautet: [X]. Der Grund in einem Satz: [Y]."
+Das Board interessiert nicht, was eine einzelne Person gesagt hat, sondern was sich daraus
+**über die Forschungsfrage** sagen lässt. Fünf Teams sprechen mit fünf verschiedenen Kunden –
+vergleichbar wird das nur über die gemeinsamen Core Research Questions.
 
-**Slide 2 (70 Sek.)** – „Wir haben mit einer Person gesprochen, die [Kontext in 5 Wörtern].
-Drei Dinge waren auffällig. Erstens … Zitat. Zweitens … Drittens …"
+| Statt | Besser |
+|---|---|
+| »Ich ärgere mich schon, wenn der Nachbar weniger zahlt.« | Preisunterschiede werden dort abgelehnt, wo sie zwischen Sitznachbarn sichtbar werden. |
+| „Unsere Person fand Early Bird gut." | Frühbucher-Rabatte gelten als fair, weil der Kunde den Faktor selbst steuern kann. |
+| „Sie kennt Dynamic Pricing von Flügen." | Aus anderen Branchen bekannte Preisdynamik senkt die Hemmschwelle, ersetzt aber keine Begründung. |
 
-**Slide 3 (50 Sek.)** – „Daraus folgt: Diese Faktoren darf der Preis nutzen: […].
+Zitate bleiben **intern** die Belegkette im Auswertungsraster. Auf die Slides kommen sie nicht –
+im Backup und im Q&A sind sie die Antwort auf „woran macht ihr das fest?".
+
+## Sprechtext-Gerüst (ca. 3:50)
+
+**Slide 2 (35 Sek.)** – „Unsere Empfehlung lautet: [X]. Der Grund in einem Satz: [Y]."
+
+**Slide 3 (20 Sek.)** – „Zur Erinnerung an den Rahmen: 1'500 Plätze, heute nur nach Kategorie
+differenziert. Die Frage ist Go oder No-Go – und unter welchen Bedingungen."
+
+**Slide 4 (50 Sek.)** – „Wir haben entlang der vier Forschungsfragen ausgewertet.
+Zum Kaufkontext: […]. Zur Preiswahrnehmung: […]. Zur Erfahrung mit dynamischen Preisen: […].
+Zur Einstellung: […]."
+
+**Slide 5 (40 Sek.)** – „Vertieft haben wir [Deep-Dive-Thema]. Drei Befunde: […].
+Entscheidend ist dabei jeweils das Warum: […]."
+
+**Slide 6 (35 Sek.)** – „Daraus folgt: Diese Faktoren darf der Preis nutzen: […].
 Diese nicht: […]. Und diese Guardrails müssen gelten: […]."
 
-**Slide 4 (30 Sek.)** – „Was wir aus einem Gespräch nicht wissen können: […].
+**Slide 7 (25 Sek.)** – „Was wir qualitativ nicht wissen können: […].
 Das würden wir mit [Methode] testen, bevor irgendetwas live geht."
 
-**Slide 5 (20 Sek.)** – „Konkret schlagen wir vor: [Entscheidung]. Gerne Ihre Fragen."
-
----
+**Slide 8 (15 Sek.)** – „Konkret schlagen wir vor: [Entscheidung]. Gerne Ihre Fragen."
 
 ## Regeln für die Slides
 
-- Eine Aussage pro Slide, als **Aussagesatz im Titel** – nicht „Insights", sondern
-  „Kunden akzeptieren Preisunterschiede zwischen Terminen, nicht innerhalb eines Termins"
-- Jedes Insight mit genau einem O-Ton belegen, wörtlich und kurz
+- Jeder Befund ist ein **Aussagesatz**, keine Themennennung – nicht „Fairness", sondern
+  „Preisunterschiede werden akzeptiert, solange sie zwischen Terminen liegen"
+- Keine wörtlichen Zitate, keine Erzählung des Gesprächsverlaufs
 - Keine Klarnamen, kein Wohnort, kein Arbeitgeber
 - Keine Prozentzahlen aus einem Interview – „eine Person von einer" ist keine Statistik
-- Keine Methodenslide. Wenn gefragt wird, ist sie im Anhang
+- Keine Methodenslide. Wenn gefragt wird, liegt sie im Backup
 
 ## Vorbereitete Antworten für Q&A
 
 | Frage | Antwortlinie |
 |---|---|
-| „Nur ein Interview – wie belastbar ist das?" | Qualitativ, explorativ. Liefert die Mechanik der Akzeptanz und die Hypothesen. Die Validierung steht auf Slide 4. |
-| „Wie gross ist das Umsatzpotenzial?" | Aus einem Interview nicht bezifferbar – deshalb Punkt 1 der Validierungsliste. Was wir sagen können: wo Akzeptanz besteht und wo nicht. |
+| „Nur ein Interview – wie belastbar ist das?" | Qualitativ und explorativ. Es liefert die Mechanik der Akzeptanz und die Hypothesen. Die Validierung steht auf Slide 7. |
+| „Woran macht ihr diesen Befund fest?" | Backup öffnen: dort liegen die codierten Aussagen mit Zeitmarke. |
+| „Wie gross ist das Umsatzpotenzial?" | Aus einem Interview nicht bezifferbar – deshalb Punkt 1 der Validierungsliste. Wir können sagen, wo Akzeptanz besteht und wo nicht. |
 | „Was, wenn Kunden anders handeln als sie sagen?" | Bekannte Schwäche von Preisabfragen. Wir haben deshalb nach dem **letzten realen Ticketkauf** gefragt, nicht nach Absichten. |
 | „Warum keine Preisempfehlung in Franken?" | Preispunkte brauchen quantitative Verfahren. Unser Beitrag sind die Regeln, innerhalb derer sich Preise bewegen dürfen. |
-| „Was ist der grösste Risikofaktor?" | [Rote Linie aus dem Interview] – dort kippt Akzeptanz in Imageschaden. |
+| „Was ist der grösste Risikofaktor?" | [Rote Linie aus dem Deep Dive] – dort kippt Akzeptanz in Imageschaden. |
 
 ## Check vor 11:45
 
-- [ ] Slide 1 und Slide 5 sagen dasselbe
-- [ ] Jedes Insight hat ein Zitat
-- [ ] Alle drei Leitfragen des Boards sind beantwortet (Go/No-Go · Regeln · Validierung)
-- [ ] Unter 3 Minuten gesprochen – einmal laut gestoppt
-- [ ] Anhang vorhanden, aber nicht Teil des Vortrags
+- [ ] Slide 2 und Slide 8 sagen dasselbe
+- [ ] Alle vier Forschungsfragen haben einen Befund – keine leere Kachel auf Slide 4
+- [ ] Jeder Befund ist verallgemeinert formuliert, kein Zitat auf einer Slide
+- [ ] Alle drei Leitfragen des Boards beantwortet: Go/No-Go · Regeln · Validierung
+- [ ] Unter 4 Minuten gesprochen – einmal laut gestoppt
+- [ ] Backup vorhanden, aber nicht Teil des Vortrags

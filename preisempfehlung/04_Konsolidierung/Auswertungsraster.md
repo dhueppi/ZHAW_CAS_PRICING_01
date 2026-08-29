@@ -58,6 +58,23 @@
 | I3 | | | | |
 | I4 | | | | |
 
+## Befunde je Forschungsfrage → Slide 4 der Präsentation
+
+Aus dieser Tabelle wird die Slide „03 Ergebnisse entlang der Forschungsfragen" direkt befüllt.
+Ein Satz je Feld, **verallgemeinert** formuliert – nicht „die Person sagte", sondern was sich
+über die Frage sagen lässt.
+
+| Forschungsfrage | Befund (ein Aussagesatz) | Was das fürs Pricing bedeutet |
+|---|---|---|
+| **RQ 1** Event & Buying Context | | |
+| **RQ 2** Price Perception | | |
+| **RQ 3** Erfahrung mit dynamischen Preisen | | |
+| **RQ 4** Einstellung zu Dynamic Pricing | | |
+| **RQ 5** Deep Dive (Slide 5) | | |
+
+> Die Zitate oben in der Tabelle „Aussagen" bleiben die interne Belegkette. Auf die Slides
+> kommen sie nicht – im Backup und im Q&A sind sie die Antwort auf „woran macht ihr das fest?".
+
 ## Hypothesen-Bilanz
 
 | Hypothese | Bestätigt / widerlegt / offen | Beleg | Konsequenz |

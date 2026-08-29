@@ -49,20 +49,42 @@ nicht mehr?
 
 *Beitrag: Wie muss ein Modell gebaut sein, damit es verständlich und akzeptabel ist?*
 
-⬤ **D3.1** Angenommen, Sie sehen beim Ticketkauf verschiedene Preisvarianten.
-Was müsste dort stehen, damit Sie **auf den ersten Blick** verstehen, warum was kostet?
+**Wichtig: am konkreten Event der Person bleiben, nicht abstrakt fragen.** In Block 2 hat
+sie ein Event, einen Kanal und einen Preis genannt (Fragen 2–5) – dieses Event und diese
+Zahl sind der Anker für den ganzen Deep Dive. „Ein Veranstalter" bleibt abstrakt und liefert
+Bauchgefühl-Antworten; „[das Musical, das Sie letzte Woche gesehen haben]" liefert ein
+konkretes Urteil.
 
-⬤ **D3.2** Wir zeigen Ihnen ein paar Möglichkeiten – sagen Sie einfach, was Ihnen
-dazu einfällt: fixe Sitzplatzkategorien wie heute · günstiger, wenn man früh bucht ·
-günstiger kurz vorher · unterschiedlich je Wochentag · abhängig davon, wie stark
-gefragt der Termin ist.
-  ↳ Welche würden Sie sofort ausschliessen? Warum?
-  ↳ Welche erscheint Ihnen am nachvollziehbarsten? Warum genau die?
+⬤ **D3.1 – Stimulus, am eigenen Event verankert.** „Nehmen wir noch einmal [ihr Event aus
+Block 2]. Ich zeige Ihnen vier Varianten, wie der Ticketpreis dafür hätte zustande kommen
+können." Bildschirm teilen, vier Karten in Alltagssprache – Reihenfolge beim Zeigen mischen,
+keine als „Standard" hervorheben:
 
-⬤ **D3.3** Was halten Sie davon, wenn die heutigen Kategorien bleiben und sich nur der
-Preis **innerhalb** einer Kategorie bewegt?
+| Karte | Alltagssprachliche Beschreibung |
+|---|---|
+| A | Wie heute: Preis richtet sich nur nach Sitzplatz (Reihe, Balkon) |
+| B | Wer früh bucht, zahlt weniger – der Preis steigt, je näher der Termin rückt |
+| C | Der Preis hängt davon ab, wie viele Plätze für diesen Termin schon verkauft sind |
+| D | Am Wochenende teurer als unter der Woche |
 
-*Notieren:* Nicht nur Präferenz, sondern die **Nachvollziehbarkeitslogik** dahinter.
+  ↳ Welche schliessen Sie für **dieses** Event sofort aus? Warum?
+  ↳ Welche erscheint Ihnen am nachvollziehbarsten – und warum genau die?
+
+⬤ **D3.2 – Der eigene Preis als Massstab.** „Sie hatten gesagt, das Ticket hat CHF [Betrag
+aus Frage 4] gekostet. Stellen Sie sich vor, [bevorzugte Variante aus D3.1] hätte gegolten –
+zwischen welchen zwei Beträgen hätte sich der Preis für Sie noch vertretbar bewegen dürfen?"
+  ↳ Und ab welchem Betrag hätten Sie das Ticket **nicht** gekauft?
+
+○ **D3.3 – Kombination.** Was halten Sie davon, wenn die heutigen Sitzplatzkategorien
+bleiben und sich nur der Preis **innerhalb** einer Kategorie bewegt – je nach Variante,
+die Sie eben bevorzugt haben?
+
+○ **D3.4 – Verständlichkeit.** Was müsste beim Ticketkauf auf der Seite stehen, damit Sie
+auf den ersten Blick verstehen, warum der Preis gerade so hoch ist?
+
+*Notieren:* Nicht nur Präferenz, sondern die **Nachvollziehbarkeitslogik** dahinter – und die
+konkrete Preisspanne aus D3.2. Die Spanne ist das direkte Material für die Guardrails in
+`04_Konsolidierung/Handlungsempfehlung_Pricing_Board.md`.
 
 ---
 
