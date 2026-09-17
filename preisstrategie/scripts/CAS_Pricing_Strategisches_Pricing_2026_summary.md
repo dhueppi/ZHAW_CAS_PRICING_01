@@ -75,6 +75,17 @@ Im Sinne der im Script dargestellten Zielsysteme kann eine starke Preisstrategie
 
 Ein weiterer wichtiger Gedanke aus dem Script: Der Preis ist nicht nur ein Zielgrößenproblem, sondern ein strategisches Instrument, das in der Praxis an der Schnittstelle zwischen Unternehmenszielen, Marktbedingungen und Kundenverhalten wirkt. Die Zielsetzung muss deshalb verlässlich mit der operativen Umsetzung und der Kundenstrategie zusammenpassen.
 
+### Preisziele nach Marktphase
+
+Die ergänzenden Übungen zeigen, dass Preisstrategie und Pricing-KPIs zum Marktumfeld passen müssen:
+
+- In Wachstumsmärkten stehen Neukundengewinnung, Marktanteil, Produktlaunches und Skalierung im Vordergrund. Zu hohe Margen können Wachstum bremsen, wenn sie die Akquisition erschweren.
+- In reifen Märkten verschiebt sich der Fokus stärker auf Margenverbesserung und die Monetarisierung von Bestandskunden, z. B. durch Preiserhöhungen, Up-Selling, Cross-Selling, Trading-up und die Verringerung von Margenabflüssen.
+- Pricing sollte entlang der Gewinnlogik gesteuert werden: Marktnachfrage, Absatz, Stückpreis, Kundenanzahl, Neukunden, loyale Kunden, verlorene Kunden, Kosten und Deckungsbeitrag hängen zusammen.
+- Für SaaS-Unternehmen ist die Net Revenue Retention (NRR) besonders aussagekräftig. Sie misst, wie viel wiederkehrender Umsatz mit bestehenden Kunden nach Expansion, Churn und Downgrades verbleibt.
+
+**Churn** bezeichnet den Verlust von Kunden oder wiederkehrendem Umsatz innerhalb eines bestimmten Zeitraums. Ein Kunde „churnt“, wenn er kündigt; bei Umsatz-Churn können zusätzlich Downgrades berücksichtigt werden. Eine sinkende Churn-Rate verbessert die Kundenbindung und erhöht den Wert des bestehenden Kundenstamms.
+
 ---
 
 ## Preispositionierung
