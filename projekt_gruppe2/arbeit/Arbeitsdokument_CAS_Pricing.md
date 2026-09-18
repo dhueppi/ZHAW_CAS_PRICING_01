@@ -139,10 +139,10 @@ Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestel
 | Attribut | Essential | Comfort | Wellness |
 |---|---|---|---|
 | Aufpreis pro Nacht | CHF 0.- | CHF 20.- | CHF 40.- |
-| WC-Typ | Die klassische Standard-Toilette – bewährt, zuverlässig und funktional. | Das Komfort-Upgrade, mit flüsterleiser Spülung und integrierter Geruchsabsaugung für ein frisches Badezimmer. | Ergänzend zu allen Comfort-Vorteilen bietet das integrierte Dusch-WC eine berührungslose, sanfte Reinigung mit warmem Wasser. Es ersetzt trockenes Toilettenpapier durch pure, hautschonende Frische. |
-| Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Regendusche-Kopf |
-| Waschtisch | Standard-Waschtisch | Hochwertiger Waschtisch mit besserer Oberfläche und Design | Premium-Waschtisch mit Design-Armatur und hochwertiger Detailausstattung |
-| Badezimmermöbel | Standard-Badmöbel | Hochwertige Badmöbel | Design-Linie / hochwertige Premium-Badmöbel |
+| WC-Typ | Die klassische Standard-Toilette | Das Komfort-Upgrade, mit flüsterleiser Spülung und integrierter Geruchsabsaugung für ein frisches Badezimmer | Ergänzend zu allen Comfort-Vorteilen bietet das integrierte Dusch-WC eine berührungslose, sanfte Reinigung mit warmem Wasser |
+| Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Duschrinne + Regendusche-Kopf |
+| Waschtisch | Kleiner Standard-Waschtisch | Grosser Waschtisch mit besserer Bewegungsfreiheit | Grosser Waschtisch mit berührungsloser Armatur für maximale Bewegungsfreiheit und Hygiene |
+| Badezimmermöbel | Ausreichend Ablagefläche für die Kulturtasche und ein kleiner Wandspiegel | Grosszügige Ablagemöglichkeit und ein grosser, beleuchteter Wandspiegel | Ergänzend zu allen Comfort-Vorteilen bietet der Spiegel ein dimmabres Licht und eine Spiegelheizung gegen Beschlagen |
 
 Die Befragten erhalten mehrere Auswahlaufgaben mit unterschiedlichen Badezimmerprofilen, die sich nur in diesen Attributen unterscheiden. Dadurch kann die relative Wichtigkeit der Merkmale sowie die Präferenz für bestimmte Ausstattungskombinationen gemessen werden.
 
