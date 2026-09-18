@@ -139,7 +139,7 @@ Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestel
 | Attribut | Essential | Comfort | Wellness |
 |---|---|---|---|
 | Aufpreis pro Nacht | CHF 0.- | CHF 20.- | CHF 40.- |
-| WC-Typ | Standard-Spül-WC | Dusch-WC | Dusch-WC mit App-Steuerung |
+| WC-Typ | Die klassische Standard-Toilette – bewährt, zuverlässig und funktional. | Das Komfort-Upgrade, mit flüsterleiser Spülung und integrierter Geruchsabsaugung für ein frisches Badezimmer. | Ergänzend zu allen Comfort-Vorteilen bietet das integrierte Dusch-WC eine berührungslose, sanfte Reinigung mit warmem Wasser. Es ersetzt trockenes Toilettenpapier durch pure, hautschonende Frische. |
 | Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Regendusche-Kopf |
 | Waschtisch | Standard-Waschtisch | Hochwertiger Waschtisch mit besserer Oberfläche und Design | Premium-Waschtisch mit Design-Armatur und hochwertiger Detailausstattung |
 | Badezimmermöbel | Standard-Badmöbel | Hochwertige Badmöbel | Design-Linie / hochwertige Premium-Badmöbel |
