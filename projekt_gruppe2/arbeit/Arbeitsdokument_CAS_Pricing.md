@@ -97,7 +97,7 @@ Die Studie wird als zwei getrennte, unabhängige Teilstudien konzipiert, die jew
 - [x] Eine Person verantwortet die Conjoint-Analyse, die andere die modifizierte relative Gabor-Granger-Methode mit Ankerpreis.
 - [x] Framing vor der Conjoint-Analyse eingebaut.
 - [x] Drei Klassen für die Wahrnehmung der Badezimmerausstattung definiert: Essential, Comfort und Wellness.
-- [ ] Limitationen der Methode kurz diskutieren.
+- [x] Limitationen der Methode pro Verfahren kurz diskutieren.
 
 Die drei Klassen dienen als übergeordnete Wertstufen:
 
@@ -107,6 +107,19 @@ Die drei Klassen dienen als übergeordnete Wertstufen:
 
 Für jede Klasse werden Produktbeispiele mit Bildern und kurzen Mehrwertbeschreibungen gezeigt, damit die Befragten vom Text zur konkreten Produkt- und Nutzenlogik übergehen können.
 
+#### Limitationen der Methoden
+
+Conjoint:
+
+- Die Stichprobengrösse von circa 30 Befragten pro Methode ist für eine belastbare, statistisch robuste Schätzung von Teilnutzenwerten eher knapp. Die Ergebnisse sollten daher als explorativ verstanden werden.
+- Die Bewertung hängt stark von der Art der Stimuli ab: Bei Bilddarstellungen werden hochwertige Produktmerkmale häufig stärker überbewertet, während textlich beschriebene Merkmale eher unterbewertet werden. Dadurch kann die Conjoint-Auswertung systematisch durch die Wahrnehmung von Bild versus Text beeinflusst werden.
+
+Gabor-Granger mit Ankerpreis:
+
+- Der Ankerpreis kann die Preiswahrnehmung und die Bereitschaft zu zahlen erheblich beeinflussen.
+- Die beiden Badezimmerbilder müssen sehr streng kontrolliert werden, damit nur die Produkte und nicht andere visuelle Faktoren wie Licht, Raumwirkung oder Einrichtung den Unterschied erklären.
+
+
 ### 3.2 Fragebogenansatz
 
 Die Conjoint-Teilstudie wird von einer Person durchgeführt und basiert auf vollständigen Hotelzimmer-/Badezimmerprofilen, die sich in Attributen unterscheiden. Dadurch werden die relative Wichtigkeit der Merkmale und die Teilnutzenwerte im Rahmen einer profilbasierten Conjoint-Analyse ermittelt.
@@ -115,18 +128,28 @@ Die modifizierte relative Gabor-Granger-Methode mit Ankerpreis wird von der zwei
 
 Die beiden Befragungsformen sind bewusst unabhängig voneinander und werden mit unterschiedlichen Befragten durchgeführt. Die Ergebnisse ergänzen sich in der Gesamtinterpretation, aber es gibt keine Überlappung der Stichproben oder direkte Befragungsabhängigkeit.
 
-#### Beispielattribute und Stufen
+#### Conjoint-Fragebogen: Attribute und Stufen
 
-| Attribut | Stufe 1 | Stufe 2 | Stufe 3 |
+Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestellt. Jede Stufe entspricht einer klaren Qualitäts- und Mehrwertebene im Hotelbadezimmer:
+
+- Essential = grundlegende Funktionalität und Standardqualität
+- Comfort = höherer Komfort und bessere Alltagserfahrung
+- Wellness = hochwertiges Premium-Erlebnis mit spa-ähnlichem Mehrwert
+
+| Attribut | Essential | Comfort | Wellness |
 |---|---|---|---|
 | Aufpreis pro Nacht | CHF 0.- | CHF 20.- | CHF 40.- |
 | WC-Typ | Standard-Spül-WC | Dusch-WC | Dusch-WC mit App-Steuerung |
 | Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Regendusche-Kopf |
-| Armaturen | Standard-Armaturen | Hochwertige Design-Armaturen | Berührungslose Sensor-Armaturen |
-| Waschplatz & Badmöbel | Standard | Hochwertige Badmöbel | Design-Linie |
+| Waschtisch | Standard-Waschtisch | Hochwertiger Waschtisch mit besserer Oberfläche und Design | Premium-Waschtisch mit Design-Armatur und hochwertiger Detailausstattung |
+| Badezimmermöbel | Standard-Badmöbel | Hochwertige Badmöbel | Design-Linie / hochwertige Premium-Badmöbel |
 
-- [x] Beispielattribute und Stufen definiert.
-- [ ] Beispielfragen für das Instrument ergänzen.
+Die Befragten erhalten mehrere Auswahlaufgaben mit unterschiedlichen Badezimmerprofilen, die sich nur in diesen Attributen unterscheiden. Dadurch kann die relative Wichtigkeit der Merkmale sowie die Präferenz für bestimmte Ausstattungskombinationen gemessen werden.
+
+Die Conjoint-Umfrage enthält zusätzlich eine kurze Einleitung zum Hotelkontext, ein kurzes Framing zu den drei Qualitätsstufen Essential, Comfort und Wellness sowie abschliessend Fragen zur Preiswahrnehmung und den soziodemografischen Kennzahlen.
+
+- [x] Conjoint-Attribute und Stufen definiert.
+- [ ] Conjoint-Auswahlaufgaben und Frageformulierungen konkretisieren.
 - [x] Soziodemografische Variablen und Segmentierungsmerkmale im Grundsatz festgelegt.
 
 ### 3.3 Ergänzende Messpunkte
@@ -160,6 +183,7 @@ Zusätzlich wird die Soziodemografie der Befragten erhoben, darunter:
 
 - [x] Ziel: je Befragungsdesign rund 30 vollständige, auswertbare Antworten.
 - [x] Zwei unabhängige Stichproben geplant: eine für Conjoint, eine für Gabor-Granger mit Ankerpreis.
+- [x] Hinweis ergänzt: 30 Antworten pro Methode sind als Mindest- bzw. exploratives Sample zu verstehen und für robuste Aussagen eher knapp.
 - [ ] Verteilungsstrategie definieren.
 - [ ] Erhebungszeitraum festlegen.
 - [ ] Sampling-Methodik dokumentieren.
