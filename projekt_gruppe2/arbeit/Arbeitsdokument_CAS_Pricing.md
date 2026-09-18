@@ -21,9 +21,14 @@ Geberit AG (Sanitärtechnik) – fiktiver Auftrag
 
 ### 1.4 Methode
 
-Quantitative Online-Befragung mit profilbasierter Conjoint-Analyse
+Quantitative Online-Befragung mit profilbasierter Conjoint-Analyse und ergänzender, relativer Gabor-Granger-Methode mit Ankerpreis
 
-### 1.5 Projektstatus
+### 1.5 Tooling
+
+- [ ] Qualtrics oder Sawtooth für die Befragungsimplementation prüfen und je nach Eignung auswählen.
+- [ ] Tool-Auswahl anhand von Funktionalität, Umsetzungskomplexität und Datenexportfähigkeit begründen.
+
+### 1.6 Projektstatus
 
 - [x] Projektverständnis gesichert
 - [x] Projektskizze finalisiert
@@ -86,15 +91,29 @@ Konkret sollen folgende Fragestellungen beantwortet werden:
 
 ### 3.1 Methodik
 
-Durchgeführt wird eine quantitative Online-Befragung mit profilbasierter Conjoint-Analyse.
+Die Studie wird als zwei getrennte, unabhängige Teilstudien konzipiert, die jeweils von einer Person verantwortet werden. Dadurch wird sichergestellt, dass die Befragungsansätze keinen direkten Einfluss aufeinander haben und die Antwortdaten voneinander unabhängig sind.
 
-- [x] Methode gewählt und im Projekt kontextualisiert.
-- [x] Conjoint als passend begründet.
+- [x] Zwei getrennte Befragungsdesigns definiert.
+- [x] Eine Person verantwortet die Conjoint-Analyse, die andere die modifizierte relative Gabor-Granger-Methode mit Ankerpreis.
+- [x] Framing vor der Conjoint-Analyse eingebaut.
+- [x] Drei Klassen für die Wahrnehmung der Badezimmerausstattung definiert: Essential, Comfort und Wellness.
 - [ ] Limitationen der Methode kurz diskutieren.
+
+Die drei Klassen dienen als übergeordnete Wertstufen:
+
+- Essential: grundlegende Funktionalität und Standardqualität im Badezimmer
+- Comfort: erhöhter Komfort und bessere Alltagserfahrung
+- Wellness: spa-ähnliche, emotionale und hochwertige Erlebnisqualität
+
+Für jede Klasse werden Produktbeispiele mit Bildern und kurzen Mehrwertbeschreibungen gezeigt, damit die Befragten vom Text zur konkreten Produkt- und Nutzenlogik übergehen können.
 
 ### 3.2 Fragebogenansatz
 
-Die Befragten bewerten vollständige Hotelzimmer-/Badezimmerprofile, die sich in Attributen unterscheiden.
+Die Conjoint-Teilstudie wird von einer Person durchgeführt und basiert auf vollständigen Hotelzimmer-/Badezimmerprofilen, die sich in Attributen unterscheiden. Dadurch werden die relative Wichtigkeit der Merkmale und die Teilnutzenwerte im Rahmen einer profilbasierten Conjoint-Analyse ermittelt.
+
+Die modifizierte relative Gabor-Granger-Methode mit Ankerpreis wird von der zweiten Person separat umgesetzt. Dabei wird zunächst ein eingerichtetes Hotelbadezimmer mit einem Ankerpreis gezeigt. Danach wird ein höher ausgestattetes Badezimmer mit zusätzlichen Features und Bildern präsentiert. Ziel ist es, zu erfassen, was der Befragte mehr oder weniger für die höherwertige Ausstattungsstufe zu zahlen bereit ist.
+
+Die beiden Befragungsformen sind bewusst unabhängig voneinander und werden mit unterschiedlichen Befragten durchgeführt. Die Ergebnisse ergänzen sich in der Gesamtinterpretation, aber es gibt keine Überlappung der Stichproben oder direkte Befragungsabhängigkeit.
 
 #### Beispielattribute und Stufen
 
@@ -113,9 +132,9 @@ Die Befragten bewerten vollständige Hotelzimmer-/Badezimmerprofile, die sich in
 ### 3.3 Ergänzende Messpunkte
 
 - [ ] Relevanz des Badezimmers bei der Hotelwahl
-- [ ] Wahrnehmung der Badezimmerausstattung
+- [ ] Wahrnehmung der Badezimmerausstattung nach den drei Klassen Essential, Comfort und Wellness
 - [ ] Soziodemografische Merkmale zur Zielgruppensegmentierung
-
+- [ ] Akzeptanz von Ankerpreisen und Preiswahrnehmung bei höherwertigen Badezimmern
 - [ ] Detaillierte Frageformulierungen eintragen.
 
 ---
@@ -124,14 +143,23 @@ Die Befragten bewerten vollständige Hotelzimmer-/Badezimmerprofile, die sich in
 
 ### 4.1 Zielgruppe
 
-Personen, die regelmässig in Hotels übernachten, sowohl Geschäfts- als auch Freizeitreisende.
+Nur Privatreisende werden im Fokus stehen. Business Trips sind bewusst nicht Teil des Scope, da das Entscheidungs- und Preisverhalten in diesem Segment nicht der Kern der Untersuchung ist.
 
 - [x] Zielgruppendefinition beschrieben.
-- [x] Grundsegmentierung festgelegt (Geschäfts- und Freizeitreisende).
+- [x] Privatreisende als primäre Zielgruppe festgelegt.
+- [x] Business Trips bewusst ausgeschlossen.
+
+Zusätzlich wird die Soziodemografie der Befragten erhoben, darunter:
+
+- [ ] Alter
+- [ ] Jahreseinkommen
+- [ ] Anzahl Reisen pro Jahr
+- [ ] Art der bevorzugten Reise
 
 ### 4.2 Stichprobenplanung
 
-- [x] Ziel: rund 30 vollständige, auswertbare Antworten.
+- [x] Ziel: je Befragungsdesign rund 30 vollständige, auswertbare Antworten.
+- [x] Zwei unabhängige Stichproben geplant: eine für Conjoint, eine für Gabor-Granger mit Ankerpreis.
 - [ ] Verteilungsstrategie definieren.
 - [ ] Erhebungszeitraum festlegen.
 - [ ] Sampling-Methodik dokumentieren.
@@ -139,8 +167,8 @@ Personen, die regelmässig in Hotels übernachten, sowohl Geschäfts- als auch F
 Aktueller Plan:
 
 - [ ] Online-Verteilung über persönliches und berufliches Netzwerk
-- [ ] Ziel: ca. 30 vollständige Antworten
-- [ ] Datenbereinigung und Ausschlusskriterien definieren
+- [ ] Ziel: je Studie ca. 30 vollständige Antworten
+- [ ] Datenbereinigung und Ausschlusskriterien je Befragungsdesign definieren
 
 ---
 
@@ -171,25 +199,29 @@ Aktueller Plan:
 
 ### 7.1 Ablauf
 
-- [ ] Fragebogen finalisieren
-- [ ] Pretest durchführen
-- [ ] Verteilung starten
-- [ ] Daten sammeln
-- [ ] Daten bereinigen
+- [ ] Conjoint-Fragebogen finalisieren
+- [ ] Gabor-Granger-Fragebogen finalisieren
+- [ ] Verifikation durch eine dritte Person vor dem finalen Einsatz für beide Instrumente durchführen
+- [ ] Pretest beider Instrumente durchführen
+- [ ] Verteilung beider Befragungen starten
+- [ ] Daten je Studie sammeln
+- [ ] Daten je Studie bereinigen
 
 ### 7.2 Aufgabenliste
 
-- [ ] Fragebogen finalisieren
-- [ ] Testlauf mit 2-3 Personen durchführen
-- [ ] Online-Verteilung starten
-- [ ] Erhebungsdauer festlegen
-- [ ] Datenbereinigung dokumentieren
-- [ ] Auswertungslogik festlegen
+- [ ] Conjoint-Fragebogen finalisieren
+- [ ] Gabor-Granger-Fragebogen finalisieren
+- [ ] Verifikation durch eine dritte Person gemäß Feedback prüfen
+- [ ] Testlauf mit 2-3 Personen pro Befragung durchführen
+- [ ] Online-Verteilung beider Befragungen starten
+- [ ] Erhebungsdauer je Studie festlegen
+- [ ] Datenbereinigung je Studie dokumentieren
+- [ ] Auswertungslogik je Studie festlegen
 
 ### 7.3 Erfolgsmaßstab
 
-- [ ] Mindestens etwa 30 vollständige, nutzbare Antworten erreicht
-- [ ] Repräsentative Streuung innerhalb der Zielgruppe gewährleistet
+- [ ] Je Befragungsdesign mindestens etwa 30 vollständige, nutzbare Antworten erreicht
+- [ ] Repräsentative Streuung innerhalb der Zielgruppe je Studie gewährleistet
 - [ ] Keine systematischen Fehler in der Befragung sichtbar
 
 ---
