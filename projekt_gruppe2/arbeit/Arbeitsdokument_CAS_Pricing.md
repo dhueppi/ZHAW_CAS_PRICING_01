@@ -25,7 +25,7 @@ Quantitative Online-Befragung mit profilbasierter Conjoint-Analyse und ergänzen
 
 ### 1.5 Tooling
 
-- [ ] Qualtrics oder Sawtooth für die Befragungsimplementation prüfen und je nach Eignung auswählen.
+- [x] Qualtrics oder Sawtooth für die Befragungsimplementation prüfen und je nach Eignung auswählen.
 - [ ] Tool-Auswahl anhand von Funktionalität, Umsetzungskomplexität und Datenexportfähigkeit begründen.
 
 ### 1.6 Projektstatus
@@ -72,7 +72,6 @@ Ziel ist die Ermittlung der Zahlungsbereitschaft von Hotelgästen für ein Hotel
 Konkret sollen folgende Fragestellungen beantwortet werden:
 
 - [ ] Wie hoch ist der akzeptierte Aufpreis für ein Zimmer mit Premium-Sanitärausstattung gegenüber einem Standardzimmer?
-- [ ] Welche relative Wichtigkeit hat der Preis im Vergleich zu den weiteren Ausstattungsmerkmalen?
 - [ ] Welche Teilnutzenwerte haben die einzelnen Ausstattungsstufen?
 - [ ] Welches Gesamtprofil wird von der Zielgruppe präferiert (optimale Ausstattungskombination)?
 
@@ -128,6 +127,10 @@ Die modifizierte relative Gabor-Granger-Methode mit Ankerpreis wird von der zwei
 
 Die beiden Befragungsformen sind bewusst unabhängig voneinander und werden mit unterschiedlichen Befragten durchgeführt. Die Ergebnisse ergänzen sich in der Gesamtinterpretation, aber es gibt keine Überlappung der Stichproben oder direkte Befragungsabhängigkeit.
 
+Für die Preisdifferenzierung wird der Markt bewusst auf Hotels in der Schweiz begrenzt. Als Referenz dient ein mittlerer Zimmerpreis von CHF 150.- pro Nacht, entsprechend dem durchschnittlichen Niveau von 3- bis 4-Sterne-Hotels in der Schweiz. Damit wird ein realistischer Rahmen gesetzt, innerhalb dessen die Zahlungsbereitschaft für Premium-Badleistungen gemessen wird. Die Segmentierung erfolgt zusätzlich nach Alter und Einkommen der Gäste, da diese Merkmale die Bereitschaft zu einem Aufpreis für Komfort- und Wellness-Merkmale erheblich beeinflussen. Zudem ist die soziale Akzeptanz zentral: Essential bleibt mit +CHF 0.- ohne zusätzlichen Aufpreis; es darf kein grundlegender Bedarf ausgeschlossen werden. Durch die Vorgabe eines Basispreises von CHF 150.- für das Zimmer sind dynamische und individuelle Hotelpreise für die Befragten weitgehend ausgeblendet, sodass der reine Zusatzwert der Sanitärprodukte isoliert bewertet werden kann.
+
+Die Preisstufen werden bewusst auf relative Sprünge zwischen 10 % und maximal 30 % festgelegt. Nach empirischen Studien von Simon-Kucher, einer der führenden Beratungen im Pricing, liegen Produkt-Tier-Preissprünge im B2C- und Hospitality-Bereich idealerweise im Bereich von 10 % bis maximal 30 %. Ein Sprung über 30 % führt in der Regel zu einer elastischen Nachfrage und damit zu deutlichen Abbrüchen bei der Zahlungsbereitschaft. Aus diesem Grund werden im Conjoint-Design die Stufen auf 0 %, 10 % und 30 % des Basispreises gesetzt.
+
 #### Conjoint-Fragebogen: Attribute und Stufen
 
 Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestellt. Jede Stufe entspricht einer klaren Qualitäts- und Mehrwertebene im Hotelbadezimmer:
@@ -138,7 +141,7 @@ Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestel
 
 | Attribut | Essential | Comfort | Wellness |
 |---|---|---|---|
-| Aufpreis pro Nacht | CHF 0.- | CHF 20.- | CHF 40.- |
+| Aufpreis pro Nacht | CHF 0.- | CHF 15.- (10 % von CHF 150.-) | CHF 45.- (30 % von CHF 150.-) |
 | WC-Typ | Die klassische Standard-Toilette | Das Komfort-Upgrade, mit flüsterleiser Spülung und integrierter Geruchsabsaugung für ein frisches Badezimmer | Ergänzend zu allen Comfort-Vorteilen bietet das integrierte Dusch-WC eine berührungslose, sanfte Reinigung mit warmem Wasser |
 | Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Duschrinne + Regendusche-Kopf |
 | Waschtisch | Kleiner Standard-Waschtisch | Grosser Waschtisch mit besserer Bewegungsfreiheit | Grosser Waschtisch mit berührungsloser Armatur für maximale Bewegungsfreiheit und Hygiene |
@@ -146,10 +149,12 @@ Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestel
 
 Die Befragten erhalten mehrere Auswahlaufgaben mit unterschiedlichen Badezimmerprofilen, die sich nur in diesen Attributen unterscheiden. Dadurch kann die relative Wichtigkeit der Merkmale sowie die Präferenz für bestimmte Ausstattungskombinationen gemessen werden.
 
+Vor dem eigentlichen Fragebogen werden für jedes Attribut die drei Stufen mit passenden Bildern eingeführt. Dadurch bilden die Befragten zunächst ein klares visuelles Bild zum jeweiligen Leistungsniveau, bevor im eigentlichen Auswahlteil nur noch die textliche Beschreibung erscheint. Auf diese Weise entsteht für die Befragten ein konsistentes mental model der Produktstufen, und die spätere Bewertung wird weniger durch Unklarheit oder unterschiedliche Interpretationen der Ausstattung beeinflusst.
+
 Die Conjoint-Umfrage enthält zusätzlich eine kurze Einleitung zum Hotelkontext, ein kurzes Framing zu den drei Qualitätsstufen Essential, Comfort und Wellness sowie abschliessend Fragen zur Preiswahrnehmung und den soziodemografischen Kennzahlen.
 
 - [x] Conjoint-Attribute und Stufen definiert.
-- [ ] Conjoint-Auswahlaufgaben und Frageformulierungen konkretisieren.
+- [x] Conjoint-Auswahlaufgaben und Frageformulierungen konkretisieren.
 - [x] Soziodemografische Variablen und Segmentierungsmerkmale im Grundsatz festgelegt.
 
 ### 3.3 Ergänzende Messpunkte
@@ -176,7 +181,6 @@ Zusätzlich wird die Soziodemografie der Befragten erhoben, darunter:
 
 - [ ] Alter
 - [ ] Jahreseinkommen
-- [ ] Anzahl Reisen pro Jahr
 - [ ] Art der bevorzugten Reise
 
 ### 4.2 Stichprobenplanung
