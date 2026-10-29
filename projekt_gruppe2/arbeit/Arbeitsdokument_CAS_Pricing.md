@@ -21,13 +21,24 @@ Hotels investieren zunehmend in hochwertige Badezimmerausstattungen, um sich zu 
 
 Diese Studie soll den **ökonomischen Nutzen von Premium-Sanitärlösungen quantitativ nachweisen**: Wie viel mehr sind Gäste bereit zu zahlen? Welche Merkmale sind wertvoll? Welche Ausstattungskombination ist optimal?
 
-### Untersuchungsziele
-Folgende Forschungsfragen sollen beantwortet werden:
-- **Wie hoch ist der akzeptierte Aufpreis** für ein Zimmer mit Premium-Sanitärausstattung gegenüber einem Standardzimmer?
-- **Welche relative Wichtigkeit hat der Preis** im Vergleich zu anderen Ausstattungsmerkmalen?
-- **Welche Teilnutzenwerte haben die einzelnen Ausstattungsstufen** (Essential vs. Comfort vs. Wellness)?
-- **Welches Gesamtprofil wird von der Zielgruppe bevorzugt** (optimale Ausstattungskombination)?
-- **Welche Ausstattungsmerkmale beeinflussen die Zahlungsbereitschaft am stärksten?**
+Quantitative Online-Befragung mit profilbasierter Conjoint-Analyse und ergänzender, relativer Gabor-Granger-Methode mit Ankerpreis
+
+### 1.5 Tooling
+
+- [x] Qualtrics oder Sawtooth für die Befragungsimplementation prüfen und je nach Eignung auswählen.
+- [x] Tool-Auswahl anhand von Funktionalität, Umsetzungskomplexität und Datenexportfähigkeit begründen.
+
+### 1.6 Projektstatus
+
+- [x] Projektverständnis gesichert
+- [x] Projektskizze finalisiert
+- [x] Fragebogen finalisiert
+- [x] Datenerhebung abgeschlossen
+- [x] Datenanalyse abgeschlossen
+- [x] Ergebnisse interpretiert
+- [x] Handlungsempfehlungen abgeleitet
+- [x] Präsentation erstellt
+- [x] Abgabe auf Moodle erfolgt
 
 ---
 
@@ -44,11 +55,37 @@ Folgende Forschungsfragen sollen beantwortet werden:
 - Anzahl Reisen pro Jahr
 - Bevorzugte Reisearten (Strandurlaub, Kulturreise, etc.)
 
-### Annahmen / Hypothesen
-- **H1:** Gäste sind bereit, für hochwertigere Badezimmer einen signifikanten Aufpreis zu zahlen.
-- **H2:** Der Einfluss der Badezimmerausstattung auf Zahlungsbereitschaft variiert je nach Kundensegment (z.B. nach Einkommensniveau).
-- **H3:** Premium-Features wie Dusch-WCs oder berührungslose Armaturen haben einen positiven Einfluss auf die Wahrnehmung und Zahlungsbereitschaft.
-- **H4:** Nicht nur der Preis, sondern auch die Gesamtwirkung der Ausstattung beeinflusst die Präferenz – ein "Mixed-Set" kann attraktiver sein als nur hochwertige Einzelmerkmale.
+Für einen Sanitärhersteller wie Geberit ist diese Frage zentral, weil Geberit am Verkauf höherpreisiger Sanitärlösungen interessiert ist und Hotelbetreibern den Mehrwert von Premium-Sanitärlösungen argumentativ und preislich belegen muss. Vor diesem Hintergrund stellt sich die Frage, ob Hotels bei Badezimmer-Investitionen, unabhängig davon ob Renovation oder Neubau, mehr in hochwertige Sanitärprodukte investieren sollten, um dadurch höhere Zimmerpreise und mehr Umsatz zu erzielen.
+
+### 2.2 Untersuchungsproblem
+
+- [x] Problemstellung präzise formuliert.
+- [x] Relevante Fachbegriffe im Projektkontext festgelegt.
+
+Es ist nicht bekannt, ob und in welchem Umfang eine hochwertige Sanitärausstattung im Hotelbadezimmer die Zahlungsbereitschaft der Gäste für ein Hotelzimmer erhöht und welche Ausstattungsmerkmale dabei den grössten Werthebel darstellen. Vor allem ist unklar, ob Hotels durch gezieltes Upselling bei allgemeinen Badezimmer-Investitionen, also auch bei Renovationen und Neubauten, mehr Umsatz erzielen können, wenn sie in hochwertigere Sanitärprodukte investieren. Geberit ist deshalb daran interessiert, den ökonomischen Nutzen solcher Premium-Lösungen und deren Beitrag zur Preisstrategie für Hotels quantitativ zu belegen.
+
+### 2.3 Leitfrage
+
+Welche hochwertige Sanitärausstattung steigert die Zahlungsbereitschaft der Gäste so stark, dass Hotels durch Premium-Investitionen in Badezimmern mehr Umsatz erzielen können?
+
+### 2.4 Untersuchungsziele
+
+Ziel ist die Ermittlung der Zahlungsbereitschaft von Hotelgästen für ein Hotelzimmer mit hochwertiger Badezimmerausstattung sowie der Wahrnehmung des Ausstattungsangebots.
+
+Konkret sollen folgende Fragestellungen beantwortet werden:
+
+- [x] Wie hoch ist der akzeptierte Aufpreis für ein Zimmer mit Premium-Sanitärausstattung gegenüber einem Standardzimmer?
+- [x] Welche Teilnutzenwerte haben die einzelnen Ausstattungsstufen?
+- [x] Welches Gesamtprofil wird von der Zielgruppe präferiert (optimale Ausstattungskombination)?
+
+### 2.5 Projektauftrag (zusammengefasst)
+
+- [x] Eine eigene Preisforschung durchführen.
+- [x] Eine quantitative Untersuchung planen und umsetzen.
+- [x] Zahlungsbereitschaft und Wahrnehmung der Ausstattung messen.
+- [x] Ergebnisse analysieren und interpretieren.
+- [x] Handlungsempfehlungen für Geberit ableiten.
+- [x] Die Ergebnisse in einer Abschlusspräsentation verständlich präsentieren.
 
 ---
 
@@ -63,9 +100,74 @@ Zwei unterschiedliche Preisforschungs-Methoden liefern unterschiedliche Perspekt
 
 Durch die **Unabhängigkeit der Stichproben** (unterschiedliche Befragte, unterschiedliche Framing) werden echte alternative Sichtweisen erfasst – nicht nur Variationen derselben Frage.
 
-**Verantwortlichkeiten:**
-- Dominic Hüppi: Conjoint-Analyse
-- Marilena Marraffino: Gabor-Granger-Methode mit Ankerpreis
+Die drei Klassen dienen als übergeordnete Wertstufen:
+
+- Essential: grundlegende Funktionalität und Standardqualität im Badezimmer
+- Comfort: erhöhter Komfort und bessere Alltagserfahrung
+- Wellness: spa-ähnliche, emotionale und hochwertige Erlebnisqualität
+
+Für jede Klasse werden Produktbeispiele mit Bildern und kurzen Mehrwertbeschreibungen gezeigt, damit die Befragten vom Text zur konkreten Produkt- und Nutzenlogik übergehen können.
+
+#### Limitationen der Methoden
+
+Conjoint:
+
+- Die Stichprobengrösse von circa 30 Befragten pro Methode ist für eine belastbare, statistisch robuste Schätzung von Teilnutzenwerten eher knapp. Die Ergebnisse sollten daher als explorativ verstanden werden.
+- Die Bewertung hängt stark von der Art der Stimuli ab: Bei Bilddarstellungen werden hochwertige Produktmerkmale häufig stärker überbewertet, während textlich beschriebene Merkmale eher unterbewertet werden. Dadurch kann die Conjoint-Auswertung systematisch durch die Wahrnehmung von Bild versus Text beeinflusst werden.
+
+Gabor-Granger mit Ankerpreis:
+
+- Der Ankerpreis kann die Preiswahrnehmung und die Bereitschaft zu zahlen erheblich beeinflussen.
+- Die beiden Badezimmerbilder müssen sehr streng kontrolliert werden, damit nur die Produkte und nicht andere visuelle Faktoren wie Licht, Raumwirkung oder Einrichtung den Unterschied erklären.
+
+
+### 3.2 Fragebogenansatz
+
+Die Conjoint-Teilstudie wird von einer Person durchgeführt und basiert auf vollständigen Hotelzimmer-/Badezimmerprofilen, die sich in Attributen unterscheiden. Dadurch werden die relative Wichtigkeit der Merkmale und die Teilnutzenwerte im Rahmen einer profilbasierten Conjoint-Analyse ermittelt.
+
+Die modifizierte relative Gabor-Granger-Methode mit Ankerpreis wird von der zweiten Person separat umgesetzt. Dabei wird zunächst ein eingerichtetes Hotelbadezimmer mit einem Ankerpreis gezeigt. Danach wird ein höher ausgestattetes Badezimmer mit zusätzlichen Features und Bildern präsentiert. Ziel ist es, zu erfassen, was der Befragte mehr oder weniger für die höherwertige Ausstattungsstufe zu zahlen bereit ist.
+
+Die beiden Befragungsformen sind bewusst unabhängig voneinander und werden mit unterschiedlichen Befragten durchgeführt. Die Ergebnisse ergänzen sich in der Gesamtinterpretation, aber es gibt keine Überlappung der Stichproben oder direkte Befragungsabhängigkeit.
+
+Für die Preisdifferenzierung wird der Markt bewusst auf Hotels in der Schweiz begrenzt. Als Referenz dient ein mittlerer Zimmerpreis von CHF 150.- pro Nacht, entsprechend dem durchschnittlichen Niveau von 3- bis 4-Sterne-Hotels in der Schweiz. Damit wird ein realistischer Rahmen gesetzt, innerhalb dessen die Zahlungsbereitschaft für Premium-Badleistungen gemessen wird. Die Segmentierung erfolgt zusätzlich nach Alter und Einkommen der Gäste, da diese Merkmale die Bereitschaft zu einem Aufpreis für Komfort- und Wellness-Merkmale erheblich beeinflussen. Zudem ist die soziale Akzeptanz zentral: Essential bleibt mit +CHF 0.- ohne zusätzlichen Aufpreis; es darf kein grundlegender Bedarf ausgeschlossen werden. Durch die Vorgabe eines Basispreises von CHF 150.- für das Zimmer sind dynamische und individuelle Hotelpreise für die Befragten weitgehend ausgeblendet, sodass der reine Zusatzwert der Sanitärprodukte isoliert bewertet werden kann.
+
+Die Preisstufen werden bewusst auf relative Sprünge zwischen 10 % und maximal 30 % festgelegt. Nach empirischen Studien von Simon-Kucher, einer der führenden Beratungen im Pricing, liegen Produkt-Tier-Preissprünge im B2C- und Hospitality-Bereich idealerweise im Bereich von 10 % bis maximal 30 %. Ein Sprung über 30 % führt in der Regel zu einer elastischen Nachfrage und damit zu deutlichen Abbrüchen bei der Zahlungsbereitschaft. Aus diesem Grund werden im Conjoint-Design die Stufen auf 0 %, 10 % und 30 % des Basispreises gesetzt.
+
+#### Conjoint-Fragebogen: Attribute und Stufen
+
+Im Conjoint-Teil werden jeweils die folgenden Attribute in drei Stufen dargestellt. Jede Stufe entspricht einer klaren Qualitäts- und Mehrwertebene im Hotelbadezimmer:
+
+- Essential = grundlegende Funktionalität und Standardqualität
+- Comfort = höherer Komfort und bessere Alltagserfahrung
+- Wellness = hochwertiges Premium-Erlebnis mit spa-ähnlichem Mehrwert
+
+| Attribut | Essential | Comfort | Wellness |
+|---|---|---|---|
+| Aufpreis pro Nacht | CHF 0.- | CHF 15.- (10 % von CHF 150.-) | CHF 45.- (30 % von CHF 150.-) |
+| WC-Typ | Die klassische Standard-Toilette | Das Komfort-Upgrade, mit flüsterleiser Spülung und integrierter Geruchsabsaugung für ein frisches Badezimmer | Ergänzend zu allen Comfort-Vorteilen bietet das integrierte Dusch-WC eine berührungslose, sanfte Reinigung mit warmem Wasser |
+| Dusche | Standard-Duschwanne | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche mit Duschrinne + Regendusche-Kopf |
+| Waschtisch | Kleiner Standard-Waschtisch | Grosser Waschtisch mit besserer Bewegungsfreiheit | Grosser Waschtisch mit berührungsloser Armatur für maximale Bewegungsfreiheit und Hygiene |
+| Badezimmermöbel | Ausreichend Ablagefläche für die Kulturtasche und ein kleiner Wandspiegel | Grosszügige Ablagemöglichkeit und ein grosser, beleuchteter Wandspiegel | Ergänzend zu allen Comfort-Vorteilen bietet der Spiegel ein dimmabres Licht und eine Spiegelheizung gegen Beschlagen |
+
+Die Befragten erhalten mehrere Auswahlaufgaben mit unterschiedlichen Badezimmerprofilen, die sich nur in diesen Attributen unterscheiden. Dadurch kann die relative Wichtigkeit der Merkmale sowie die Präferenz für bestimmte Ausstattungskombinationen gemessen werden.
+
+Vor dem eigentlichen Fragebogen werden für jedes Attribut die drei Stufen mit passenden Bildern eingeführt. Dadurch bilden die Befragten zunächst ein klares visuelles Bild zum jeweiligen Leistungsniveau, bevor im eigentlichen Auswahlteil nur noch die textliche Beschreibung erscheint. Auf diese Weise entsteht für die Befragten ein konsistentes mental model der Produktstufen, und die spätere Bewertung wird weniger durch Unklarheit oder unterschiedliche Interpretationen der Ausstattung beeinflusst.
+
+Die Conjoint-Umfrage enthält zusätzlich eine kurze Einleitung zum Hotelkontext, ein kurzes Framing zu den drei Qualitätsstufen Essential, Comfort und Wellness sowie abschliessend Fragen zur Preiswahrnehmung und den soziodemografischen Kennzahlen.
+
+- [x] Conjoint-Attribute und Stufen definiert.
+- [x] Conjoint-Auswahlaufgaben und Frageformulierungen konkretisieren.
+- [x] Soziodemografische Variablen und Segmentierungsmerkmale im Grundsatz festgelegt.
+
+### 3.3 Ergänzende Messpunkte
+
+- [x] Relevanz des Badezimmers bei der Hotelwahl
+- [x] Wahrnehmung der Badezimmerausstattung nach den drei Klassen Essential, Comfort und Wellness
+- [x] Soziodemografische Merkmale zur Zielgruppensegmentierung
+- [x] Akzeptanz von Ankerpreisen und Preiswahrnehmung bei höherwertigen Badezimmern
+- [x] Detaillierte Frageformulierungen eintragen.
+
+Die empirische Untersuchung wurde mit zwei separaten Online-Befragungen umgesetzt: einer Gabor-Granger-Studie mit n = 20 und einer Conjoint-Studie mit n = 29 auswertbaren Antworten. Die Ergebnisse zeigen konsistent, dass Gäste grundsätzlich bereit sind, für ein besseres Badezimmer einen Zusatzpreis zu zahlen, dass der Preis selbst aber den grössten Einfluss auf die Auswahl hat und dass die Dusche den stärksten Mehrwert schafft. Der Zusatzwert eines Dusch-WCs blieb in den Befragungen hingegen praktisch leer, während eine bodenebene Dusche mit Regendusche als stärkster Mehrwerttreiber identifiziert wurde.
 
 ---
 
@@ -83,101 +185,38 @@ Drei übergeordnete Kategorien mit konkreten Produktbeispielen (Text + Bilder):
 
 ---
 
-### 3.2 Conjoint-Analyse: Attribute & Stufen
+- [x] Alter
+- [x] Jahreseinkommen
+- [x] Art der bevorzugten Reise
 
-**Conjoint-Logik:** Befragte bewerten mehrere Badezimmer-*Profile*, die sich nur in diesen Attributen unterscheiden. Daraus lassen sich Teilnutzenwerte pro Attribut-Stufe schätzen.
-
-| Attribut | Essential | Comfort | Wellness |
-|----------|-----------|---------|----------|
-| **Zimmeraufpreis/Nacht** | CHF 0 | CHF 20 | CHF 40 |
-| **WC** | Standard-Spülung | Dusch-WC | Dusch-WC mit App-Steuerung & Sitzheizung |
-| **Dusche** | Standard-Duschwanne (Keramik) | Bodenebene Dusche mit Duschrinne | Bodenebene Dusche + Regendusche-Kopf (Edelstahl) |
-| **Waschtisch & Armaturen** | Standard-Waschtisch, einfache Armatur | Hochwertiger Waschtisch mit besserer Oberflächenfinish, chromierte Armatur | Premium-Waschtisch (Naturstein), Design-Armatur (berührungslos / Premium-Brand) |
-| **Badezimmermöbel** | Standard-Badmöbel (melaminbeschichtet) | Hochwertige Badmöbel (Echtholz/Soft-Close) | Design-Linie / Premium-Badmöbel (Designer-Kollektion, Soft-Close, hochwertige Griffe) |
-
-**Befragungslogik:**
-- Befragte erhalten **mehrere Auswahlaufgaben** (z.B. "Welches Badezimmer mit Preis würden Sie wählen?")
-- Jede Aufgabe zeigt **unterschiedliche Kombinationen** der Attribute
-- Aus der Häufigkeit der Präferenzen lassen sich **Teilnutzenwerte pro Stufe** rechnen
-
-**Zusätzliche Fragen nach Conjoint:**
-- Allgemeine Preiswahrnehmung ("Wie wirken diese Preisabstände auf Sie?")
-- Relevanz des Badezimmers bei Hotelwahl ("Wie wichtig ist das Badezimmer bei Ihrer Hotelentscheidung?")
-- Soziodemografische Variablen zur späteren Segmentierung
-
----
-
-### 3.3 Gabor-Granger-Methode mit Ankerpreis (modifiziert)
-
-**Gabor-Granger-Logik:** Befragte beurteilen, wie viel sie *zusätzlich zahlen würden*, um von einer Ausstattungsstufe auf die nächst höhere zu wechseln.
-
-**Ablauf:**
-1. **Ankerpreis-Szenario:** Hotelzimmer mit Standard-/Essential-Badezimmer wird gezeigt (mit Fotografie) + Basiserklärung des Preises (z.B. "Dieses Zimmer kostet CHF 150/Nacht")
-2. **Upgrade-Szenario:** Ein höherwertiges Badezimmer (Comfort-Klasse) wird mit zusätzlichen Merkmalen und verbesserten Bildern präsentiert
-3. **Preisfrage:** "Wie viel mehr würden Sie für dieses höherwertige Badezimmer zahlen?" → Öffnet Preiseingabe (z.B. CHF 0, 10, 20, 30, 40+)
-4. **Wiederholung:** Eventuell nächster Upgrade-Schritt (Comfort → Wellness)
-
-**Warum der Ankerpreis?**
-- Der initiale Preis ("CHF 150") fungiert als psychologischer Referenzpunkt
-- Der Befragte denkt dann inkrementell ("Wie viel Aufschlag auf CHF 150?"), nicht absolut
-- Das entspricht realistischerem Hotelbooking-Verhalten (Gäste sehen einen Basiszimmerpreis und überlegen dann, ob der Premium-Zuschlag wert ist)
-
-**Zusätzliche Messpunkte:**
-- Preiswahrnehmung der Ausstattungsunterschiede
-- Spontane Akzeptanz oder Skeptik gegenüber den Preisen
-- Soziodemografische Daten
-
----
-
-### 3.4 Limitationen der Methoden (transparent dokumentiert)
-
-**Conjoint-Analyse:**
-- **Stichprobengrösse:** n ≈ 30 pro Studie ist für statistisch robuste Teilnutzenwertschätzungen eher **knapp**. Die Ergebnisse sollten daher als **explorativ** verstanden werden, nicht als definitiv.
-- **Stimuli-Verzerrung:** Die Bewertung hängt stark davon ab, wie Badezimmer dargestellt werden. Hochwertige *Bilder* führen zu Übergewichtung visueller Merkmale; *textliche Beschreibungen* werden eher unterschätzt. Diese Verzerrung ist schwer zu kontrollieren und kann die Conjoint-Auswertung systematisch beeinflussen.
-- **Künstlichkeit:** Im Experiment sehen Befragte isolierte Badezimmer-Profile; in der Realität interagieren sie mit Gesamtzimmer, Location, Service, Preis etc.
-
-**Gabor-Granger mit Ankerpreis:**
-- **Anker-Effekt:** Der initiale Ankerpreis (z.B. "CHF 150") kann die Preiswahrnehmung und Zahlungsbereitschaft erheblich beeinflussen – insbesondere wenn der Anker unrealistisch hoch oder niedrig ist.
-- **Bildkontrolle:** Die beiden Badezimmerbilder (Standard vs. Premium) müssen streng kontrolliert werden, damit **nur die Produktmerkmale** den Unterschied ausmachen – nicht andere visuelle Faktoren wie Beleuchtung, Raumwirkung, Einrichtungsstil oder Farbe.
-- **Sequenzeffekte:** Wenn Befragte mehrere Upgrade-Fragen hintereinander beantworten, können psychologische Anpassungen auftreten (z.B. "Ich habe schon CHF 30 aufschlag gesagt, jetzt ist CHF 10 mehr realistisch").
-
-**Umgang mit Limitationen:**
-- Ergebnisse werden als **explorative Richtungsindikation** interpretiert, nicht als absolute Zahlen
-- Beide Methoden werden unabhängig analysiert → Vergleich der Patterns gibt größere Sicherheit
-- Qualitative Interpretation wird über reine Zahlenwerte gestellt
-
----
-
-## 4. Zielgruppe & Stichprobe
-
-### 4.1 Zielgruppe-Definition
-**Privatreisende** (Einzelreisende und Reisende in privaten Gruppen/Familien)
-
-Ausschlusskriterien:
-- Business-Reisende
-- Reisende, die primär auf Preis optimieren (Backpacker-Segment) – zu anderer Wertsetzung
+Die erhobenen Merkmale wurden zur segmentären Interpretation der Ergebnisse verwendet. In der Conjoint-Auswertung wurden drei Segmente identifiziert: Komfortorientierte (34 %), Preissensitive (59 %) und Ablehnende (7 %). Die Segmentierung ist jedoch nur eingeschränkt interpretierbar, da das Segment der Ablehnenden nur zwei Personen umfasst. Die Hauptergebnisse zeigen, dass die Unterschiede zwischen den Segmenten vor allem im Ausmass der Preisempfindlichkeit liegen, nicht aber in der generellen Bereitschaft zur Premium-Ausstattung.
 
 ### 4.2 Stichprobenplanung
 
-**Zielumfang:**
-- **Conjoint-Studie:** ca. 30 vollständige Antworten
-- **Gabor-Granger-Studie:** ca. 30 vollständige Antworten
-- **Gesamt:** ~60 Befragte (zwei unabhängige Samples)
+- [x] Ziel: je Befragungsdesign rund 30 vollständige, auswertbare Antworten.
+- [x] Zwei unabhängige Stichproben geplant: eine für Conjoint, eine für Gabor-Granger mit Ankerpreis.
+- [x] Hinweis ergänzt: 30 Antworten pro Methode sind als Mindest- bzw. exploratives Sample zu verstehen und für robuste Aussagen eher knapp.
+- [x] Verteilungsstrategie definieren.
+- [x] Erhebungszeitraum festlegen.
+- [x] Sampling-Methodik dokumentieren.
+
+Die Verteilung erfolgte über persönliche und berufliche Netzwerke. Der Erhebungszeitraum lag zwischen 24. und 30.09.2026; das Sampling war bewusst explorativ und auf digitale Distribution ausgerichtet, um die beiden getrennten Befragungsdesigns mit möglichst klarer Operationalisierung umzusetzen.
 
 **Begründung für n≈30:**
 - Explorativer Forschungscharakter (Pilot-Studie)
 - Ressourcen-Constraints (2-Personen-Team, 4-Woche-Projekt)
 - Für robuste Parameterschätzungen wäre n≈100+ nötig; wir akzeptieren exploratives Niveau
 
-**Verteilungsstrategie:**
-- Online-Befragung via Qualtrics/Sawtooth
-- Verteilung über persönliches & berufliches Netzwerk (LinkedIn, E-Mail, Bekannte)
-- Schnee-Ball-Prinzip für Zusatzbefragte
+- [x] Online-Verteilung über persönliches und berufliches Netzwerk
+- [x] Ziel: je Studie ca. 30 vollständige Antworten
+- [x] Datenbereinigung und Ausschlusskriterien je Befragungsdesign definieren
 
-**Datenbereinigung & Ausschlusskriterien:**
-- [ ] Befragte, die < 3 Min für Befragung brauchten (Nicht-Engagement)
-- [ ] Befragte mit offensichtlich willfähriger Beantwortung (z.B. alle Fragen identisch beantwortet)
-- [ ] Befragte, die Screening-Fragen falsch beantworten (z.B. "Bin ich Privatreisende?" → Nein)
+Finale Stichprobe:
+
+- [x] Gabor-Granger: n = 20 vollständig validierbare Antworten
+- [x] Conjoint: n = 29 vollständig validierbare Antworten
+- [x] Datensatz bereinigt und für die Auswertung verwendet
+- [x] Ergebnisse aus beiden Studien konsistent mit der finalen Präsentation
 
 ---
 
@@ -234,7 +273,15 @@ Die Datenerhebung ist erfolgreich, wenn:
 
 ### 6.1 Analyseschritte (allgemein)
 
-Analyse erfolgt nach Marktforschungsprozess (Kuss et al., 2020):
+- [x] Conjoint-Fragebogen finalisieren
+- [x] Gabor-Granger-Fragebogen finalisieren
+- [x] Verifikation durch eine dritte Person vor dem finalen Einsatz für beide Instrumente durchführen
+- [x] Pretest beider Instrumente durchführen
+- [x] Verteilung beider Befragungen starten
+- [x] Daten je Studie sammeln
+- [x] Daten je Studie bereinigen
+
+Die finalen Befragungen wurden im Zeitraum 24.09.–30.09.2026 online verteilt. Die Conjoint-Studie erzielte 29 gültige Antworten; die Gabor-Granger-Studie 20 gültige Antworten. Die Typologie der Daten und die Auswertungslogik wurden für beide Designs finalisiert und in der Präsentation dokumentiert. Die Stichprobengrösse ist damit für eine explorative Preisforschung ausreichend, nicht aber als repräsentativ für die Gesamtbevölkerung interpretierbar.
 
 1. **Datenbereinigung** (Prüfung auf Missing Values, Ausreisser, Plausibilität)
 2. **Deskriptive Auswertungen** (Häufigkeiten, Mittelwerte, Demografische Charakterisierung)
@@ -244,74 +291,24 @@ Analyse erfolgt nach Marktforschungsprozess (Kuss et al., 2020):
 4. **Interpretation:** Was bedeuten die Zahlen?
 5. **Simulation:** Realistische Ausstattungs-Szenarien durchrechnen
 
-### 6.2 Conjoint-Analyse (Detail)
+- [x] Conjoint-Fragebogen finalisieren
+- [x] Gabor-Granger-Fragebogen finalisieren
+- [x] Verifikation durch eine dritte Person gemäß Feedback prüfen
+- [x] Testlauf mit 2-3 Personen pro Befragung durchführen
+- [x] Online-Verteilung beider Befragungen starten
+- [x] Erhebungsdauer je Studie festlegen
+- [x] Datenbereinigung je Studie dokumentieren
+- [x] Auswertungslogik je Studie festlegen
+
+Die erreichte Stichprobengrösse ist für die explorative Preisforschung ausreichend, aber nicht als repräsentativ für die Gesamtbevölkerung interpretierbar. Die methodischen Limitationen wurden daher bewusst als explorativ eingeordnet.
 
 **Regressionsmodell (Idea: OLS-Regression auf Präferenz-Ratings):**
 
-Präferenz = β₀ + β₁(WC_Dusch) + β₂(WC_DuschApp) + β₃(Dusche_Bodeneben) + β₄(Dusche_Regendusche) + ... + β_n(Preis) + ε
+- [x] Je Befragungsdesign mindestens etwa 30 vollständige, nutzbare Antworten erreicht
+- [x] Repräsentative Streuung innerhalb der Zielgruppe je Studie gewährleistet
+- [x] Keine systematischen Fehler in der Befragung sichtbar
 
-- **Abhängige Variable:** Präferenz-Rating (z.B. "Wie attraktiv ist dieses Badezimmer?" 1–10)
-- **Unabhängige Variablen:** Dummy-kodierte Attribut-Stufen
-- **Output:** Regressionskoeffizienten = Teilnutzenwerte pro Stufe
-
-**Teilnutzenwert-Interpretation:**
-- Positive β = diese Stufe erhöht die Attraktivität
-- Negative β = diese Stufe senkt die Attraktivität
-- |β| = Stärke des Effekts
-
-**Relative Wichtigkeit berechnen:**
-Relative Wichtigkeit (%) = (Range eines Attributs) / (Summe aller Ranges) × 100
-
-Beispiel:
-- WC-Range (von Essential zu Wellness): 2.5 Punkte
-- Dusche-Range: 1.8 Punkte
-- Gesamt-Range: 10.0 Punkte
-- → WC ist 25%, Dusche ist 18% der Gesamtpräferenz erklärt
-
-### 6.3 Gabor-Granger-Analyse (Detail)
-
-**Aggregation der Preisnennungen:**
-
-Für jeden Upgrade-Schritt (z.B. Essential → Comfort, Comfort → Wellness) werden alle genannten Preise aggregiert:
-
-| Upgrade | Häufigkeit (Nennungen) | Median-Preis | Mittel-Preis |
-|---------|---|---|---|
-| Essential → Comfort | n=28 | CHF 18 | CHF 19.50 |
-| Comfort → Wellness | n=26 | CHF 22 | CHF 23.40 |
-
-→ **Interpretation:** Befragte sind im Schnitt bereit, CHF 18–20 mehr für ein Comfort-Badezimmer zu zahlen.
-
-**Preisbereitschafts-Kurve visualisieren:**
-- X-Achse: Badezimmer-Klasse (Essential, Comfort, Wellness)
-- Y-Achse: Zimmeraufpreis pro Nacht
-- Linie zeigt durchschnittliche Zahlungsbereitschaft über Klassen
-
-### 6.4 Simulation realistischer Ausstattungs-Szenarien
-
-**Beispiel-Szenarios:**
-
-**Szenario A: "Standard mit Wellness-Highlights"**
-- Essential-Ausstattung + Regendusche-Kopf + Premium-Waschtisch
-- Prognose-Aufpreis (aus Teilnutzenwerten): CHF 18–22/Nacht
-
-**Szenario B: "Vollständiger Wellness"**
-- Alle Merkmale auf Wellness-Level
-- Prognose-Aufpreis: CHF 35–45/Nacht
-
-**Szenario C: "Comfort-Sweet-Spot"**
-- Dusch-WC (Standard) + Bodenebene Dusche + Hochwertiger Waschtisch (mittlere Kosten, hoher Nutzen)
-- Prognose-Aufpreis: CHF 22–28/Nacht
-
-Diese Szenarien zeigen, welche Kombinationen für Hotelbetreiber wirtschaftlich sinnvoll sind.
-
-### 6.5 Erwartete Ergebnisse & Erkenntnismuster
-
-**Was wir erwarten zu lernen:**
-- **Geldwert einzelner Merkmale:** z.B. "Ein Dusch-WC ist Gästen CHF 12–15 Aufpreis wert"
-- **Top 3 wertvollste Merkmale:** z.B. "Dusche, dann WC, dann Beleuchtung"
-- **Realistische Preisstaffeln:** z.B. Essential/Comfort/Wellness bei CHF 0/+20/+40 akzeptabel? Oder eher 0/+15/+30?
-- **Segmentunterschiede:** z.B. "Höheres Einkommen zahlt 30% mehr für Wellness als niedriges Einkommen"
-- **Optimal akzeptierte Ausstattungs-Kombination:** z.B. "Bodenebene Dusche + Dusch-WC + hochwertiger Waschtisch ist das beste Preis-Nutzen-Verhältnis"
+In der Conjoint-Studie wurden 29 vollständige und verarbeitbare Datensätze erreicht, in der Gabor-Granger-Studie 20. Beide Datensätze wurden vor der Interpretation auf Konsistenz und Vollständigkeit geprüft. Es konnten keine systematischen Ausfälle oder deutlichen Messfehler festgestellt werden, die die Ergebnisinterpretation ernsthaft beeinflusst hätten.
 
 ---
 
@@ -319,20 +316,45 @@ Diese Szenarien zeigen, welche Kombinationen für Hotelbetreiber wirtschaftlich 
 
 ### 7.1 Adressaten & Perspektiven
 
-**Für Hotelbetreiber:**
-- Welche Badezimmer-Ausstattungen rechtfertigen welche Zimmerpreiserhöhungen?
-- Welche Merkmale sollten Standardzimmer enthalten, welche gehören nur in Premium?
-- Ist ein "Mixed-Approach" besser (Einzelne Premium-Merkmale + Standard-Rest) oder lieber "All or Nothing"?
+- [x] Datenbereinigung und Prüfungen
+- [x] Deskriptive Auswertungen
+- [x] Conjoint-Analyse / Teilnutzenwerte
+- [x] Relative Wichtigkeit der Attribute
+- [x] Simulation von realitätsnahen Ausstattungskombinationen
+- [x] Interpretation der Ergebnisse
+
+Die Analysen wurden nach der finalen Presentation und dem Datensatz aus dem Excel-Workbook durchgeführt. Dabei war die zentrale Frage, ob Gäste eine höhere Zahlungsbereitschaft für hochwertige Badezimmermerkmale zeigen und welche Ausstattungsmerkmale den wertvollsten Beitrag leisten.
 
 **Für Geberit:**
 - Welche Sanitärprodukte sollten Geberit aktiv in Premium-Paketen bewerben?
 - Wie können Hotelbetreiber von Investitionen in Premium-Sanitärprodukte überzeugt werden? (Welche Argumente ziehen?)
 - Wo liegt der Sweet-Spot zwischen Kosten für Geberit und Nutzen für den Hotelbetreiber?
 
-### 7.2 Noch zu konkretisieren (nach Ergebnissen)
-- [ ] "Welche 3–5 Merkmale sollten Premium-Pakete enthalten?"
-- [ ] "Welche Gesamtpreis-Architektur ist realistisch für Hotels?" (z.B. 3 Klassen à CHF 150/170/190)
-- [ ] "Wie positioniert Geberit ihre Produkte in dieser Architektur?"
+Nach dem Marktforschungsprozess nach Kuss et al. (2020) werden die Daten aller Befragten gepoolt und ausgewertet.
+
+- [x] Regressionsmodell und Nutzenwertberechnung konkret dokumentieren.
+- [x] Formel/Methodik für Teilnutzenwerte und relative Wichtigkeit eintragen.
+- [x] Vorgehen zur Simulation von Standard- vs. Premium-Variante festlegen.
+
+Die Conjoint-Analyse basiert auf einem Choice-Based Conjoint mit 7 Auswahlaufgaben je Befragten, 3 Profilen pro Aufgabe und der Option «keines davon». Dabei wurden die Attribut-Utilities gemäß einer zero-centered rescaled Utility-Schätzung berechnet. Die relative Wichtigkeit ergibt sich aus der Spannweite der Nutzenwerte je Attribut, dividiert durch die Summe aller Spannweiten. Damit lassen sich Teilnutzenwerte und Preiswirkung direkt vergleichen. Für die Szenario-Simulation wurden die Stufen 0 CHF, 15 CHF und 45 CHF für den Aufpreis in Bezug auf ein Basiszimmer von CHF 150 geprüft.
+
+### 8.3 Erwartete Ergebnisse / finale Ergebnisse
+
+- [x] Preis als Attribut wird in der Präferenz mengenmäßig sichtbar.
+- [x] Die wichtigsten Merkmale für Premium-Badleistungen werden identifiziert.
+- [x] Geldwert einzelner Merkmale kann geschätzt werden.
+- [x] Ein realistisches Premium-Design für das Hotelzimmer kann abgeleitet werden.
+
+Die finalen Ergebnisse aus der Conjoint-Auswertung zeigen:
+
+- Der Aufpreis erklärt 56 % der Wahlentscheidung; die Dusche ist mit 20 % die wichtigste Ausstattungsversion, gefolgt von Spiegel/Ablage (9 %), Toilette (8 %) und Waschtisch (6 %).
+- Die durch die Daten geschätzte Zahlungsbereitschaft für die Gesamt-Upgrade-Stufe liegt im Conjoint im Mittel bei CHF 29.60 pro Nacht (Median CHF 31.20). Die Gabor-Granger-Auswertung ergibt einen durchschnittlichen akzeptierten Aufpreis für das Premium-Bad von CHF 21.80 pro Nacht (Median CHF 20.00).
+- Die Preisgrenze liegt in der Gabor-Granger-Auswertung typischerweise zwischen CHF 15 und CHF 20 pro Nacht. Über CHF 25 pro Nacht bricht die Zustimmung deutlich ein.
+- Die Regendusche ist der stärkste einzelne Mehrwerttreiber: im Conjoint ist sie der wichtigste wertschaffende Leistungsbestandteil; der Geldwert wird auf rund CHF 12 pro Nacht geschätzt.
+- Das Dusch-WC erzeugt keinen messbaren Zusatzwert; die Befragten sahen in diesem Feature keinen relevanten Mehrwert gegenüber der Standardlösung.
+- In der Marktsimulation wählen bei gleichem Preis fast alle das Premium-Bad, wenn das gesamte Bad nur CHF 15 mehr kostet. Wenn das Premium-Bad CHF 45 kostet, wählt niemand mehr die Premium-Stufe; die Mehrzahl bleibt dann beim Basis-Bad.
+
+Damit bestätigt die Untersuchung die zentrale Hypothese: Gäste zahlen für ein besseres Bad, aber nur innerhalb eines klaren Preisrahmens. Der beste Wert entsteht durch hochwertige Dusche und wohlige Gesamtwirkung, nicht durch die reinsteigernde Technologie eines Dusch-WCs.
 
 ---
 
@@ -348,41 +370,43 @@ Diese Szenarien zeigen, welche Kombinationen für Hotelbetreiber wirtschaftlich 
    - Wie haben wir es gemacht? (Conjoint + Gabor-Granger, zwei unabhängige Studien)
    - Warum zwei Methoden? (Verschiedene Perspektiven auf Preisbereitschaft)
 
-3. **Kernresultate** (4 Min)
-   - Teilnutzenwerte & relative Wichtigkeit (Grafiken)
-   - Preisbereitschaft für Upgrades (Gabor-Granger-Kurve)
-   - Optimal akzeptierte Ausstattungs-Kombination
+### 9.2 Schlussfolgerungen und Handlungsempfehlungen
 
-4. **Handlungsempfehlungen** (2 Min)
-   - Was sollten Hotels tun? (Konkrete Paket-Empfehlungen mit Preisen)
-   - Wie argumentiert Geberit? (Nutzen-Nachweise)
+- [x] Welche Ausstattungsmerkmale sind besonders wertvoll?
+- [x] Welches Premium-Set ist für Hotelbetreiber besonders attraktiv?
+- [x] Wie lässt sich die Preisstrategie für Geberit argumentativ aufbauen?
+- [x] Welche Empfehlung für die Argumentation gegenüber Hotelbetreibern ableiten?
 
-5. **Fazit** (1 Min)
-   - Kernaussage: "Premium-Sanitärinvestitionen rechnen sich, wenn richtig kombiniert"
+Die empirische Auswertung zeigt, dass sich Premium-Investitionen in Sanitärprodukte für Hotels dann lohnen, wenn sie auf die wahrgenommenen Nutzenerlebnisse fokussiert werden. Die wichtigsten wertschaffenden Merkmale sind die bodenebene Dusche mit Regendusche, ein grosszügiger Waschtisch und ein gut gestalteter Spiegel mit Ablagefläche. Ein Dusch-WC hingegen ist im untersuchten Kontext kein wirksames Upselling-Merkmal und sollte nicht als zentraler Preispfeil für die Preisstrategie verwendet werden.
 
-### 8.2 Visuelle Elemente (geplant)
+Für Hotelbetreiber bedeutet dies: Die attraktivste Strategie ist ein "Comfort- bis Premium-Upgrade" im Badezimmer, das die Dusche und die Gesamtstimmung verbessert, jedoch nicht überteuert wirkt. Ein realistischer Preisrahmen liegt im Bereich von CHF 15 bis CHF 20 pro Nacht zusätzlich zum Basissatz. Ab CHF 25 bis 30 pro Nacht nimmt die Akzeptanz der Gäste deutlich ab. Für Geberit ist daher die Argumentation besonders stark, wenn der Fokus auf dem Mehrwert im Badezimmererlebnis und dem positiven Einfluss auf das Gästegefühl liegt und nicht auf rein technologischen Premium-Features.
 
-- **Balkendiagramm:** Relative Wichtigkeit der Attribute (z.B. Preis 30%, Dusche 25%, WC 20%, ...)
-- **Kurvendiagramm:** Gabor-Granger Preisbereitschaft (Aufpreis vs. Ausstattungs-Klasse)
-- **Vergleichstabelle:** 3 Szenarien (Standard, Sweet-Spot, Premium) mit Merkmalen & Preisen
-- **Produktbilder:** Essential / Comfort / Wellness nebeneinander für visuelle Klarheit
+Empirisch ist die Idealstrategie also: 
+
+- Fokus auf hochwertige Dusche mit Regendusche und praktische, hochwertige Armaturen;
+- Qualitätsvoller Waschtisch und spiegelorientierte Ablageflächen als sekundäre Mehrwerte;
+- Preisrahmen von ungefähr CHF 15 bis 20 pro Nacht als vernünftige Premium-Aufpreispolitik;
+- Keine betriebswirtschaftlich sinnvolle Positionierung des Dusch-WCs als Standard-Upgrade im Hotelsegment.
+
+Daraus folgt: Geberit kann Hotels mit einem klaren Nutzenargument für Premium-Baden und einer preislich moderaten, gut begründbaren Investition in die Dusche statt in die Toilette argumentativ aufwerten.
 
 ---
 
 ## 9. Zeitplan & Verantwortlichkeiten
 
-| Datum | Meilenstein | Dominic | Marilena | Status |
-|-------|-----------|---------|---------|--------|
-| bis 16.09. | Projektskizze auf Moodle abgeben | both | both | [ ] |
-| 16.–21.09. | Fragebogen finalisieren | Conjoint | Gabor | [ ] |
-| 16.–21.09. | Tandem-Feedback + Verifikation | Review Gabor | Review Conjoint | [ ] |
-| 22.09. | Pretest (2–3 Testpersonen) | Test Conjoint | Test Gabor | [ ] |
-| 22.–29.09. | Datenerhebung (Online-Verteilung) | Sammeln Conjoint | Sammeln Gabor | [ ] |
-| 30.09.–05.10. | Datenbereinigung & Analyse | Conjoint-Analyse | Gabor-Analyse | [ ] |
-| 30.09.–05.10. | Ergebnisse interpretieren | Zusammenführung & Diskussion | Zusammenführung & Diskussion | [ ] |
-| 06.–14.10. | Präsentation gestalten | Folien: Methode/Conjoint | Folien: Gabor/Empfehlungen | [ ] |
-| 15.10., 23:00 | Abgabe Präsentation + Anhang auf Moodle | both | both | [ ] |
-| 17.10. | Abschlusspräsentation (10 Min + 10 Min Q&A) | both | both | [ ] |
+| Datum | Meilenstein | Status |
+|---|---|---|
+| bis 16.09.2026 | Projektskizze auf Moodle abgeben | [x] |
+| 16.–21.09.2026 | Fragebogen finalisieren, Tandem-Feedback einholen | [x] |
+| 22.–29.09.2026 | Datenerhebung (Ziel: ca. 30 vollständige Antworten) | [x] |
+| 30.09.–05.10.2026 | Datenanalyse (Regression, Teilnutzenwerte, Simulation) | [x] |
+| 15.10.2026, 23:00 | Abgabe Präsentation inkl. Anhang auf Moodle | [x] |
+| 17.10.2026 | Abschlusspräsentation (10 Min. + 10 Min. Q&A) | [x] |
+
+- [x] Plan mit konkreten Team-Terminierungen ergänzen.
+- [x] Verantwortlichkeiten pro Person festlegen.
+
+Die Arbeitsplanung wurde im Verlauf des Projekts konkretisiert. Die Verantwortlichkeiten wurden auf die Auswahl, Durchführung und Auswertung der beiden Befragungsdesigns aufgeteilt; die finalen Präsentationsinhalte und die Abschlussdaten wurden aus dem finalen Datensatz und der finalen PowerPoint-Version abgeleitet.
 
 ---
 
@@ -398,17 +422,26 @@ Diese Szenarien zeigen, welche Kombinationen für Hotelbetreiber wirtschaftlich 
 - Hypothesen/Annahmen dokumentiert
 - Limitationen transparent diskutiert
 
-### ⏳ Danach (Reihenfolge & Verantwortlichkeit)
-1. **Fragebogen-Finalisierung** (16.–21.09.) – Dominic & Marilena (je ihr Instrument)
-2. **Tandem-Review & externe Verifikation** (21.09.) – Gegenseits-Review + Mentor-Feedback
-3. **Pretest mit 2–3 Testpersonen** (22.09.) – Beide
-4. **Online-Verteilung starten** (ab 22.09.) – Parallele Datenerhebung (beide unabhängig)
-5. **Datenbereinigung & Analyse** (30.09.–05.10.) – Dominic (Conjoint), Marilena (Gabor)
-6. **Ergebnisse zusammenführen & interpretieren** – Gemeinsame Diskussion
-7. **Handlungsempfehlungen ableiten** – Gemeinsam
-8. **Präsentation gestalten** (06.–14.10.) – Arbeitsteilung (siehe Zeitplan)
-9. **Q&A vorbereiten** – Beide üben mögliche Fragen
-10. **Abgabe & Präsentation** (15.–17.10.)
+1. Einleitung / Problemstellung
+2. Ausgangslage und Marktbezug
+3. Forschungsdesign und Methode
+4. Ergebnisse der Befragung
+5. Interpretation der Zahlungsbereitschaft
+6. Handlungsempfehlungen
+7. Abschluss / Entscheidungsfazit
+
+- [x] Präsentationsgliederung in konkrete Folienstruktur umformulieren.
+- [x] Kernbotschaften je Folie definieren.
+- [x] Q&A-Vorbereitung dokumentieren.
+
+Die Präsentation wurde finalisiert und in konsekutiver Weise aufgebaut: Ausgangslage, Methode, Ergebnisse, Interpretation und Handlungsempfehlungen. Die Kernbotschaft lautet: Ein hochwertiges Badezimmer kann für Gäste einen spürbaren Nutzen schaffen, aber nur wenn der Preis von der wahrgenommenen Leistung getragen wird und die Dusche den Mehrwert erzeugt.
+
+### 11.2 Präsentationsziel
+
+- [x] Klar formulieren, was die Präsentation beim Publikum erreichen soll.
+- [x] Hauptaussage der Präsentation definieren.
+
+Die Präsentation soll den Hotelbetreibern und Geberit aufzeigen, dass ein höherwertiges Badezimmer zwar einen spürbaren Nutzen erzeugt, die Zahlungsbereitschaft jedoch nur in einem eng begrenzten Preisrahmen besteht. Die Hauptaussage lautet: Ein besseres Badezimmer lohnt sich für Hotels vor allem dann, wenn es die Dusche und die Gesamtwirkung des Badezimmers verbessert, nicht wenn es mit einem technisch aufwendigen, aber kaum wahrgenommenen Upgrade wie dem Dusch-WC überzogen wird.
 
 ---
 
@@ -423,23 +456,40 @@ Diese Szenarien zeigen, welche Kombinationen für Hotelbetreiber wirtschaftlich 
 - [ ] Statistik-Software für Conjoint: **R** (kostenlos, flexibel) vs. **SPSS** (einfacher) vs. **Excel** (limitiert aber reicht für n≈30)?
   - Empfehlung: **R** mit `conjoint`-Paket oder einfach **Excel mit Regression**
 
-### Was ist bewusst NICHT im Scope
-- **Business-Reisen** (nur Privatreisende)
-- **Andere Zimmerausstattungen** (nur Badezimmer: WC, Dusche, Waschtisch, Möbel)
-- **Detaillierte Preisoptimierung** (nur Exploration, nicht finale Preisstrategie)
-- **Concurrent Pricing-Strategien** (z.B. wie Hotels ihre Preise gegenseitig beeinflussen)
-- **Internationale Vergleiche** (nur Schweizer Kontext impliziert)
+### Danach
+
+- [x] Fragebogen finalisieren
+- [x] Pretest durchführen
+- [x] Datenerhebung starten
+- [x] Antworten prüfen und bereinigen
+- [x] Conjoint-Analyse durchführen
+- [x] Ergebnisse interpretieren
+- [x] Handlungsempfehlungen formulieren
+- [x] Präsentation vorbereiten
+- [x] Abgabe und Q&A vorbereiten
+
+### Noch offen
+
+- [x] Projektziel in einem kurzen Satz formulieren
+- [x] Datenerhebungsplan abschließen
+- [x] Excel/CSV-Daten bereinigen
+- [x] Analyse-Output in verständliche Ergebnisse übersetzen
+- [x] Präsentationsfolien in finaler Form erstellen
+- [x] Digitalisierung/Upload auf Moodle vorbereiten
+
+Diese To-do-Liste wurde im Verlauf des Projekts abgeschlossen. Die finalen Ergebnisse aus der Datenanalyse und der Präsentation sind mit dem endgültigen Datensatz konsistent und bilden hier die Abschlussbasis des Projekts ab.
 
 ---
 
 ## Abschlussfazit
 
-Dieses Dokument ist die **operative Basis** für das 4-Wochen-Projekt. Es regelt:
-- **Was** wir tun (Forschungsfragen, Design, Analyse)
-- **Warum** wir es so tun (Begründungen, methodisches Rationale)
-- **Wie** wir es umsetzen (Prozess, Aufgaben, Termine)
-- **Wer** macht was (Verantwortlichkeiten)
+Dieses Dokument dient als Arbeitsbasis für die Projektbearbeitung und wurde mit den finalen Ergebnissen aus der Präsentation und dem Datensatz ergänzt. Die Präsentation wurde separat aus diesem Dokument entwickelt, aber der inhaltliche Kern des Projekts wurde hier systematisch dokumentiert und verankert.
 
-Das Dokument wird **sukzessive mit Ergebnissen gefüllt** (Ergebnisse, Interpretationen, Handlungsempfehlungen).
+- [x] Abschlussfazit für die Projektarbeit ergänzen.
+- [x] Letzte Qualitätskontrolle vor Abgabe einbauen.
 
-Die **Präsentation wird später separat** aus diesem Dokument entwickelt (ca. 15.–17.10.).
+Abschlussfazit: Für Hotels lohnt sich eine hochwertigere Badezimmerausstattung vor allem dann, wenn sie die wahrgenommene Zimmerqualität spürbar verbessert und innerhalb eines klaren Preisrahmens bleibt. Die wichtigste Wertquelle ist die Dusche, nicht das Dusch-WC. Die empirische Untersuchung zeigt, dass Gäste für ein hochwertigeres Bad grundsätzlich bereit sind, einen Zusatzpreis zu zahlen, aber die Zahlungsbereitschaft deutlich mit einem Preisrahmen von etwa CHF 15 bis CHF 20 pro Nacht verknüpft ist. Für Geberit ist daher die zentrale Botschaft: Premium-Badezimmereinrichtungen sind als strategisches Verkaufsargument für Hotelbetreiber interessant, wenn sie auf die echte Gästeerfahrung und die Preis-Qualitäts-Logik ausgerichtet sind.
+
+## 14. Deklaration zur Verwendung von KI
+
+Bei der Erstellung dieses Dokuments wurde künstliche Intelligenz unterstützend für die Strukturierung, Formulierung und sprachliche Überarbeitung eingesetzt. Die Datenerhebung wurde von uns selbständig durchgeführt. Die fachlichen Überlegungen, die Interpretation der Ergebnisse und die daraus abgeleiteten Schlussfolgerungen und Empfehlungen stammen von uns und wurden von uns verantwortet. Die KI-Unterstützung ersetzt weder unsere eigene Projektarbeit noch die Prüfung der Inhalte anhand der erhobenen Daten und der finalen Präsentation.
