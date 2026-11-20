@@ -1,0 +1,400 @@
+# Brainstorming: Preiskonzept AquaClean Alba fuer Hotels
+
+## Ausgangspunkt
+
+- Das marktforscherische Feld der Conjoint-Analyse liefert fuer die Hotelkunden keinen Mehrwert.
+- Trotzdem soll das Hotel AquaClean trotz dieses Ergebnisses mit dem Dusch-WC Geberit AquaClean Alba in den Hotelmarkt gebracht werden.
+- Leitfrage: Wie verkaufen wir das Dusch-WC AquaClean Alba an Hotels und wie gestalten wir den Preis?
+
+## Markt- und Wettbewerbsannahmen
+
+- Geberit wird eine hohe Pricing Power zugeschrieben, vergleichbar mit dem Konzept von Warren Buffett: Preiserhoehungen von bis zu etwa 10 Prozent koennen moeglicherweise durchgesetzt werden, ohne einen wesentlichen Nachfrageverlust zu erwarten.
+- Grundsatz: Auf keinen Fall sollen Preise gesenkt werden.
+- Preissteigerungen werden nicht durchgängig als Selbstzweck betrachtet, sondern muessen an Marktdurchdringung und Wertwahrnehmung gekoppelt werden.
+
+### Zu verifizieren
+
+- Anteil der verkauften Dusch-WCs an allen verkauften WCs in Europa.
+- Aktuelle Marktgroesse, Absatz und Wachstumsrate fuer Dusch-WCs in Europa.
+- Referenzpreise und Angebotspositionierung relevanter Wettbewerber.
+- Ist die Aussage, dass weniger als 1 von 100 verkauften WCs in Europa ein Dusch-WC ist, aktuell belegbar?
+- Wie hoch sind die aktuellen Preise fuer Standard-WCs und Premium-Dusch-WCs in Hotelprojekten?
+- Wieviel kostet das AquaClean Mera in der relevanten B2B-Konfiguration?
+- Wie teuer sind vergleichbare Wettbewerbsprodukte, zum Beispiel Kandos, INAX oder andere relevante Anbieter?
+
+## Wettbewerbskategorien
+
+### Direkte Wettbewerber
+
+- Andere Dusch-WC-Anbieter.
+- Vergleichbares Produkt: Premium-Dusch-WC, hoehere Ausgabenkategorie als Standard-WCs.
+- Wettbewerbspositionierung: Das AquaClean Alba mit einem angenommenen Preis von 1.000 EUR erscheint gegenueber dem AquaClean Mera mit etwa 4.000 EUR als guenstige Entry-Option.
+
+### Indirekte Wettbewerber
+
+- Standard-WCs mit einem angenommenen Preis von maximal etwa 600 EUR pro Geraet.
+- Zu Beginn tritt Alba nicht in erster Linie gegen andere Dusch-WCs an, sondern gegen die normale WC-Ausstattung in Hotelzimmern.
+- Auch Alternativen wie Nachruestsitze, traditionelle Bidets oder gar keine Zusatzfunktion sind indirekte Wettbewerber.
+
+## Verkaufsaussage und Preisanker
+
+- Die Argumentation muss sich mit dem Reifegrad der Kategorie veraendern.
+
+### Phase 1: Kategorie aufbauen
+
+- Die zentrale Frage des Hoteliers lautet: «Warum soll ich ein Dusch-WC einbauen? Das ist doch teuer?»
+- Antwort: «Nein. Das Dusch-WC hat eine Funktion, die ein normales WC nicht hat, und kostet nur wenig mehr als eine normale Premium-WC-Ausstattung.»
+- Der relevante Vergleich ist zu Beginn das Standard-WC und nicht ein anderes Dusch-WC.
+- Alba wird als deutlich mehr Funktion bei nur geringem Aufpreis positioniert:
+  - normales WC: Annahme maximal etwa 600 EUR
+  - AquaClean Alba: Annahme etwa 1.000 EUR
+  - Differenz: Annahme etwa 400 EUR pro Zimmer
+- Der konkrete Mehrnutzen muss klar benannt werden: integrierte Reinigung, Komfort, Hygienewahrnehmung und Differenzierung der Zimmerausstattung.
+- Der Preis darf nicht als «günstiges Dusch-WC» erklärt werden, solange der Kunde noch kein Dusch-WC als Kategorie kennt.
+- Stattdessen wird der Mehrnutzen gegenueber dem normalen WC glaubwürdig und einfach erklärt.
+
+### Phase 2: Dusch-WC-Kategorie etabliert
+
+- Später konkurrieren Alba, andere Dusch-WC-Anbieter und die eigenen Premiumprodukte miteinander.
+- Die Argumentation verändert sich: Der Anker hängt dann am Dusch-WC-Markt und nicht mehr am normalen WC.
+- Der Hoteliersatz lautet: «Ist das nicht teuer?»
+- Antwort: «Nein. Die Konkurrenz und unser eigenes Topmodell sind deutlich teurer. Alba ist deshalb eine brutale Guenstiger-Alternative im Dusch-WC-Markt.»
+- Vergleichsanker:
+  - Wettbewerbs-Dusch-WCs
+  - AquaClean Mera als eigenes Topmodell
+  - Premium-Positionierung der Hotelzimmer
+- Alba wird zur strategischen Entry-Option: weniger Investition als beim Topmodell oder der Konkurrenz, aber mit dem zentralen Dusch-WC-Nutzen.
+- Die Argumentation darf nicht nur auf den Listenpreis blicken, sondern sollte den Gesamtwert pro Zimmer, Referenznutzen und Wettbewerbsposition erläutern.
+
+### Steuerung des Preisankers
+
+- Früh: Preisanker = normales WC.
+- Spaeter: Preisanker = Marktpreis anderer Dusch-WCs und eigenes Topmodell.
+- Die Preiskommunikation soll den Wechsel des Vergleichsraster begleiten.
+- Eine zu schnelle Premiumkommunikation kann am Anfang kontraproduktiv sein.
+- Eine zu lange Einfuehrung zu niedrigen Preisen kann dagegen die Wahrnehmung von Alba als dauerhaft guenstiges Modell verfestigen.
+- Der Wechsel zum naechsten Anker sollte daher an Marktdurchdringung und Referenzen gekoppelt sein.
+
+## Geschaeftsstrategie
+
+- Der Markt ist nicht gesaettigt: Dusch-WCs haben in Europa eine sehr geringe Penetration.
+- Standard-WCs sind dagegen gesaettigt.
+- Deshalb soll das AquaClean Alba nicht nur als neues Premiumprodukt verkauft werden, sondern zur Kategorieerstellung beitragen.
+- Die strategische Aufgabe ist schnellere Marktdurchdringung und Einfuehrung des Dusch-WCs im Hotelbereich.
+- Geeignet erscheint eine Penetration-Pricing-Strategie mit starkem B2B-Push.
+- Startpreis: vergleichsweise tief, aber nicht unter die Kostengrundlage gehen.
+- Ziel: Referenzhotels gewinnen, Sichtbarkeit schaffen und Hotels von der Kategorie ueberzeugen.
+- Anschliessend kann die Wertwahrnehmung ueber Referenzen, Daten, Leistungsbeweise und Marktdurchdringung aufgebaut werden.
+
+## Preismodell-Familie
+
+Wir koennen nicht nur ein Modell verwenden, sondern mehrere Modelle getrennt einsetzen und miteinander kombinieren.
+
+### 1. Basis-Pricing
+
+- Einfache, klare Standardpreise fuer AquaClean Alba in Hotels.
+- Fokus auf gute Vergleichbarkeit und schnelle Angebotsflaeche.
+- Möglich als Einstiegspreis mit klar definierten Mengenstaffeln.
+
+### 2. Cost-Plus-Pricing
+
+- Preis aus Produktkosten, Logistik, Installation, Service und einer Zielmarge.
+- Geeignet fuer den Markteinstieg, weil die Kalkulation transparent und absicherbar ist.
+- Kann die untere Preisschwelle bestimmen.
+- Kunden- und Projektpreis sollten nicht darunter fallen, solange kein bewusstes Einfuehrungsangebot vorliegt.
+
+### 3. Wettbewerbsorientiertes Pricing
+
+- Vergleich mit Standard-WCs, anderen Dusch-WCs und alternativen Hotelkomponenten.
+- Nicht nur auf den Geratepreis schauen, sondern auf den Mehrwert pro Zimmer und den Mehrwert fuer das Hotel.
+- Wettbewerbspositionierung: Alba kann als guenstige Dusch-WC-Option gegenueber dem Mera und als klar hochwertigere Option gegenueber Standard-WCs erscheinen.
+
+### 4. Wertorientiertes Pricing
+
+- Preis an messbaren oder glaubhaften Kundenvorteilen ausrichten.
+- Moegliche Nutzenquellen:
+  - Differenzierung des Hotelangebots
+  - Wahrnehmung von Hygiene und Wellness
+  - Hoeheres Booking- oder Preisniveau fuer Premiumzimmer
+  - Zusatzleistung im Spa- oder Wellness-Kontext
+  - Hohe Zimmerqualitaet und bessere Bewertungen
+  - Moegliche geringere Verbrauchsmaterialkosten
+  - Nachhaltigkeitswirkung
+- Ein wertorientierter Preis sollte erst nach validierten Nachweisen und Referenzprojekten steigen.
+
+## Idee: Steigende EBIT-Pfad
+
+- Jedes weiterentwickelte Modell soll einen hoeheren EBIT ermoeglichen:
+  1. Cost-Plus und klarer Einfuehrungspreis
+  2. Basis-Pricing mit Mengenstaffeln
+  3. Wettbewerbsorientiertes Pricing mit Hotel-Segmentierung
+  4. Wertorientiertes Pricing mit Premiumisierung
+- Dies ist eine zentrale Hypothese: Nicht ein einzelnes Modell, sondern eine gestaffelte Preisarchitektur soll vom Einfuehrungspreis zum Ertragspfad fuehren.
+- Die These muss durch die Ergebnistabelle mit Umsatz, Marge, Kosten und Marktanteil quantifiziert werden.
+
+## Idee: Pay-per-Shower
+
+- Dark Horse: Statt oder zusaetzlich zum Geratekauf eine nutzungsbezogene Gebuehr moeglich machen.
+- Hotel zahlt pro Nutzung oder pro Messintervall, zum Beispiel per Zimmernutzung, Zeiteinheit oder Wartungsvertrag.
+- Vorteile:
+  - Niedrigere Anfangsinvestition fuer Hotels
+  - Einfacher Einstieg in die Kategorie
+  - Potential fuer wiederkehrenden Umsatz
+  - Geberit behält eine engere Beziehung zum Hotelkunden
+- Risiken:
+  - Technisches Mess- oder Abrechnungssystem erforderlich
+  - Unklare Akzeptanz in der Hotelbranche
+  - Abrechnungs-, Datenschutz- und Installationsaufwand
+  - Betriebskosten und Reparaturmodell muessen klar sein
+- Moegliche Begrenzung auf maximal 10 Geräte pro Kunde testen, um Pilotprojekt-Risiko zu begrenzen.
+- Diese Option sollte als Pilotprojekt oder Option im Hotelpaket betrachtet werden, nicht als sofortige Hauptpreismodellierung.
+
+## Einführung mit Penetration-Pricing
+
+- Zu Beginn tiefer Preis und starkes Pushen in Hotels.
+- Marktdurchdringung messen und den Schritt zur naechsten Preisstufe davon abhängen lassen.
+- Cost-Plus als Anfangsbasis: transparente Kalkulation, minimale sichere Marge.
+- Danach schrittweise zu Basis-Pricing, Wettbewerbsorientierung und wertorientierter Preisgestaltung hocharbeiten.
+- Nicht abrupt alle Modelle gleichzeitig einfuehren.
+
+## Steuerung und Messung der Marktdurchdringung
+
+### Operative Kennzahlen
+
+- Anzahl verkaufter AquaClean Alba Einheiten in Hotels
+- Anzahl Hotels mit Alba-Installation
+- Anzahl Zimmer mit Alba-Installation
+- Anteil Alba-Geraete im Hotelbestand des Kunden
+- Neuinstallationen pro Monat
+- Neu erreichte Hotelketten
+- Anzahl erfolgreicher Referenzprojekte
+- Anzahl offener Projektvorschlaege
+- Conversion-Rate von Angebot zu Auftrag
+- Durchschnittlicher Preis pro Geraet
+- Durchschnittlicher Projektwert
+- Anzahl und Groesse der Pilotprojekte
+- Anteil Wiederbestellungen
+- Share of Wallet bei bestehenden Hotelkunden
+
+### Oekonomische Kennzahlen
+
+- Umsatz pro Hotel
+- Bruttomarge pro Geraet
+- Bruttomarge pro Hotelprojekt
+- EBIT-Beitrag
+- EBITDA-Beitrag
+- Vertriebs- und Marketingkosten pro gewonnenem Hotel
+- Customer Acquisition Cost
+- Lifetime Value
+- Payback-Zeit
+- Break-even pro Hotelpilot
+- Break-even der Kategorie oder des Markteinfuehrungsprogramms
+
+### Marktdurchdringungskennzahlen
+
+- Penetration pro Hotel
+- Penetration pro relevanter Hotelgruppe
+- Marktanteil in der Hotelkategorie
+- Anteil Premiumzimmer mit Dusch-WCs
+- Wiederkaufsquote
+- Empfehlungsrate oder Referenzquote
+- Geografische Abdeckung
+
+## Genaue Preisarchitektur als naechste Aufgabe
+
+- Basis: Was kostet Alba in der Hotelkonfiguration wirklich?
+- Welche Leistungen sind im Preis enthalten?
+- Welche Kosten entstehen durch Installation, Schulung, Wartung und Ersatzteile?
+- Welche Mengenstaffeln sind sinnvoll?
+- Welche Preise gelten fuer Einzelhotels, Hotelketten, neue Referenzhotels und Wiederkaufsprogramme?
+- Welche Rabatte, Konditionen oder Pilotpreise sind erlaubt?
+- Wie wird verhindert, dass tiefe Pilotpreise zur flächendeckenden Erwartung werden?
+- Welche Preisstufe ist fuer die Kategorieeinfuehrung geeignet?
+- Bei welchem Schwellenwert steigt der Preis zur nächsten Stufe?
+
+## Mögliche Kundensegmente
+
+- Einzelhotels
+- Kleine Hotelgruppen
+- Internationale Hotelketten
+- Wellness- und Spahotels
+- Luxus- und Boutiquehotels
+- Businesshotels
+- Designhotels
+- Hotels in Regionen mit hoher Wellness-, Spa- oder Wellness-Orientierung
+- Neue Hotels und Renovierungsprojekte
+
+## Moegliche Hotel-Nutzenargumente
+
+- Premiumisierung des Zimmerangebots
+- Bessere Differenzierung gegenueber Standardhotels
+- Staerkere Hygieneaussage
+- Wellness- und Spa-Erlebnis im Zimmer
+- Kulturelle Relevanz fuer internationale Gaeste
+- Hoehere Wahrnehmung von Sauberkeit
+- Moegliche Wirkung auf Bewertungen
+- Moeglicher Upsellingeffekt fuer Premiumzimmer
+- Modernisierung des Badezimmerdesigns
+- Unterstuetzung von barrierearmen oder hochwertigen Badkonzepten
+
+## Offene Annahmen und Hypothesen
+
+1. Der Markt ist ueber Standard-WCs gesaettigt, aber fuer Dusch-WCs noch weitgehend offen.
+2. Das Alba ist preislich stark genug positioniert, um als Einstiegsmodell sichtbar zu sein.
+3. Hotels akzeptieren den Wechsel von Standard-WC zu Dusch-WC, wenn Referenzwerte und Nutzen klar vermittelt werden.
+4. Ein Mehrwert kann auch in einem B2B-Umfeld nachgewiesen werden, auch wenn die Conjoint-Analyse keinen Mehrwert fuer Hotelkunden erbracht hat.
+5. Der Umsatz pro Zimmer oder Zusatzbuchung kann die Mehrinvestition rechtfertigen.
+6. Geberit kann auf der Basis der Marke und der Distribution Pricing Power einsetzen.
+7. Die Kategorieerstellung fuehrt zu langfristigen Wiederkaeufen und zur Nachfrage nach hoehere Premiummodellen wie Mera.
+8. Die Dusch-WC-Positionierung soll nicht gegen das Standard-WC-Geschaeft kanibalisieren, sondern eine neue Kategorie oder ein zusaetzliches Angebot schaffen.
+
+## Offene strategische Fragen
+
+- Ist das Ziel schneller Absatz, schnellere Marktdurchdringung oder maximaler EBIT?
+- Welche Zielgruppe soll zuerst angesprochen werden?
+- Soll der Einstiegspreis fuer alle Kunden gelten oder nur fuer Referenzkunden und Pilotprojekte?
+- Wie gross darf die anfängliche Preisnachlaesse sein, ohne langfristige Preiserwartungen zu festigen?
+- Wie viele Referenzhotels sind fuer eine glaubwuerdige Kategorie erforderlich?
+- Welche Hotelkette oder welche Marke eignet sich als Referenz?
+- Wie lassen sich Nutzenbeweise fuer Hotelkunden operationalisieren?
+- Kann der Kunde den Mehrpreis auf den Zimmerpreis umlegen?
+- Welche Beweise benoetigt die Geschaeftsleitung: Marktgroesse, Break-even, EBIT-Pfad, Payback oder Pilotdaten?
+- Gibt es Kannibalisierung mit anderen Geberit-Produkten?
+- Wie international soll die Pilotierung gestartet werden?
+
+## Naechste Recherche- und Arbeitsaufgaben
+
+- Aktuelle Marktstatistik fuer den Anteil von Dusch-WCs an allen verkauften WCs in Europa recherchieren.
+- Aktuelle Wettbewerbsprodukte und Preise fuer den deutschen, schweizerischen und europaeischen Hotelmarkt prüfen.
+- Detaillierte Kostentabelle fuer Alba, Mera und relevante Wettbewerbsprodukte erstellen.
+- Hotelpreise und Zimmerpreise fuer die Zielsegmente recherchieren.
+- Break-even-Berechnung fuer ein Pilotprojekt, eine einzelne Filiale und eine Hotelkette erstellen.
+- EBIT-Tabelle fuer die vier Preismodelle erstellen.
+- Szenarien fuer Einfuehrungsphase, Skalierungsphase und wertorientierte Phase modellieren.
+- Referenzhotels und Verkaufsargumente definieren.
+- Pilotmessung fuer Pay-per-Shower entwerfen.
+
+## Erste Entscheidungsempfehlungen
+
+### Ziel
+
+- Das Hauptziel ist nicht nur der unmittelbare Absatz, sondern die Marktdurchdringung der Dusch-WC-Kategorie in der DACH-Region.
+- Der durchsetzbare Preis und der Deckungsbeitrag werden als oekonomische Kontrollgroessen mitgefuehrt.
+- Der Leistungsnachweis soll daher einen Pilot freigeben und zugleich klare Preis- und Exit-Gates definieren.
+
+### Empfohlenes Zielsegment
+
+- Als Einstieg eignen sich gehobene 4- bis 5-Sterne-Hotels mit Neubau oder Renovierung in der DACH-Region.
+- Insbesondere geeignet sind Hotelketten, weil Mengen, Rahmenvertraege und Wiederholungseffekte moeglich sind.
+- Parallel sollte ein Referenzprojekt in einem Luxus- oder Wellnesshotel fuer die Premiumgeschichte genutzt werden.
+- Das Moxy-Konzept ist als Referenzkandidat interessant, weil es modern, international und kettenartig positioniert ist. Vor einer Nutzung sollte jedoch geklaert werden, ob Geberit mit dem Kauf und der Marke verknuepft werden darf.
+- Das Dolder Grand und passende alpine Referenzhotels sind fuer die Premium-Erzählung relevant, aber nicht als primaerer Pilot fuer schnelle Marktdurchdringung.
+
+### Empfohlene Pilotarchitektur
+
+- Pilot bedeutet nicht, dass nur wenige Geräte verkauft werden duerfen.
+- Der Pilot ist ein begrenztes, messbares Einfuehrungsprojekt mit mehreren Zimmern oder einem oder mehreren Hotels.
+- Eine Limitierung von 10 Geräten pro Kunde sollte nur fuer das Pay-per-Shower-Modell getestet werden.
+- Fuer den klassischen Gerateverkauf ist eine Limitierung nicht empfohlen, weil sie Marktdurchdringung und Referenzwirkung begrenzen kann.
+- Der Pilot sollte mindestens ein Referenzhotel und moeglichst einen Repeat-Aufsatz fuer eine zweite Immobilie enthalten.
+
+### Schwellen für Preiserhoehungen
+
+- Es gibt keine belastbare universelle Schwelle, ab der ein Penetration-Preis automatisch erhoeht werden kann.
+- Eine robuste Methode ist die Kopplung der Preiserhoehung an mehrere gleichzeitige Gates:
+  1. Mindestens eine glaubwuerdige Referenzinstallation.
+  2. Positive Akzeptanz bei Hotelleitung und Ketteneinkauf.
+  3. Messbare Wachstumsquote bei Neuinstallationen.
+  4. Ein stabiler durchschnittlicher Netto-Preis nach Rabatten.
+  5. Eine positive Deckungsbeitragsspanne nach Installation, Service und Vertrieb.
+- Eine konkrete Ausgangsschwelle muss anhand des Pilotbudgets und der Deckungsbeitragsrechnung festgelegt werden. Die Gruppe kann nicht bereits aus dem Kopf eine validierte Schwelle ableiten.
+- Als Arbeitsregel kann eine Preispruefung alle drei bis sechs Monate erfolgen, nicht nach jeder einzelnen Bestellung.
+
+### Wichtigste Erfolgskennzahlen
+
+- Marktdurchdringung in der DACH-Region.
+- Durchsetzbarer Netto-Preis nach Rabatten.
+- Deckungsbeitrag pro Gerät und pro Projekt.
+- Zusätzliche Kontrollkennzahlen: Conversion-Rate, Share of Wallet, Wiederbestellungen und Anzahl aktiver Referenzhotels.
+
+### Empfohlene Geschaeftsleitungsentscheidung
+
+- Pilotprojekt mit einer Hotelgruppe in der DACH-Region freigeben.
+- Pilot vorerst auf Neubau- oder Renovierungsprojekte mit klarem Mengenvolumen fokussieren.
+- Pay-per-Shower als separaten begrenzten Test mit höchstens 10 Geräten pro Kunde behandeln.
+- Preisstufen erst nach Erreichen der oben genannten Gates anheben, nicht vorab kalendergetrieben.
+
+## Grundlagenforschung: erster Quellenstand
+
+- Das bestehende Slidedoc enthält bereits eine Wettbewerbs- und Marktübersicht:
+  - AquaClean Alba: CHF 1.194 Liste
+  - AquaClean Mera Comfort: CHF 6.234 bis 6.378 Liste
+  - Villeroy & Boch ViClean-I100: ca. CHF 2.867
+  - Duravit SensoWash Starck f: ca. CHF 2.887 bis 5.018
+- Diese Zahlen sind als Zwischendaten zu markieren und gegen aktuelle Hersteller- oder Händlerpreise zu verifizieren.
+- Der bisherige Marktbericht nennt einen globalen kommerziellen Smart-Toilet-Markt von USD 7.05 Milliarden im Jahr 2024 und ein Wachstum von 10.6 Prozent pro Jahr bis 2030.
+- Diese Marktgrösse darf nicht ohne Segmentprüfung als europäische Dusch-WC-Penetration oder Hotelmarkt interpretiert werden.
+- Die Aussage «weniger als 1 von 100 verkauften WCs in Europa ist ein Dusch-WC» ist noch nicht belastbar belegt und muss als Hypothese geführt werden.
+- Die Hotelreferenzen Dolder Grand und CUBE Alps Stay sind als Recherchereferenzen relevant, aber für eine belastbare Kettenpilotenstrategie nicht ausreichend.
+- Moxy kann als hypothesische Bezugsgruppe geprüft werden, wenn eine reale Geberit-Installation oder ein Projektnachweis gefunden wird.
+- Die Referenz «TOTO mit über 400 Washlets im Marriott City West München» ist vor Verwendung in einer finalen Präsentation direkt mit einer Primärquelle von TOTO oder der Projektseite abzugleichen.
+
+## Abgleich mit der offiziellen Aufgabenstellung
+
+### Eindeutig im Auftrag
+
+- Entwicklung eines neuen Preiskonzepts fuer ein bestehendes oder geplantes Angebot.
+- Empfehlung fuer ein Managementboard.
+- Anwendung geeigneter Preismodelle und Preisprozesse aus dem Unterricht.
+- Ein Slidedoc fuer die Geschaeftsleitung mit den relevanten Leitfragen.
+- Praesentation von maximal 10 Minuten plus 10 Minuten Fragen.
+- Keine neue Umfrage erforderlich; bestehende Daten und begruendete Annahmen sind ausreichend.
+- Abgabe am 04.12.2026 um 14:00 Uhr auf Moodle.
+
+### Vom Auftrag geforderte Leitfragen
+
+1. Angebot und Geschaeftsmodell:
+   - AquaClean Alba wird als Hotel-B2B-Angebot positioniert.
+   - Geberit-Hotelabsatz wird ueber direkten Vertrieb, Projektgeschaeft, Sanitärpartner und Einkaufsketten betrachtet.
+   - Zielsegment, Vertriebskanaele und indirekte Wettbewerber sind zu beschreiben.
+2. Positionierung und wertorientierte Kommunikation:
+   - Die Value Proposition und die Value Message muessen eindeutig formuliert werden.
+   - Chancen und Risiken der Positionierung sind getrennt darzustellen.
+3. Analyse und Informationsgrundlagen:
+   - Kosten, Wettbewerb, Kundennutzen, Markt und Hotelprojektdaten muessen zusammengestellt werden.
+   - Fehlende Daten duerfen begruendet abgeschaetzt werden, solange die Annahmen transparent bleiben.
+4. Vorgehen zur Preisfestsetzung:
+   - Cost-Plus, Wertorientierung, Basis-Pricing und Wettbewerbs-Pricing muessen nicht als alternativ betrachtet werden.
+   - Das empfohlene Vorgehen ist eine abgestufte Preisarchitektur fuer Einstieg, Pilot und Skalierung.
+5. Verhaltenspreise:
+   - Preisanker, Endziffern, Mengenstaffeln, Referenzwerte und wahrgenommener Mehrpreis muessen vertieft werden.
+   - Das Preiserhebungsniveau darf nicht isoliert vom Gesamtzimmer oder Wellness-Bundle kommuniziert werden.
+6. Preisdifferenzierung:
+   - Moegliche Dimensionen sind Hotelsegment, Zimmerkategorie, Zimmerzahl, Neubau oder Retrofit, Rahmenvertrag und Referenzstatus.
+   - Der Pay-per-Shower-Test ist optional und nur als experimentelles Modell zu behandeln.
+7. Umsetzung:
+   - Preisverantwortung, Freigaberegeln, Vertriebsteuerung, Konditionensystem und Preiscontrolling muessen konkret benannt werden.
+   - Der Vertriebsanreiz darf nicht auf den Listenpreis, sondern auf Nettoerlös, Deckungsbeitrag und erfolgreiche Referenzen ausgerichtet werden.
+8. Internationale Preispolitik:
+   - Als primaeres Feld wird DACH empfohlen.
+   - Die Anpassung fuer Deutschland, Oesterreich und Schweiz ist relevant.
+   - Euroland, nicht-Euro-Laender und weitere Gaeste-maerkte koennen im Anhang behandelt werden.
+9. Preisveränderungen:
+   - Die Entwicklung vom Penetrationspreis zum wettbewerbsorientierten und wertorientierten Preis muss modelliert werden.
+   - Preissteigerungen muessen an Gates und nicht an unbestätigten Annahmen haengen.
+
+### Nicht vom Auftrag gefordertes, aber nutzliches Zusatzmaterial
+
+- Warren-Buffett-Vergleich und Pricing-Power-Hypothese koennen als einordnende Argumentation genutzt werden, ersetzen aber keinen belastbaren Beleg.
+- Pay-per-Shower kann als «Dark Horse» oder Pilottest aufgenommen werden.
+- Die 10-Geräte-Grenze ist nur fuer einen begrenzten Pay-per-Shower-Test sinnvoll.
+- Die 1-von-100-Marktannahme darf erst nach belastbarer Quelle verwendet werden.
+
+### Sicherungsmaßnahmen gegen Auftragsdrift
+
+- Das Managementboard muss am Ende eine konkrete Entscheidung erhalten: Pilot mit begrenztem Budget und messbaren Gates freigeben oder nicht.
+- Keine Forschungsphase darf den Abschluss der eigentlichen Preisstrategie ersetzen.
+- Marktstatistiken dienen der Einordnung, aber nicht als Ersatz fuer Preiskalkulation und Business Case.
+- Der Break-even muss pro Pilotprojekt oder Hotelkette transparent modelliert werden.
+- Die Kanibalisierungsfrage der eigenen Mera-Linie muss als Risiko- und Portfoliothematik behandelt werden.
+- Die Internationalisierung wird nur so weit vertieft, wie sie die empfohlene DACH-Pilotphase beeinflusst.

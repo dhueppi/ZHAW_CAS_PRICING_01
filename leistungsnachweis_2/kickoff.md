@@ -1,0 +1,24 @@
+den hotels etwas verkaufen
+- preisdiffereinzierung
+- bundles
+- wer ist wer?
+- der Kunde ist der Hotelier
+- leitfragen abarbeiten
+- international / national
+- b2b was ist die konkurenz?
+- kanibalisierung eigener produkte?
+- was müssen wir alles im b2b case tun
+- bestimmte referenzhotels organisieren
+- businesscase und pitch für eigene geschäftsleitung erstellen
+- ich brauche soviel geld liebe GL, gebt mir das!
+- fokus aus welchem grund (wellness / spa / etc)
+- strategie und marge / hotelübernachtungen eruieren
+- wo ist der break even
+- gesamtes preiskonzept kosten basierte oder value based preis strategie
+- Titel Preiskonzept für B2B Kunden im Hotelbereich
+- Es muss keine neue Umfrage erstellt werden (bestehedne Zahlen)
+- Begründete sinnvolle annahmen dürfen getroffen werden
+- soll durchdacht sein, nicht mit claude in 2 stunden zusammengetragen
+- verschiedene perspektiven
+- GL muss denken, hant Hand und Fuss
+- visualisieren und aber auch ein slideset mit viel infos zum abgeben.
