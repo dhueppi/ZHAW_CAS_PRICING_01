@@ -39,8 +39,7 @@ function berechne(P) {
   const mw = v("mwst_ch");
   M.netto = (b) => netto(b, mw);
   M.anker = {
-    renova: M.netto(v("anker_renova_set")),
-    design: M.netto(v("anker_designkeramik")),
+    hotelWC: M.netto(v("anker_hotel_wc")),
     laden: M.netto(v("alba_ladenpreis")),
     richt: M.netto(v("alba_richtpreis")),
   };
@@ -84,10 +83,10 @@ function berechne(P) {
   };
 
   // ---------- Value Message ----------
-  M.mehrinvestition = M.p1 + v("kosten_elektroanschluss") - v("preis_standard_wc");
+  M.mehrinvestition = M.p1 + v("kosten_elektroanschluss") - M.anker.hotelWC;   // Referenz: Hotel-Standard-WC Geberit iCon, netto
   M.naechte = v("nutzungsdauer_jahre") * 365 * v("auslastung");
   M.rappenProNacht = (M.mehrinvestition / M.naechte) * 100;
-  M.rappenGerundet = Math.round(M.rappenProNacht / 5) * 5;
+  M.rappenGerundet = Math.round(M.rappenProNacht);
 
   // ---------- Markt und Gates ----------
   M.zielsegment = v("hotelstars_zimmer") * v("anteil_dach") / v("renovationszyklus") * v("anteil_zielsegment");

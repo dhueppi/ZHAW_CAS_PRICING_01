@@ -143,8 +143,8 @@ const GROUPS = [
   ["Diffusion (Bass)", [["bass_p", 0, 0.05, 0.001], ["bass_q", 0, 2, 0.05], ["bass_smax", 0.05, 0.6, 0.01, "pct"], ["bass_eps", 0.5, 4, 0.05], ["bass_delta", 0, 3, 0.05], ["bass_referenzpreis", 500, 1200, 10], ["wettbewerb_p", 0, 0.05, 0.001], ["wettbewerb_spillover", 0, 1, 0.05], ["risiko_faktor_imitation", 0, 1, 0.05, "pct"]]],
   ["Markt und Gates", [["hotelstars_zimmer", 200000, 2000000, 50000], ["anteil_dach", 0.1, 1, 0.05, "pct"], ["renovationszyklus", 5, 25, 1, "int"], ["anteil_zielsegment", 0.1, 1, 0.05, "pct"], ["gate_anteile", 0, 0, 0.005, "pct"], ["gate_g2_min_db", 0, 1000, 10]]],
   ["Hotelnutzen", [["vorfaelle_pro_jahr", 0, 1, 0.01], ["kosten_pro_vorfall", 0, 1500, 10], ["vermeidbar_fleet", 0, 1, 0.05, "pct"], ["vermeidbar_predict", 0, 1, 0.05, "pct"], ["admin_ersparnis_jahr", 0, 100, 1], ["zimmer_db_nacht", 0, 500, 5], ["naechte_ausfall_vorfall", 0, 5, 0.5], ["kalkulationszins", 0, 0.15, 0.005, "pct"], ["nutzen_jahre", 1, 10, 1, "int"]]],
-  ["Value Message", [["kosten_elektroanschluss", 0, 500, 10], ["preis_standard_wc", 200, 1000, 10], ["nutzungsdauer_jahre", 5, 25, 1, "int"], ["auslastung", 0.3, 1, 0.01, "pct"]]],
-  ["Wettbewerb und Anker (CHF brutto)", [["anker_renova_set", 100, 600, 1], ["anker_designkeramik", 300, 1500, 1], ["alba_ladenpreis", 500, 1500, 1], ["alba_richtpreis", 700, 2000, 1], ["peers"], ["mwst_ch", 0, 0.2, 0.001, "pct"]]],
+  ["Value Message", [["kosten_elektroanschluss", 0, 500, 10], ["nutzungsdauer_jahre", 5, 25, 1, "int"], ["auslastung", 0.3, 1, 0.01, "pct"]]],
+  ["Wettbewerb und Anker (CHF brutto)", [["anker_hotel_wc", 200, 1000, 1], ["alba_ladenpreis", 500, 1500, 1], ["alba_richtpreis", 700, 2000, 1], ["peers"], ["mwst_ch", 0, 0.2, 0.001, "pct"]]],
   ["International", [["strassenpreis_de_eur"], ["mwst_de", 0, 0.3, 0.01, "pct"], ["strassenpreis_at_eur", 500, 1500, 5], ["mwst_at", 0, 0.3, 0.01, "pct"], ["faktor_strassenpreis", 0.7, 1.1, 0.01, "pct"]]],
   ["Pay-per-Flush", [["ppf_installation", 0, 500, 10], ["ppf_abschreibung_jahre", 1, 10, 1, "int"], ["ppf_service_jahr", 0, 200, 5], ["ppf_connectivity_jahr", 0, 100, 5], ["ppf_gebuehr", 0.05, 1, 0.01]]],
 ];
@@ -400,8 +400,9 @@ function render() {
   // Diagramme
   W = 1100; $("c_treppe").innerHTML = treppe(M); W = 640;
   $("c_anker").innerHTML = hbar([
-    { label: "Geberit Renova WC-Set", value: M.anker.renova, color: C.mute }, { label: "Designkeramik", value: M.anker.design, color: C.mute },
+    { label: "Hotel-WC Geberit iCon", value: M.anker.hotelWC, color: C.mute },
     { label: "Alba Hotel-Einführung", value: M.p1, color: C.gold }, { label: "Alba Ladenpreis", value: M.anker.laden, color: C.mute },
+    { label: "Alba Privatkunden-Liste", value: M.v("alba_listenpreis_privat_netto"), color: C.mute },
     { label: M.peerMin.kurz + " (günstigster Peer)", value: M.peerMin.netto, color: C.mute }]);
   const pr = [M.p1, M.pG1, M.preisCostPlus];
   $("c_kosten").innerHTML = stackH(pr.map((p, i) => ({ label: ["Phase 1 · ", "Stufe G1 · ", "Cost-Plus · "][i] + f(p), parts: [M.hk, M.weitereVar, M.gemeinkostenProGeraet, M.ebitda(p)] })), ["Herstellkosten", "Weitere var. Kosten", "Programm/Gemeinkosten", "EBITDA"], [C.gold, C.lgold, C.mute, C.teal]);
@@ -415,7 +416,7 @@ function render() {
   $("f_wert").innerHTML = `Wertabschöpfung: Fleet ${pct(M.preisFleet / M.nutzen.fleet, 0)}, Predict ${pct(M.preisPredict / M.nutzen.predict, 0)}, Care ${pct(M.preisCare / M.nutzen.care, 0)} · Rentenbarwertfaktor ${M.rbf.toFixed(3)}`;
 
   $("vm").innerHTML = `«Bieten Sie Ihren Gästen schon im Standardzimmer ein Dusch-WC – für rund <b>${M.rappenGerundet} Rappen</b> pro belegter Nacht, mit ${M.v("hotelstars_punkte")} Punkten mehr in der Klassifizierung …»`;
-  $("f_vm").innerHTML = `Mehrinvestition ${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte = ${M.rappenProNacht.toFixed(1)} Rp. (auf 5 Rp. gerundet)`;
+  $("f_vm").innerHTML = `Mehrinvestition ${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte = ${M.rappenProNacht.toFixed(1)} Rp. (gerundet)`;
 
   const fa = M.v("staffel_fleet_ab"), ca = M.v("staffel_care_ab");
   $("t_staffel").innerHTML = `<table><tr><th>CHF netto pro Gerät</th><th>1–${fa - 1} Geräte</th><th>ab ${fa} · Fleet</th><th>ab ${ca} · Care</th></tr>

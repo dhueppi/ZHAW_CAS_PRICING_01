@@ -375,11 +375,6 @@
     "label": "Elektroanschluss pro Zimmer",
     "typ": "Annahme"
   },
-  "preis_standard_wc": {
-    "wert": 500,
-    "label": "Hochwertiges Standard-WC im Projekt (netto)",
-    "typ": "Annahme"
-  },
   "nutzungsdauer_jahre": {
     "wert": 12,
     "label": "Nutzungsdauer Hotelbad",
@@ -390,15 +385,12 @@
     "label": "Zimmerauslastung",
     "typ": "Annahme"
   },
-  "anker_renova_set": {
-    "wert": 279,
-    "label": "Geberit Renova WC-Set (CH, brutto)",
-    "typ": "Fakt"
-  },
-  "anker_designkeramik": {
-    "wert": 790,
-    "label": "Designkeramik Richtpreis (CH, brutto)",
-    "typ": "Fakt"
+  "anker_hotel_wc": {
+    "wert": 464.28,
+    "label": "Hotel-Standard-WC Geberit iCon Set Wand-WC Tiefspüler 503.045.00.8 (CH, brutto)",
+    "typ": "Fakt",
+    "herleitung": "Reuter.com CH, CHF 464.28 inkl. MwSt. (höherer von zwei Händlerpreisen; xTWOstore.ch CHF 326.15), Stand 11/2026",
+    "folien": "3, 4, 5"
   },
   "alba_ladenpreis": {
     "wert": 899,

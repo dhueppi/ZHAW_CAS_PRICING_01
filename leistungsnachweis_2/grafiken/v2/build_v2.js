@@ -222,7 +222,7 @@ pres.addSection({ title: "Angebot & Wert" });
       { b: `Pilot ${J[0]}:`, t: `${v("pilot_hotels")} Hotels, rund ${f(pilotRund)} Geräte.` },
     ]],
     ["Wettbewerb", [
-      { b: "Indirekt (Phase 1–2):", t: `das normale WC – Renova-Set ab ${chf(v("anker_renova_set"))}, Designkeramik ${chf(v("anker_designkeramik"))}.` },
+      { b: "Indirekt (Phase 1–2):", t: `das normale Hotel-WC – z. B. Geberit iCon Wand-WC-Set ${chf(v("anker_hotel_wc"))}.` },
       { b: "Direkt (ab Phase 3):", t: `${peerTxt} (CHF); TOTO im Luxussegment.` },
       { b: "Intern:", t: "Sela/Mera 2.7- bis 5.2-mal teurer – kaum Kannibalisierung." },
     ]],
@@ -239,7 +239,7 @@ pres.addSection({ title: "Angebot & Wert" });
 {
   const rp = M.rappenGerundet;
   const s = content("Angebot & Wert", "LEITFRAGE 2 · PREISPOSITIONIERUNG UND VALUE MESSAGE", "Mehr Leistung für wenig Aufpreis: erst unter dem Markt, dann an ihn heran",
-    `Value Message: Mehrinvestition ${chf(M.mehrinvestition)} (Alba ${f(p1)} + Elektroanschluss ~${f(v("kosten_elektroanschluss"))} − Standard-WC ~${f(v("preis_standard_wc"))}) ÷ ${f(M.naechte)} belegte Nächte (${v("nutzungsdauer_jahre")} J. × 365 × ${pct(v("auslastung"))}) = CHF ${(M.rappenProNacht / 100).toFixed(2)}. LN1-Gästedaten zeigten keinen Gästeaufpreis – daher Argumentation über Klassifizierung und Betrieb.`);
+    `Value Message: Mehrinvestition ${chf(M.mehrinvestition)} (Alba ${f(p1)} + Elektroanschluss ~${f(v("kosten_elektroanschluss"))} − Hotel-WC Geberit iCon ${f(M.anker.hotelWC)} netto) ÷ ${f(M.naechte)} belegte Nächte (${v("nutzungsdauer_jahre")} J. × 365 × ${pct(v("auslastung"))}) = CHF ${(M.rappenProNacht / 100).toFixed(2)}. LN1-Gästedaten zeigten keinen Gästeaufpreis – daher Argumentation über Klassifizierung und Betrieb.`);
   const X0 = 0.95, Y0 = 4.85, WW = 4.6, HH = 3.0;
   s.addShape(pres.shapes.LINE, { x: X0, y: Y0, w: WW, h: 0, line: { color: HEX.gray, width: 1 }, objectName: "ax_x" });
   s.addShape(pres.shapes.LINE, { x: X0, y: Y0 - HH, w: 0, h: HH, line: { color: HEX.gray, width: 1 }, objectName: "ax_y" });
@@ -248,7 +248,7 @@ pres.addSection({ title: "Angebot & Wert" });
   txt(s, "Leistung →", { x: X0 + WW - 1.2, y: Y0 + 0.05, w: 1.2, h: 0.25, fontSize: 10, color: C.accent4, align: "right", margin: 0 });
   txt(s, "Preis ↑", { x: X0 - 0.05, y: Y0 - HH - 0.3, w: 1.0, h: 0.25, fontSize: 10, color: C.accent4, margin: 0 });
   const pts = [
-    [0.1, 0.08, "Standard-WC", HEX.mute, 0.24], [0.42, 0.2, "Alba Phase 1", HEX.gold, 0.32], [0.72, 0.4, "Alba Care-Paket", HEX.teal, 0.32],
+    [0.1, 0.08, "Hotel-WC (iCon)", HEX.mute, 0.24], [0.42, 0.2, "Alba Phase 1", HEX.gold, 0.32], [0.72, 0.4, "Alba Care-Paket", HEX.teal, 0.32],
     [0.55, 0.55, "VitrA / Duravit", HEX.gray, 0.24], [0.7, 0.76, "Grohe / Laufen", HEX.gray, 0.24], [0.95, 0.96, "Mera", HEX.navy, 0.24],
   ];
   pts.forEach(([px, py, l, col, d]) => {
@@ -288,12 +288,12 @@ function phaseHead(s, x, label, fill, fc) {
 }
 {
   const s = content("Preisfestsetzung", "LEITFRAGE 4 · PREISFESTSETZUNG · PHASEN 1 UND 2", `Einstieg mit ${chf(p1)} (Basis-Pricing), dann Cost-Plus auf ${chf(cp)}`,
-    `Vergleichspreise: CH-Richt-/Ladenpreise ÷ ${(1 + v("mwst_ch")).toFixed(3)} (ohne MwSt.). Kosten: HK ${chf(M.hk)} = Teaminput; übrige Kosten und Gemeinkosten ${chf(M.gemeinkostenProGeraet)} pro Gerät = Annahmen (Anhang A3). ${pct(M.marge, 0)} ≈ Geberit-EBITDA-Marge 2025 (${pct(v("geberit_ebitda_2025"))}).`);
+    `Vergleichspreise: CH-Händlerpreise ÷ ${(1 + v("mwst_ch")).toFixed(3)} (ohne MwSt.); Hotel-WC Geberit iCon 503.045.00.8 = Reuter.com CHF ${v("anker_hotel_wc").toFixed(2)}. Kosten: HK ${chf(M.hk)} = Teaminput; übrige Kosten und Gemeinkosten ${chf(M.gemeinkostenProGeraet)} pro Gerät = Annahmen (Anhang A3). ${pct(M.marge, 0)} ≈ Geberit-EBITDA-Marge 2025 (${pct(v("geberit_ebitda_2025"))}).`);
   phaseHead(s, 0.6, `PHASE 1 · BASIS-PRICING · ${J[0]}`, C.accent2, C.text2);
-  const labels = ["Geberit Renova WC-Set", "Designkeramik", "Alba Hotel-Einführung", "Alba Ladenpreis", `${M.peerMin.kurz} (günstigster Peer)`];
+  const labels = ["Hotel-WC Geberit iCon", "Alba Hotel-Einführung", "Alba Ladenpreis", "Alba Privatkunden-Liste", `${M.peerMin.kurz} (günstigster Peer)`];
   s.addChart(pres.charts.BAR, [
-    { name: "Vergleich", labels, values: [M.anker.renova, M.anker.design, 0, M.anker.laden, M.peerMin.netto].map(Math.round) },
-    { name: "Alba Hotel", labels, values: [0, 0, p1, 0, 0] },
+    { name: "Vergleich", labels, values: [M.anker.hotelWC, 0, M.anker.laden, v("alba_listenpreis_privat_netto"), M.peerMin.netto].map(Math.round) },
+    { name: "Alba Hotel", labels, values: [0, p1, 0, 0, 0] },
   ], chartOpts({
     x: 0.5, y: 2.0, w: 6.1, h: 2.7, barDir: "bar", barGrouping: "stacked", catAxisOrientation: "maxMin", catAxisLabelFontSize: 10,
     chartColors: [HEX.mute, HEX.gold], showValue: true, dataLabelPosition: "inEnd", dataLabelFormatCode: "#,##0;;", dataLabelColor: HEX.navy, dataLabelFontSize: 10,
@@ -301,7 +301,7 @@ function phaseHead(s, x, label, fill, fc) {
   }));
   bullets(s, [
     { b: "Ein Preis:", t: `${chf(p1)} netto, exkl. MwSt. und Montage; keine weiteren Rabatte.` },
-    { b: "Anker Standard-WC:", t: `nur ${chf(p1 - Math.round(M.anker.design))} über einer Designkeramik und unter dem Ladenpreis (${chf(M.anker.laden)} netto).` },
+    { b: "Anker Hotel-WC:", t: `${chf(p1 - Math.round(M.anker.hotelWC))} mehr als das Hotel-Standard-WC Geberit iCon (${chf(M.anker.hotelWC)} netto) – für die Duschfunktion; unter dem Ladenpreis.` },
     { b: "Floor:", t: `DB ${chf(p1 - M.varKosten)}, EBITDA ${chf(M.ebitda(p1))} bei Vollkosten ${chf(M.vollkosten)}; als befristeter Einführungspreis kommuniziert.` },
   ], { x: 0.6, y: 4.8, w: 5.95, h: 1.8, fontSize: 13 });
 
@@ -548,7 +548,7 @@ pres.addSection({ title: "Anhang" });
     ["Weitere variable Kosten", `${chf(M.weitereVar)} pro Gerät`, "Annahme", `Logistik/Grosshandels-Fee ${v("kosten_logistik")} + Garantie ${v("kosten_garantie")} + Projektsupport ${v("kosten_projektsupport")}`, "5, 9"],
     ["Programm- und Gemeinkosten", `${chf(M.gemeinkostenProGeraet)} pro Gerät`, "Annahme", M.P.gemeinkosten_pro_geraet.herleitung, "5"],
     ["Ziel-EBITDA-Marge", pct(M.marge, 0), T("ziel_ebitda_marge"), M.P.ziel_ebitda_marge.herleitung, "5"],
-    ["Vergleichspreise Schweiz", `CHF ${f(v("anker_renova_set"))}–${f(Math.max(...peersB))} inkl. MwSt.`, "Fakt", `Händlerpreise (Momentaufnahme); ÷ ${(1 + v("mwst_ch")).toFixed(3)} auf netto umgerechnet`, "3, 5, 6"],
+    ["Vergleichspreise Schweiz", `CHF ${f(v("anker_hotel_wc"))}–${f(Math.max(...peersB))} inkl. MwSt.`, "Fakt", `Händlerpreise (Momentaufnahme); ÷ ${(1 + v("mwst_ch")).toFixed(3)} auf netto umgerechnet`, "3, 5, 6"],
     ["Zielsegment-Bäder DACH", `~${f(M.zielsegment)} pro Jahr`, "Annahme", `${f(v("hotelstars_zimmer") / 1e6, 1)} Mio. Zimmer Hotelstars Union × ${pct(v("anteil_dach"), 0)} DACH ÷ ${v("renovationszyklus")} J. Zyklus × ${pct(v("anteil_zielsegment"), 0)} Zielsegment`, "2, 9"],
     ["Bass-Diffusion", `p = ${M.bass.p}, q = ${M.bass.q}, s_max = ${pct(M.bass.smax, 0)}`, "Annahme", "p kalibriert auf ~100 Geräte im Pilotjahr; q = Referenzeffekt; s_max = Hotelstars-Schwelle", "2, 9"],
     ["Wettbewerb", `p_W = ${M.bass.pW}, Spillover θ = ${M.bass.theta}`, "Annahme", "Konkurrenz teilt dasselbe Potenzial; profitiert zu θ von Albas Kategorieaufbau", "9"],
@@ -558,7 +558,7 @@ pres.addSection({ title: "Anhang" });
     ["Feature-Kosten", `Fleet ${M.featureKosten.fleet}, Predict ${M.featureKosten.predict}, Care ${M.featureKosten.care}`, "Annahme", `Care bei ≥${v("staffel_care_ab")} Geräten ~${M.featureKosten.careBundle} (gebündelte Anfahrt); Kalkulation vor G3/G4`, "6, 7"],
     ["Vorfallrate", `1 pro Gerät in ${f(1 / v("vorfaelle_pro_jahr"))} Jahren`, T("vorfaelle_pro_jahr"), "Mit Feldtest Arlberg (10 Geräte, 6 Monate) und Servicedaten prüfen", "6"],
     ["Hotelnutzen-Parameter", `${chf(v("kosten_pro_vorfall"))}/Vorfall; Zimmer-DB ${v("zimmer_db_nacht")}`, "Annahme", `Vermeidbar: Fleet ${pct(v("vermeidbar_fleet"), 0)}, Predict +${pct(v("vermeidbar_predict"), 0)}; Barwert ${v("nutzen_jahre")} J. @ ${pct(v("kalkulationszins"), 0)}`, "6"],
-    ["Value Message", `${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte`, "Annahme", `Alba ${f(p1)} + Elektro ~${v("kosten_elektroanschluss")} − Standard-WC ~${v("preis_standard_wc")}; ${v("nutzungsdauer_jahre")} J. × 365 × ${pct(v("auslastung"), 0)}`, "4"],
+    ["Value Message", `${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte`, "Annahme", `Alba ${f(p1)} + Elektro ~${v("kosten_elektroanschluss")} − Geberit iCon ${f(M.anker.hotelWC)}; ${v("nutzungsdauer_jahre")} J. × 365 × ${pct(v("auslastung"), 0)}`, "4"],
     ["Einstieg DE / AT", `€ ${f(M.preisDE)} / € ${f(M.preisAT)} netto`, "Annahme", `~${pct(v("faktor_strassenpreis"), 0)} des lokalen Strassenpreises netto (DE online € ${f(v("strassenpreis_de_eur")[0])}–${f(v("strassenpreis_de_eur")[1])} brutto)`, "8"],
     ["Preisszenarien", `Skim ${f(M.szenario("skimming").preise[0])} → ${f(M.szenario("skimming").preise[L])}; konstant ${f(M.szenario("konstant").preise[0])}`, "Annahme", "Konstant = Privatkunden-Listenpreis netto (Teaminput); gleiche Programmkosten", "9"],
   ], { x: 0.6, y: 1.4, w: 12.15, h: 5.05 }, [2.45, 2.75, 1.0, 5.3, 0.65], { fs: 10, boldFirstCol: true });
