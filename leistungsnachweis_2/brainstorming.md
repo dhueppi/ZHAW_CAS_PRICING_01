@@ -1,5 +1,13 @@
 # Brainstorming: Preiskonzept AquaClean Alba fuer Hotels
 
+## Kennzeichnung der Herkunft
+
+- **[TEAMINPUT]** Gedanken oder interne Angaben aus dem Team bzw. vom Auftraggeber.
+- **[FAKT]** In den vorhandenen Projektunterlagen oder einer angegebenen Quelle belegte Information.
+- **[ANNAHME]** Vorlaeufige Modellannahme; noch nicht als gesicherte Information verwenden.
+- **[BERATUNG]** Empfehlung oder Interpretation der Beratung; kein Geberit-Beschluss und kein belegter Unternehmensfakt.
+- **[OFFEN]** Muss noch recherchiert, intern bestaetigt oder entschieden werden.
+
 ## Ausgangspunkt
 
 - Das marktforscherische Feld der Conjoint-Analyse liefert fuer die Hotelkunden keinen Mehrwert.
@@ -338,6 +346,186 @@ Wir koennen nicht nur ein Modell verwenden, sondern mehrere Modelle getrennt ein
 - Die Hotelreferenzen Dolder Grand und CUBE Alps Stay sind als Recherchereferenzen relevant, aber für eine belastbare Kettenpilotenstrategie nicht ausreichend.
 - Moxy kann als hypothesische Bezugsgruppe geprüft werden, wenn eine reale Geberit-Installation oder ein Projektnachweis gefunden wird.
 - Die Referenz «TOTO mit über 400 Washlets im Marriott City West München» ist vor Verwendung in einer finalen Präsentation direkt mit einer Primärquelle von TOTO oder der Projektseite abzugleichen.
+
+## Konsolidierte Interviewergebnisse
+
+### Kostenziel
+
+- Für AquaClean Alba wird intern ein Herstellkostenziel von CHF 250 pro Gerät genannt.
+- Dieses Ziel ist mit dem Bruttoerlös, Rabatten, Vertrieb, Logistik, Installation und Support abzugleichen. Es darf noch nicht als realer durchschnittlicher Wareneinsatz behandelt werden.
+
+### Pilot und Marktmodell
+
+- Der Pilot soll in der Schweiz, Deutschland, Österreich, Frankreich und den Niederlanden beginnen.
+- Weitere Laender koennen spaeter als plausible Erweiterung anhand Markt- und Vertriebspotenzial ausgewählt werden.
+- Primäres Zielsegment: durchschnittliche 4-Sterne-Hotels.
+- Geplant sind mindestens zwei Hotels pro Pilotland.
+- Die Zimmerzahl pro Pilot ist noch offen; eine sinnvolle Mindestgroesse fuer erste Szenarien ist etwa 100 Zimmer oder mehr.
+- Laufzeit: maximal zwölf Monate.
+- Der Pilot soll innerhalb eines 5- bis 7-jährigen Pricing-Projektzeithorizonts wirken.
+
+### Preistheorie
+
+- Die anfängliche Penetrationsphase kann mit einem Nettoerlös von etwa CHF 600 bis CHF 1.000 pro Gerät getestet werden.
+- CHF 1.000 wird als möglicher Referenzpreis fuer Pilot- und Referenzprojekte angesehen.
+- Für den regulären Nettopreis eines Kettenprojekts liegen noch keine belastbaren Daten vor.
+- Das Grundangebot soll nicht allein durch eine hohe Anfangspreiserhoehung entwickelt werden.
+- Zusaetzliche Software-, Service- oder Hardware-Features sollen in einer späteren value-based Phase separat bepreist werden.
+- Die Penetration ist wichtiger als eine maximale Marge in der ersten Pilothase.
+
+### Dark-Horse-Modell: Pay-per-Shower
+
+- Pay-per-Shower soll als eigener Pilot betrachtet werden, nicht als heutiges Hauptmodell.
+- Abrechnung: pro Nutzung bzw. pro Dusche.
+- Geberit bleibt Eigentümer der Geräte.
+- Das Hotel trägt keine Anschaffungskosten, aber Risiken, Umfang und wirtschaftliche Teilung muessen noch modelliert werden.
+- Die Pilotbegrenzung soll mindestens auf 10 Geräte oder maximal 10 Prozent der Zimmer pro Kunde begrenzt werden.
+- Bundle-Leistungen wie Monitorings, Wartung, Entkalkung und Reparatur sollen nicht vor dem Pilot in den Gerätepfeis eingebaut werden.
+- Ziel ist zuerst die Messung der Zahlungsbereitschaft.
+
+### Preisdifferenzierung
+
+- Hauptdimensionen: Hotelkette, Hoteltyp und Standort.
+- Moegliche Zusatzdimensionen: Zimmerzahl, Neubau oder Retrofit, Referenzstatus und Zimmerkategorie.
+- Ein Premiumzimmeraufpreis soll im Pilot gemessen werden.
+- Eine geeignete WTP-Methode ist Conjoint, ergaenzend koennen Experteninterviews oder Gabor-Granger als Cross-Check genutzt werden.
+
+### Erfolgsgates
+
+- Primärer KPI: Anzahl verkaufter Geräte bzw. Penetration.
+- Neben-KPIs: durchsetzbarer Nettoerlös, Deckungsbeitrag, Wiederbestellungsrate, Conversion und Payback-Zeit.
+- Preisprüfung alle drei Monate.
+- Eine Verdopplung der teilnehmenden Hotels pro Jahr wird als mögliche Penetrationsregel diskutiert.
+- Bei einem Start mit 10 bis 20 Hotels waere eine Verdopplung auf 20 bis 40 Hotels pro Jahr ein plausibles, aber noch nicht bewiesenes Gate.
+- Eine pauschale jährliche Preiserhoehung von maximal 20 Prozent kann als Obergrenze geprüft werden.
+- Künftige Features sollen separat bepreist werden, statt eine Grundpreiserhoehung allein zur Erschliessung des Werts zu verwenden.
+
+### Kannibalisierung
+
+- Kannibalisierung von Sela oder Mera wird im Pilot nicht als primärer Ausschlussgrund behandelt.
+- Durchdringung hat Vorrang.
+- Mera bleibt ein Upselling- oder Referenzanker für spaetere, wertorientierte Angebote.
+
+## Beratungsauftrag: empfohlener naechster Arbeitsstand
+
+Alle folgenden Punkte sind **[BERATUNG]**, sofern nicht explizit anders markiert. Sie sind Vorschlaege fuer den Leistungsnachweis und keine bestaetigten Entscheidungen von Geberit.
+
+### 1. Beratungsfazit
+
+- **[BERATUNG]** Den Leistungsnachweis als 5- bis 7-jaehrigen B2B-Preis- und Markteintrittsplan fuer AquaClean Alba aufbauen, nicht als Marktbericht und nicht als unverbindliche Ideensammlung.
+- **[BERATUNG]** Die Empfehlung lautet: Kategorieeinstieg mit kontrolliertem Penetrationsangebot, danach Preisdurchsetzung und Zusatzwert ueber klar abgegrenzte Optionen und Services testen.
+- **[BERATUNG]** Das Ziel ist Marktdurchdringung, aber nicht Absatz um jeden Preis. Ein dauerhaft negativer Deckungsbeitrag oder ein dauerhaft niedrig verankerter Projektpreis waere keine tragfaehige Penetrationsstrategie.
+- **[BERATUNG]** Den Managementbeschluss konkretisieren: Freigabe eines 12-monatigen, messbaren Hotelpilots mit festem Budget, begrenzten Referenzkonditionen, Preis-/Margenleitplanken und einem Go/Adjust/Stop-Review.
+
+### 2. Zuerst eine wichtige Preisklarstellung
+
+- **[TEAMINPUT]** Genannt wurden ein HK-Ziel von CHF 250 und ein moeglicher Einfuehrungspreis von CHF 600 bis CHF 1'000.
+- **[OFFEN]** Es ist nicht geklaert, ob CHF 600 bis CHF 1'000 der Hotel-Einkaufspreis, der Installateur-/Grosshandelspreis oder der Nettoerlös von Geberit ist.
+- **[BERATUNG]** Bis die Vertriebskette geklaert ist, Preise in allen Rechnungen getrennt ausweisen:
+  1. Geberit-Nettoumsatz nach Rabatten an den direkten Kunden,
+  2. Installateur-/Grosshandelspreis,
+  3. Hotel-Einkaufspreis,
+  4. all-in Installationskosten pro Zimmer.
+- **[FAKT]** Die Marktanalyse nennt CH-Ladenpreise von ca. CHF 790 bis CHF 899 und Richtpreise von ca. CHF 1'097 bis CHF 1'143. Das sind Endkunden-/Handelswerte und keine bestaetigten Projektpreise fuer Geberit.
+- **[BERATUNG]** CHF 600 darf nicht ohne Channel-Kalkulation als «Geberit-Nettopreis» gesetzt werden. Bei HK-Ziel CHF 250 blieben rechnerisch CHF 350 vor Kanalrabatten, Logistik, Service, Montage, Marketing und variablen Vertriebskosten; das ist noch kein Deckungsbeitrag und erst recht kein EBIT.
+
+### 3. Vorlaeufige Preisarchitektur
+
+- **[BERATUNG]** Listenpreis/Richtpreis als Referenz beibehalten, aber fuer qualifizierte Hotelprojekte einen zeitlich und sachlich begrenzten Einfuehrungspreis anbieten.
+- **[BERATUNG]** Den genannten Korridor CHF 600 bis CHF 1'000 nicht als einen einzigen «Einfuehrungspreis» behandeln. Als Hypothesen fuer eine Preispruefung eignen sich drei klar getrennte Netto-Angebotsstufen, zunaechst beispielhaft CHF 700, CHF 850 und CHF 1'000 pro Gerät, jeweils auf gleicher Leistungsbasis und exklusive Installation. Die Werte muessen vor Nutzung mit Geberit-internen Preis- und Kanalregeln abgeglichen werden.
+- **[BERATUNG]** Falls kein randomisierter Preisversuch moeglich ist, die drei Stufen in strukturierten Beschaffungsgespraechen (Gabor-Granger) testen und mit echten Angeboten/Win-Loss-Daten validieren.
+- **[BERATUNG]** Ein Preisvorteil nur gegen Gegenleistung geben: verbindliche Zimmer-/Stueckzahl, standardisierte Spezifikation, Referenzfreigabe, Fallstudie, Folgeobjekt oder belastbarer Rollout-Zeitplan.
+- **[BERATUNG]** Keine automatische jährliche 10- bis 20-Prozent-Erhoehung versprechen. Eine Erhoehung muss Wertnachweis, Nachfrage, Nettopreis und Deckungsbeitrag gleichzeitig bestehen.
+- **[BERATUNG]** Neue Features und Services als transparente, optionale Produktbausteine bepreisen, sobald Nutzen, Kosten, Supportpflichten und Zahlungsbereitschaft nachgewiesen sind. Feature-Roadmap heute nicht als bereits vorhandene Leistung verkaufen.
+
+#### Grobe Stückökonomie nur fuer die erste Sensitivitaet
+
+| Preis-Hypothese pro Gerät | Abzüglich HK-Ziel CHF 250 | Anteil des HK-Ziels am Preis | Einordnung |
+|---:|---:|---:|---|
+| CHF 600 | CHF 350 | 41.7 % | Vor allen uebrigen Kosten/Kanalstufen |
+| CHF 850 | CHF 600 | 29.4 % | Vor allen uebrigen Kosten/Kanalstufen |
+| CHF 1'000 | CHF 750 | 25.0 % | Vor allen uebrigen Kosten/Kanalstufen |
+
+- **[ANNAHME]** Tabelle unterstellt, dass der Preis derselben Geberit-Umsatzstufe entspricht und das HK-Ziel CHF 250 pro verkaufter Einheit erreicht wird.
+- **[BERATUNG]** Diese Differenzen sind keine Bruttomarge, kein Deckungsbeitrag und kein EBIT. Es fehlen insbesondere Ist-Herstellkosten, Kanalrabatte, Logistik, Gewaehrleistung, Installation und Pilotakquisitionskosten.
+
+### 4. Pilot: kleiner starten, Vergleichbarkeit sichern
+
+- **[TEAMINPUT]** Gewuenscht sind mindestens zwei Hotels in CH, DE, AT, FR und NL, mit einer Laufzeit bis maximal zwoelf Monate.
+- **[BERATUNG]** Zehn Hotels in fuenf Laendern sind als 12-Monats-Pilot moeglich, aber durch unterschiedliche Waehrungen, Steuern, Vertriebswege und Ausschreibungsregeln komplex. Der Pilot soll in zwei Wellen umgesetzt werden:
+  - Welle 1: DACH als Kernpilot mit sechs Hotels, je zwei in CH, DE und AT.
+  - Welle 2: je zwei Hotels in NL und FR nur dann einbeziehen, wenn lokaler Kanal, Preisregeln, Installationssupport und Datenerhebung vor Start geklaert sind.
+- **[ANNAHME]** Fuer eine erste Modellrechnung 10 Hotels insgesamt und 100 installierte Alba-Geraete annehmen (im Mittel 10 je Hotel), nicht 100 Zimmer pro Haus. Hotel- und Zimmerumfang mit dem Team und Vertrieb validieren.
+- **[BERATUNG]** In jedem Haus einen klar abgegrenzten, aber fuer Betrieb und Gast sichtbaren Zimmerblock ausstatten. So bleiben Ausstattung, Kosten und Feedback messbar, ohne das gesamte Hotel auf eine ungetestete Preis-/Leistungsannahme festzulegen.
+- **[BERATUNG]** Den 12-Monats-Pilot nicht primaer nach der Zahl unterschriebener Hotels bewerten, sondern nach installierten Einheiten, qualifizierter Pipeline, Conversion, Wiederbestellung und erzieltem Nettoerlös.
+- **[BERATUNG]** Preis- und Marktpenetrationspilot vom Pay-per-Shower trennen. Pay-per-Shower erfordert Eigentums-, Nutzungszaehlungs-, Abrechnungs-, Betriebs- und Ausfallregeln; vor einem technischen Pilot erst Machbarkeit und WTP untersuchen.
+
+### 5. Preisgates und Steuerung
+
+- **[TEAMINPUT]** Gewuenscht sind Preisreviews alle drei Monate und als moeglicher Wachstumsrichtwert eine Verdopplung der teilnehmenden Hotels pro Jahr.
+- **[BERATUNG]** Vierteljaehrlich Kennzahlen pruefen; Listenpreise nicht automatisch vierteljaehrlich aendern. Vertrags- und Hotelinvestitionszyklen sind dafuer zu langsam.
+- **[BERATUNG]** Die Verdopplung der Hotels ist eine ambitionierte Teamhypothese, aber kein alleiniger Preis-Gate: Hotelanzahl ist nicht mit installierten Zimmern oder Wirtschaftlichkeit gleichzusetzen.
+- **[BERATUNG]** Ein Preis-Gate erst dann ausloesen, wenn mindestens folgende Kriterien gemeinsam erfuellt sind:
+  1. Das Pilotvolumen und die Win-Rate liegen innerhalb des vorab freigegebenen Zielkorridors.
+  2. Der durchschnittliche Nettoverkaufspreis sinkt nicht durch unkontrollierte Sonderrabatte.
+  3. Der Deckungsbeitrag nach bekannten variablen Kosten liegt mindestens auf dem vom Management festgesetzten Mindestniveau.
+  4. Mindestens zwei Hotelkunden zeigen Folge- oder Rolloutbereitschaft.
+  5. Eine belastbare Hotelreferenz darf in Vertrieb/Marketing verwendet werden.
+- **[OFFEN]** Zahlenwerte fuer Mindest-DB, Ziel-Conversion und Zielvolumen koennen erst nach Kosten- und Pipelineinformationen festgelegt werden.
+- **[BERATUNG]** Kein pauschales «max. 20 % pro Jahr» in die Empfehlung schreiben, bevor Preiselastizitaet und tatsächlicher Preisspielraum gemessen sind. Stattdessen jede Preisstufe und ihre Wirkung in den Pilotangeboten dokumentieren.
+
+### 6. Wertnachweis, Kundensegmentierung und Feature-Pricing
+
+- **[TEAMINPUT]** Gewuenschte Segmentdimensionen sind Kette, Hoteltyp und Standort; Conjoint wurde als WTP-Methode genannt.
+- **[BERATUNG]** Eine neue breite Conjoint-Studie unter Gaesten ist nicht der erste naechste Schritt: Der Kaufentscheider ist der Hotelier bzw. die Kettenzentrale, und die vorhandene Gaeste-Conjoint misst nicht dessen Beschaffungs-WTP.
+- **[BERATUNG]** Zuerst 6 bis 10 strukturierte Interviews mit Hotel-Einkauf, General Management, Technik/Facility Management und Installationspartnern fuehren. Danach Preise und Paketoptionen mit Gabor-Granger oder Angebots-/Win-Loss-Tests quantifizieren.
+- **[BERATUNG]** Eine Conjoint-Analyse erst einsetzen, wenn ein konkreter, kaufrelevanter Merkmalsraum feststeht, zum Beispiel: Grundgeraet, Monitoring, Wartung/Reparatur, Installationsaufwand, Garantie/Responsezeit und Preis.
+- **[BERATUNG]** Serviceideen wie 365-Tage-Support, Monitoring, Entkalkungshinweise und Praediktive Maintenance als moegliche Optionen untersuchen, aber nicht als gesicherte Alba-Funktion oder bereits verfuegbares Hotelpaket darstellen.
+- **[BERATUNG]** Segmente praktisch trennen: Kette vs. Einzelhotel, Neubau vs. Retrofit, Stadt-/Wellness-/Businesshotel, Zimmerkategorie, Zimmerzahl und Referenzwert des Projekts. Land allein ist kein ausreichender Grund fuer einen anderen Preis.
+
+### 7. Business Case: benoetigte Zahlen und Rechenweg
+
+- **[BERATUNG]** Den Business Case mit drei Szenarien erstellen: Penetration (niedrigerer Preis/höheres Volumen), Basis (mittlerer Preis/erwartetes Volumen), Wert (höherer Preis/geringeres oder gleiches Volumen).
+- **[BERATUNG]** Pro Szenario rechnen:
+  - Geberit-Nettoerlös pro Alba nach Rabatten
+  - abzüglich Ist-Herstellkosten und variable Kosten
+  - Deckungsbeitrag pro Gerät und Projekt
+  - Pilot- und Akquisitionskosten
+  - Deckungsbeitrag nach Pilotaufwand
+  - Break-even-Gerätezahl und Break-even-Hotelzahl
+  - mögliche Folgeumsätze aus Service/Features nur als separates Szenario
+- **[OFFEN]** Vor der Endrechnung benoetigt: Ist-Kosten statt HK-Ziel, Kanalrabatte/Transferpreise, Installation, Retouren/Garantie, Vertriebsaufwand, Projektzuschuesse, Pilotmarketing und interne DB-Vorgabe.
+- **[BERATUNG]** Geberits Konzern-EBIT-Marge aus dem Geschäftsbericht nur als Unternehmenskontext nutzen; sie ist keine Zielmarge oder Kostenbasis fuer Alba.
+
+### 8. Entscheidungs- und Arbeitsplan fuer den Leistungsnachweis
+
+1. **[BERATUNG]** Interne Preis- und Kostendaten anfordern; Begriff «HK-Ziel CHF 250» validieren.
+2. **[BERATUNG]** Hotel-Endpreis, Handelskonditionen und Geberit-Nettopreis pro Markt sauber auseinanderrechnen.
+3. **[BERATUNG]** 6–10 Experteninterviews mit Hotel- und Kanalentscheidern planen; vorhandene Gaeste-Conjoint als separate Evidenz kennzeichnen.
+4. **[BERATUNG]** Pilotpartner shortlist erstellen und Anforderungen fuer Referenzfreigabe, Installation und Zimmerumfang definieren.
+5. **[BERATUNG]** Preisstufen und Szenariorechnung samt Break-even berechnen.
+6. **[BERATUNG]** Managementempfehlung mit Preisgovernance, Rabattregeln, KPI-Dashboard und Go/Adjust/Stop-Gates formulieren.
+7. **[BERATUNG]** Erst danach Slides finalisieren; unbelegte Marktanteile und hypothetische Services klar als Annahme oder Recherchebedarf markieren.
+
+### 9. Beratungsposition zur bisherigen Deck-Story
+
+- **[BERATUNG]** Die derzeitige Story «Alba unterbietet den Markt um ueber 50 %» ist nicht robust, solange nicht auf gleicher Basis (Land, Waehrung, Steuer, Modellumfang, UVP/Strassenpreis, Installationskosten) verglichen wird.
+- **[BERATUNG]** Die Marktanalyse zeigt, dass Alba gegenueber vielen integrierten Dusch-WCs preislich guenstig ist, aber auch Einstiegsangebote und deutlich billigere mechanische Loesungen existieren. Deshalb nicht pauschal «billigster» oder «50 % guenstiger» behaupten.
+- **[BERATUNG]** «Der Gast zuckt mit den Schultern» und «CHF 0 Nutzen» sind fuer den Hotelkunden nicht der zentrale Beweis. Fuer das Hotel sind Investitionsentscheidung, Betrieb, Hotelklassifizierung, Zimmerpreis, Renovationszeitpunkt und Differenzierung entscheidend.
+- **[BERATUNG]** Stattdessen die Kernthese praesentieren: «Ein begrenzter Mehrpreis gegenueber einer hochwertigen Standardausstattung kann ein Dusch-WC-Feature in Hotelzimmer bringen; der Pilot prueft, welcher Projektpreis konvertiert und ob die Marge nach Kanal- und Installationskosten tragfaehig bleibt.»
+
+## Gesicherte Aussagen aus dem Geberit-Geschaeftsbericht 2025
+
+- Geberit erzielte 2025 einen Nettoumsatz von CHF 3.163 Mio.
+- Das Betriebsergebnis EBIT betrug CHF 767 Mio., entsprechend einer EBIT-Marge von 24.3 Prozent.
+- Der operative Cashflow EBITDA betrug CHF 931 Mio., entsprechend einer EBITDA-Marge von 29.4 Prozent.
+- Der Nettoumsatz nahm 2025 nominal um 2.5 Prozent und währungsbereinigt/organisch um 4.8 Prozent zu.
+- Im Jahr 2025 erreichte Geberit 64 Prozent des Nettoumsatzes in Euro, 10 Prozent in Schweizer Franken und 6 Prozent in den nordischen Laendern.
+- Europa entwickelte sich organisch um 4.1 Prozent.
+- Geberit nennt mehr als 900 Hotels in Europa mit AquaClean als eigene Referenzangabe.
+- Der Gruppenbericht zeigt eine hohe strukturelle Profitabilität, sollte aber nicht direkt auf die Alba-Deckungsbeitragsspanne geschlossen werden.
+- Die Aussage einer von Geberit selbst prognostizierten „Pricing Power“ oder einer garantierten 10-Prozent-Erhoehung ist im Bericht nicht belegt. Sie bleibt eine Managementhypothese und muss im Pilot verifiziert werden.
+- **Korrektur:** CHF 902 Mio. EBIT und 26.1 Prozent EBIT-Marge sowie CHF 1.069 Mio. EBITDA und 30.9 Prozent EBITDA-Marge sind die 2021-Kennzahlen im Zehnjahresvergleich, nicht die 2025-Werte.
 
 ## Abgleich mit der offiziellen Aufgabenstellung
 
