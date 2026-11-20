@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AquaClean Alba · Parameter-Tool LN2 v2</title>
+<style>
+  :root {
+    --navy:#13293D; --text:#1F2A36; --teal:#00797A; --gold:#D9A441; --lteal:#7FB8B4;
+    --gray:#5B6B7A; --red:#B5473A; --tint:#EAF3F2; --grid:#E3E8EC; --mute:#AEBBC4; --bg:#F5F7F8;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--text); background:var(--bg); font-size:13px; }
+  header { position:sticky; top:0; z-index:5; background:var(--navy); color:#fff; display:flex; align-items:center; gap:12px; padding:10px 18px; flex-wrap:wrap; }
+  header h1 { font-size:16px; margin:0 12px 0 0; }
+  header .status { font-size:12px; color:var(--lteal); margin-right:auto; }
+  button, .btn { font:inherit; font-size:12px; border:0; border-radius:6px; padding:7px 12px; cursor:pointer; background:#1E3A52; color:#fff; }
+  button.primary { background:var(--teal); }
+  button.gold { background:var(--gold); color:var(--navy); font-weight:bold; }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .layout { display:grid; grid-template-columns: 380px 1fr; min-height: calc(100vh - 52px); }
+  aside { background:#fff; border-right:1px solid var(--grid); overflow-y:auto; height: calc(100vh - 52px); position:sticky; top:52px; padding:10px 14px 40px; }
+  aside input[type=search] { width:100%; padding:7px 9px; border:1px solid var(--grid); border-radius:6px; margin:4px 0 10px; font:inherit; }
+  details { border-bottom:1px solid var(--grid); padding:4px 0; }
+  summary { cursor:pointer; font-weight:bold; color:var(--navy); padding:6px 0; list-style:none; }
+  summary::before { content:"▸ "; color:var(--teal); }
+  details[open] summary::before { content:"▾ "; }
+  .param { padding:6px 0 8px; }
+  .param.changed { background:#FFF6E3; margin:0 -14px; padding:6px 14px 8px; }
+  .param label { display:flex; justify-content:space-between; gap:8px; font-size:12px; margin-bottom:3px; }
+  .star { background:none; border:0; padding:0 4px 0 0; color:var(--mute); font-size:14px; cursor:pointer; line-height:1; }
+  .star.on { color:var(--gold); }
+  details.fav { background:#FFFBF0; margin:0 -14px; padding:4px 14px; border-bottom:2px solid var(--gold); }
+  .param label .typ { font-size:10px; color:var(--gray); border:1px solid var(--grid); border-radius:8px; padding:0 6px; white-space:nowrap; }
+  .param label .typ.Fakt { color:var(--teal); border-color:var(--lteal); }
+  .param label .typ.Teaminput { color:#8A6A1F; border-color:var(--gold); }
+  .row { display:flex; gap:8px; align-items:center; }
+  .row input[type=range] { flex:1; accent-color:var(--teal); }
+  .row input[type=number] { width:92px; padding:4px 6px; border:1px solid var(--grid); border-radius:5px; font:inherit; text-align:right; }
+  .arr { display:grid; grid-template-columns: repeat(3, 1fr); gap:4px; }
+  .arr div { font-size:10px; color:var(--gray); }
+  .arr input { width:100%; padding:3px 5px; border:1px solid var(--grid); border-radius:5px; font:inherit; text-align:right; }
+  .unit { font-size:11px; color:var(--gray); min-width:24px; }
+  main { padding:16px 20px 60px; }
+  .kpis { display:grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap:10px; margin-bottom:14px; }
+  .kpi { background:#fff; border-radius:10px; padding:10px 12px; box-shadow:0 1px 2px rgba(0,0,0,.05); }
+  .kpi b { display:block; font-size:22px; color:var(--teal); }
+  .kpi span { font-size:11px; color:var(--gray); }
+  .kpi.delta b::after { content: attr(data-delta); font-size:11px; color:var(--gold); margin-left:6px; font-weight:normal; }
+  .panels { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+  .card { background:#fff; border-radius:10px; padding:12px 14px 10px; box-shadow:0 1px 2px rgba(0,0,0,.05); min-width:0; }
+  .card.wide { grid-column: 1 / -1; }
+  .card h2 { font-size:13px; margin:0 0 2px; color:var(--navy); display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .card h2 small { font-weight:normal; color:var(--teal); font-size:11px; }
+  .card .sub { font-size:11px; color:var(--gray); margin-bottom:6px; }
+  .card .dl { display:flex; gap:4px; }
+  .card .dl button { background:var(--tint); color:var(--teal); padding:3px 7px; font-size:10px; }
+  svg { width:100%; height:auto; display:block; font-family: Arial, Helvetica, sans-serif; }
+  table { border-collapse:collapse; width:100%; font-size:12px; }
+  th { background:var(--navy); color:#fff; text-align:center; padding:5px; font-weight:bold; }
+  th:first-child, td:first-child { text-align:left; }
+  td { padding:4px 6px; border-bottom:1px solid var(--grid); text-align:center; }
+  tr.hl td { background:var(--tint); font-weight:bold; }
+  .checks div { padding:3px 0; font-size:12px; }
+  .ok { color:var(--teal); } .warn { color:var(--red); font-weight:bold; }
+  .changes div { font-size:12px; padding:2px 0; }
+  .vm { background:var(--navy); color:#fff; border-radius:8px; padding:12px 14px; font-size:14px; line-height:1.4; }
+  .vm b { color:var(--gold); }
+  .formula { font-size:11px; color:var(--gray); margin-top:6px; }
+  #overlay { position:fixed; inset:0; background:rgba(19,41,61,.92); color:#fff; display:none; align-items:center; justify-content:center; z-index:20; }
+  #overlay .box { background:#fff; color:var(--text); border-radius:12px; padding:24px 28px; max-width:520px; }
+  #overlay h3 { margin-top:0; color:var(--navy); }
+  #drop { border:2px dashed var(--lteal); border-radius:10px; padding:20px; text-align:center; margin:12px 0; }
+  #toast { position:fixed; right:18px; bottom:18px; background:var(--navy); color:#fff; padding:10px 14px; border-radius:8px; display:none; max-width:460px; white-space:pre-wrap; font-size:12px; z-index:30; }
+  @media (max-width: 1100px) { .panels { grid-template-columns: 1fr; } .layout { grid-template-columns: 320px 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>AquaClean Alba · Parameter-Tool</h1>
+  <span class="status" id="status">lädt …</span>
+  <button id="btnLoad" title="params.json von der Festplatte laden">params.json laden</button>
+  <button id="btnReset" title="Alle Werte auf den geladenen Stand zurücksetzen">Zurücksetzen</button>
+  <button id="btnDownload" class="primary" title="Aktuelle Werte als params.json herunterladen">params.json herunterladen</button>
+  <button id="btnSave" class="primary" disabled title="Nur mit gui_server.js: params.json direkt speichern (Backup wird angelegt)">Speichern</button>
+  <button id="btnBuild" class="gold" disabled title="Nur mit gui_server.js: speichert und baut das PowerPoint-Deck neu">Speichern + Deck bauen</button>
+  <input type="file" id="file" accept=".json,application/json" hidden>
+</header>
+
+<div class="layout">
+  <aside>
+    <input type="search" id="search" placeholder="Parameter suchen …">
+    <div id="params"></div>
+  </aside>
+  <main>
+    <div class="kpis" id="kpis"></div>
+    <div class="panels">
+      <div class="card"><h2>Konsistenzprüfungen</h2><div class="checks" id="checks"></div></div>
+      <div class="card"><h2>Geänderte Parameter <small id="nChanged"></small></h2><div class="changes" id="changes"></div></div>
+
+      <div class="card wide" data-chart="treppe"><h2>Folie 2 · Penetrationspfad <span class="dl"></span></h2><div class="sub">Preis pro Gerät netto je Phase, Durchdringung und Gates</div><div id="c_treppe"></div></div>
+
+      <div class="card" data-chart="anker"><h2>Folie 5 · Phase 1 Preisanker <span class="dl"></span></h2><div class="sub">CHF netto pro Gerät (CH-Preise ÷ MwSt.)</div><div id="c_anker"></div></div>
+      <div class="card" data-chart="kosten"><h2>Folie 5 · Phase 2 Cost-Plus <span class="dl"></span></h2><div class="sub">Kostenaufbau und EBITDA je Preisstufe, CHF pro Gerät</div><div id="c_kosten"></div><div class="formula" id="f_kosten"></div></div>
+
+      <div class="card" data-chart="peers"><h2>Folie 6 · Phase 3 Mitbewerber <span class="dl"></span></h2><div class="sub">CHF netto pro Gerät</div><div id="c_peers"></div><div class="formula" id="f_peers"></div></div>
+      <div class="card" data-chart="wert"><h2>Folie 6 · Phase 4 Wert <span class="dl"></span></h2><div class="sub">Mindestpreis · unser Preis · Hotelnutzen (Barwert), CHF netto</div><div id="c_wert"></div><div class="formula" id="f_wert"></div></div>
+
+      <div class="card"><h2>Folie 4 · Value Message</h2><div class="vm" id="vm"></div><div class="formula" id="f_vm"></div></div>
+      <div class="card"><h2>Folie 7 · Mengenstaffel</h2><div id="t_staffel"></div></div>
+
+      <div class="card" data-chart="preiszeit"><h2>Folie 9 · Preis über Zeit <span class="dl"></span></h2><div class="sub">Preis Grundgerät je Szenario, CHF netto · grau = kurzfristig DB-optimal ohne Diffusion</div><div id="c_preiszeit"></div></div>
+      <div class="card" data-chart="absatzzeit"><h2>Folie 9 · Absatz über Zeit <span class="dl"></span></h2><div class="sub">Alba-Geräte pro Jahr je Szenario (Bass-Diffusion mit Wettbewerb)</div><div id="c_absatzzeit"></div></div>
+      <div class="card wide" data-chart="bc"><h2>Folie 9 · Business Case je Szenario <span class="dl"></span></h2><div class="sub">Kumulierter Deckungsbeitrag nach Programmkosten, TCHF</div><div id="c_bc"></div><div id="t_bc"></div><div id="t_paf"></div></div>
+
+      <div class="card"><h2>Folie 8 · International</h2><div id="t_int"></div><div class="formula" id="f_int"></div></div>
+      <div class="card" data-chart="ppf"><h2>Anhang A4 · Pay-per-Flush <span class="dl"></span></h2><div class="sub">CHF pro Gerät und Jahr nach Nutzungen pro Jahr</div><div id="c_ppf"></div><div class="formula" id="f_ppf"></div></div>
+    </div>
+  </main>
+</div>
+
+<div id="overlay"><div class="box">
+  <h3>params.json laden</h3>
+  <p>Der Browser darf die Datei nicht selbst öffnen, wenn tool.html direkt per Doppelklick gestartet wird. Zwei Möglichkeiten:</p>
+  <p><b>1.</b> Empfohlen: im Terminal <code>cd grafiken/v2 &amp;&amp; node gui_server.js</code> und dann <b>http://localhost:8080</b> öffnen. Dann funktionieren auch «Speichern» und «Deck bauen».</p>
+  <p><b>2.</b> Oder hier die Datei <code>params.json</code> aus <code>grafiken/v2</code> wählen:</p>
+  <div id="drop">params.json hierher ziehen oder <button id="btnPick" class="primary">Datei wählen</button></div>
+</div></div>
+<div id="toast"></div>
+
+<script src="model.js"></script>
+<script>
+"use strict";
+// ======================= Konfiguration der Eingabefelder =======================
+// [key, min, max, step, format]   format: "pct" (Anteil als %), "year", "int"
+// Parameter, die hier fehlen, erscheinen automatisch unter «Weitere Parameter».
+const GROUPS = [
+  ["Kosten und Marge", [["herstellkosten", 100, 600, 5], ["kosten_logistik", 0, 150, 5], ["kosten_garantie", 0, 150, 5], ["kosten_projektsupport", 0, 200, 5], ["ziel_ebitda_marge", 0.05, 0.5, 0.01, "pct"], ["gemeinkosten_pro_geraet", 0, 800, 10]]],
+  ["Preise", [["preis_phase1", 500, 1200, 10], ["preis_stufe_g1", 600, 1400, 10], ["preis_predict", 0, 300, 1], ["preis_care", 0, 500, 1], ["preis_care_paket", 1000, 2500, 1], ["einzelpreis_fleet", 0, 500, 1], ["einzelpreis_predict", 0, 300, 1], ["einzelpreis_care", 0, 600, 1], ["abo_fleet_monat", 0, 30, 1], ["max_preisschritt", 0.05, 0.3, 0.01, "pct"]]],
+  ["Features", [["featurekosten_fleet", 0, 300, 5], ["featurekosten_predict", 0, 200, 5], ["featurekosten_care", 0, 400, 5], ["featurekosten_care_bundle", 0, 400, 5], ["takerate_fleet", 0, 1, 0.05, "pct"], ["takerate_predict", 0, 1, 0.05, "pct"], ["takerate_care", 0, 1, 0.05, "pct"], ["fleet_ab_jahr", 0, 0, 1, "year"], ["wert_ab_jahr", 0, 0, 1, "year"], ["staffel_fleet_ab", 2, 20, 1, "int"], ["staffel_care_ab", 3, 40, 1, "int"]]],
+  ["Programmkosten und Pilot", [["programmkosten"], ["pilot_hotels", 1, 50, 1, "int"], ["exit_min_geraete", 0, 200, 5, "int"]]],
+  ["Preisszenarien", [["szenario_skimming_preise", 0, 0, 1], ["szenario_konstant_preis", 0, 1500, 1], ["alba_listenpreis_privat_netto", 500, 1500, 10]]],
+  ["Diffusion (Bass)", [["bass_p", 0, 0.05, 0.001], ["bass_q", 0, 2, 0.05], ["bass_smax", 0.05, 0.6, 0.01, "pct"], ["bass_eps", 0.5, 4, 0.05], ["bass_delta", 0, 3, 0.05], ["bass_referenzpreis", 500, 1200, 10], ["wettbewerb_p", 0, 0.05, 0.001], ["wettbewerb_spillover", 0, 1, 0.05], ["risiko_faktor_imitation", 0, 1, 0.05, "pct"]]],
+  ["Markt und Gates", [["hotelstars_zimmer", 200000, 2000000, 50000], ["anteil_dach", 0.1, 1, 0.05, "pct"], ["renovationszyklus", 5, 25, 1, "int"], ["anteil_zielsegment", 0.1, 1, 0.05, "pct"], ["gate_anteile", 0, 0, 0.005, "pct"], ["gate_g2_min_db", 0, 1000, 10]]],
+  ["Hotelnutzen", [["vorfaelle_pro_jahr", 0, 1, 0.01], ["kosten_pro_vorfall", 0, 1500, 10], ["vermeidbar_fleet", 0, 1, 0.05, "pct"], ["vermeidbar_predict", 0, 1, 0.05, "pct"], ["admin_ersparnis_jahr", 0, 100, 1], ["zimmer_db_nacht", 0, 500, 5], ["naechte_ausfall_vorfall", 0, 5, 0.5], ["kalkulationszins", 0, 0.15, 0.005, "pct"], ["nutzen_jahre", 1, 10, 1, "int"]]],
+  ["Value Message", [["kosten_elektroanschluss", 0, 500, 10], ["preis_standard_wc", 200, 1000, 10], ["nutzungsdauer_jahre", 5, 25, 1, "int"], ["auslastung", 0.3, 1, 0.01, "pct"]]],
+  ["Wettbewerb und Anker (CHF brutto)", [["anker_renova_set", 100, 600, 1], ["anker_designkeramik", 300, 1500, 1], ["alba_ladenpreis", 500, 1500, 1], ["alba_richtpreis", 700, 2000, 1], ["peers"], ["mwst_ch", 0, 0.2, 0.001, "pct"]]],
+  ["International", [["strassenpreis_de_eur"], ["mwst_de", 0, 0.3, 0.01, "pct"], ["strassenpreis_at_eur", 500, 1500, 5], ["mwst_at", 0, 0.3, 0.01, "pct"], ["faktor_strassenpreis", 0.7, 1.1, 0.01, "pct"]]],
+  ["Pay-per-Flush", [["ppf_installation", 0, 500, 10], ["ppf_abschreibung_jahre", 1, 10, 1, "int"], ["ppf_service_jahr", 0, 200, 5], ["ppf_connectivity_jahr", 0, 100, 5], ["ppf_gebuehr", 0.05, 1, 0.01]]],
+];
+
+// ======================= Zustand =======================
+let BASE = null;   // geladener Stand (für Reset und Änderungsanzeige)
+let P = null;      // aktueller Stand
+let SERVER = false;
+const clone = (o) => JSON.parse(JSON.stringify(o));
+const $ = (id) => document.getElementById(id);
+
+// ======================= Formatierung (wie build_v2.js) =======================
+const f = (x, d = 0) => { if (!isFinite(x)) return "–"; const s = Math.abs(x).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); return (Math.round(Math.abs(x) * 10 ** d) === 0 ? "" : x < 0 ? "−" : "") + s; };
+const chf = (x) => "CHF " + f(x);
+const pct = (x, d = 1) => { let s = (x * 100).toFixed(d); if (s.endsWith(".0")) s = s.slice(0, -2); return s + " %"; };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const C = { navy: "#13293D", text: "#1F2A36", teal: "#00797A", gold: "#D9A441", lteal: "#7FB8B4", gray: "#5B6B7A", red: "#B5473A", grid: "#E3E8EC", mute: "#AEBBC4", lgold: "#E8C987" };
+
+// ======================= Laden =======================
+async function init() {
+  try { const r = await fetch("/api/status", { cache: "no-store" }); SERVER = r.ok; } catch (e) { SERVER = false; }
+  try {
+    const r = await fetch("params.json", { cache: "no-store" });
+    if (!r.ok) throw new Error();
+    start(await r.json(), SERVER ? "Server-Modus: Speichern und Deck bauen aktiv" : "params.json geladen (nur Download möglich)");
+  } catch (e) {
+    $("overlay").style.display = "flex";
+    $("status").textContent = "Keine params.json geladen";
+  }
+}
+function start(json, msg) {
+  try { AlbaModell.berechne(json); } catch (e) { toast("Diese Datei passt nicht zum Modell:\n" + e.message); return; }
+  BASE = clone(json); P = clone(json);
+  $("overlay").style.display = "none";
+  $("status").textContent = msg;
+  $("btnSave").disabled = !SERVER; $("btnBuild").disabled = !SERVER;
+  buildInputs(); render();
+}
+function loadFile(file) {
+  const rd = new FileReader();
+  rd.onload = () => { try { start(JSON.parse(rd.result), "params.json aus Datei: " + file.name + (SERVER ? "" : " (nur Download möglich)")); } catch (e) { toast("Kein gültiges JSON: " + e.message); } };
+  rd.readAsText(file);
+}
+
+// ======================= Eingabefelder =======================
+function fmtIn(cfg, x) { return cfg[4] === "pct" ? +(x * 100).toFixed(4) : x; }
+function parseIn(cfg, x) { const n = parseFloat(String(x).replace(",", ".").replace(/'/g, "")); return cfg[4] === "pct" ? n / 100 : n; }
+function cfgFor(key, val) {
+  for (const g of GROUPS) for (const c of g[1]) if (c[0] === key) return c;
+  return [key, 0, Math.max(1, Math.abs(val) * 3), Math.abs(val) < 2 && !Number.isInteger(val) ? 0.01 : 1];
+}
+function buildInputs() {
+  const box = $("params"); box.innerHTML = "";
+  const fav = (Array.isArray(P._favoriten) ? P._favoriten : []).filter((k) => P[k] && typeof P[k] === "object" && "wert" in P[k]);
+  const used = new Set(); GROUPS.forEach((g) => g[1].forEach((c) => used.add(c[0])));
+  const rest = Object.keys(P).filter((k) => !used.has(k) && P[k] && typeof P[k] === "object" && "wert" in P[k] && k !== "jahre");
+  const groups = [["★ Favoriten", fav.map((k) => [k]), true]]
+    .concat(GROUPS.map((g) => [g[0], g[1].filter((c) => !fav.includes(c[0]))]))
+    .concat(rest.length ? [["Weitere Parameter", rest.filter((k) => !fav.includes(k)).map((k) => [k])]] : [])
+    .filter((g) => g[1].length || g[2]);
+  groups.forEach(([title, items, isFav], gi) => {
+    const det = document.createElement("details"); if (gi < 2) det.open = true;
+    if (isFav) det.className = "fav";
+    det.innerHTML = `<summary>${esc(title)}</summary>` + (isFav && !items.length ? `<div class="sub" style="padding:4px 0 8px">Mit ☆ neben einem Parameter hier aufnehmen.</div>` : "");
+    items.forEach((cfg0) => {
+      const key = cfg0[0]; if (!P[key]) return;
+      const val = P[key].wert; const cfg = cfg0.length > 1 ? cfg0 : cfgFor(key, val);
+      const isF = fav.includes(key);
+      const div = document.createElement("div"); div.className = "param"; div.dataset.key = key;
+      const typ = P[key].typ || "";
+      div.innerHTML = `<label title="${esc(P[key].herleitung || "")}"><span><button class="star ${isF ? "on" : ""}" title="${isF ? "Aus Favoriten entfernen" : "Zu Favoriten hinzufügen"}">${isF ? "★" : "☆"}</button>${esc(P[key].label || key)}</span><span class="typ ${esc(typ)}">${esc(typ)}</span></label>`;
+      div.querySelector(".star").onclick = (e) => {
+        e.preventDefault();
+        const list = Array.isArray(P._favoriten) ? P._favoriten : (P._favoriten = []);
+        const i = list.indexOf(key); if (i >= 0) list.splice(i, 1); else list.push(key);
+        buildInputs(); render(); toast((i >= 0 ? "Aus Favoriten entfernt: " : "Zu Favoriten hinzugefügt: ") + (P[key].label || key) + "\n«Speichern» übernimmt die Auswahl in params.json.");
+      };
+      if (Array.isArray(val) && typeof val[0] === "number") {
+        const arr = document.createElement("div"); arr.className = "arr";
+        const names = key === "gate_anteile" ? ["G2", "G3", "G4"] : val.length === (P.jahre ? P.jahre.wert.length : 0) ? P.jahre.wert : val.map((_, i) => key.includes("strassenpreis") ? ["von", "bis"][i] : "#" + (i + 1));
+        val.forEach((x, i) => {
+          const d = document.createElement("label"); d.innerHTML = `<div>${names[i]}</div>`;
+          const inp = document.createElement("input"); inp.type = "number"; inp.step = cfg[3] ? (cfg[4] === "pct" ? cfg[3] * 100 : cfg[3]) : "any"; inp.value = fmtIn(cfg, x);
+          inp.oninput = () => { const n = parseIn(cfg, inp.value); if (isFinite(n)) { P[key].wert[i] = n; changed(); } };
+          d.appendChild(inp); arr.appendChild(d);
+        });
+        div.appendChild(arr);
+      } else if (Array.isArray(val)) { // peers
+        const arr = document.createElement("div"); arr.className = "arr"; arr.style.gridTemplateColumns = "1fr 1fr";
+        val.forEach((p, i) => {
+          const d = document.createElement("label"); d.innerHTML = `<div>${esc(p.name)}</div>`;
+          const inp = document.createElement("input"); inp.type = "number"; inp.value = p.brutto;
+          inp.oninput = () => { const n = parseFloat(inp.value); if (isFinite(n)) { P[key].wert[i].brutto = n; changed(); } };
+          d.appendChild(inp); arr.appendChild(d);
+        });
+        div.appendChild(arr);
+      } else if (typeof val === "number") {
+        const row = document.createElement("div"); row.className = "row";
+        let min = cfg[1], max = cfg[2];
+        if (cfg[4] === "year") { const J = P.jahre.wert; min = J[0]; max = J[J.length - 1]; }
+        const rng = document.createElement("input"); rng.type = "range";
+        rng.min = fmtIn(cfg, Math.min(min, val)); rng.max = fmtIn(cfg, Math.max(max, val)); rng.step = cfg[4] === "pct" ? cfg[3] * 100 : cfg[3]; rng.value = fmtIn(cfg, val);
+        const num = document.createElement("input"); num.type = "number"; num.step = rng.step; num.value = fmtIn(cfg, val);
+        const unit = document.createElement("span"); unit.className = "unit"; unit.textContent = cfg[4] === "pct" ? "%" : "";
+        const set = (src) => { const n = parseIn(cfg, src.value); if (!isFinite(n)) return; P[key].wert = n; if (src === rng) num.value = rng.value; else rng.value = num.value; changed(); };
+        rng.oninput = () => set(rng); num.oninput = () => set(num);
+        row.append(rng, num, unit); div.appendChild(row);
+      } else return;
+      det.appendChild(div);
+    });
+    box.appendChild(det);
+  });
+  $("search").oninput = () => {
+    const q = $("search").value.toLowerCase();
+    document.querySelectorAll(".param").forEach((el) => { const k = el.dataset.key; const hit = !q || k.includes(q) || (P[k].label || "").toLowerCase().includes(q); el.style.display = hit ? "" : "none"; if (q && hit) el.closest("details").open = true; });
+  };
+}
+let timer = null;
+function changed() { clearTimeout(timer); timer = setTimeout(render, 40); }
+
+// ======================= SVG-Diagramme =======================
+let W = 640; // Zeichenbreite; breite Karten nutzen 1100
+function svg(h, inner) { return `<svg viewBox="0 0 ${W} ${h}" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">${inner}</svg>`; }
+const t = (x, y, s, o = {}) => `<text x="${x}" y="${y}" font-size="${o.size || 11}" fill="${o.fill || C.text}" text-anchor="${o.anchor || "start"}" ${o.bold ? 'font-weight="bold"' : ""} dominant-baseline="middle">${esc(s)}</text>`;
+function legend(items, y) { let x = 10, out = ""; items.forEach(([n, col]) => { out += `<rect x="${x}" y="${y - 5}" width="10" height="10" fill="${col}"/>` + t(x + 14, y, n, { size: 10 }); x += 22 + n.length * 5.6; }); return out; }
+
+function hbar(rows, opts = {}) { // rows: [{label, value, color}]
+  const lw = opts.lw || 190, bh = 22, gap = 9, top = 6, h = top + rows.length * (bh + gap) + 6;
+  const max = Math.max(...rows.map((r) => r.value)) * 1.12 || 1, sw = W - lw - 20;
+  let out = "";
+  rows.forEach((r, i) => {
+    const y = top + i * (bh + gap), w = Math.max(0, (r.value / max) * sw);
+    out += t(lw - 8, y + bh / 2, r.label, { anchor: "end", size: 11, fill: C.gray });
+    out += `<rect x="${lw}" y="${y}" width="${w}" height="${bh}" fill="${r.color}" rx="2"/>`;
+    out += t(lw + w + 6, y + bh / 2, f(r.value), { size: 11, bold: true });
+  });
+  return svg(h, out);
+}
+function stackH(rows, names, colors) { // rows: [{label, parts:[]}]
+  const lw = 130, bh = 30, gap = 14, top = 6, h = top + rows.length * (bh + gap) + 26;
+  const max = Math.max(...rows.map((r) => r.parts.reduce((a, b) => a + Math.max(0, b), 0))) * 1.05 || 1, sw = W - lw - 20;
+  let out = "";
+  rows.forEach((r, i) => {
+    const y = top + i * (bh + gap); let x = lw;
+    out += t(lw - 8, y + bh / 2, r.label, { anchor: "end", fill: C.gray });
+    r.parts.forEach((p, k) => {
+      const w = (Math.max(0, p) / max) * sw;
+      out += `<rect x="${x}" y="${y}" width="${w}" height="${bh}" fill="${colors[k]}"/>`;
+      if (w > 26) out += t(x + w / 2, y + bh / 2, f(p), { anchor: "middle", size: 10, fill: k === 3 ? "#fff" : C.navy });
+      x += w;
+    });
+    if (r.parts[3] < 0) out += t(x + 6, y + bh / 2, "EBITDA " + f(r.parts[3]), { size: 10, fill: C.red, bold: true });
+  });
+  return svg(h, out + legend(names.map((n, i) => [n, colors[i]]), h - 10));
+}
+function groupCol(cats, series) {
+  const h = 260, top = 14, bot = 40, left = 10, ch = h - top - bot, cw = (W - left * 2) / cats.length;
+  const max = Math.max(...series.flatMap((s) => s.values)) * 1.15 || 1, bw = (cw * 0.7) / series.length;
+  let out = `<line x1="${left}" x2="${W - left}" y1="${top + ch}" y2="${top + ch}" stroke="${C.grid}"/>`;
+  cats.forEach((c, i) => {
+    const x0 = left + i * cw + cw * 0.15;
+    series.forEach((s, k) => {
+      const v = s.values[i], bh2 = (Math.max(0, v) / max) * ch, x = x0 + k * bw;
+      out += `<rect x="${x}" y="${top + ch - bh2}" width="${bw - 3}" height="${bh2}" fill="${s.color}"/>`;
+      out += t(x + (bw - 3) / 2, top + ch - bh2 - 8, f(v), { anchor: "middle", size: 10 });
+    });
+    out += t(left + i * cw + cw / 2, top + ch + 13, c, { anchor: "middle", fill: C.gray });
+  });
+  return svg(h, out + legend(series.map((s) => [s.name, s.color]), h - 8));
+}
+function lineChart(labels, series, o = {}) {
+  const h = o.h || 270, top = 12, bot = 42, left = 56, right = 14, ch = h - top - bot, cw = W - left - right;
+  const all = series.flatMap((s) => s.values).concat(o.zero ? [0] : []);
+  let min = Math.min(...all), max = Math.max(...all); if (max === min) max = min + 1;
+  const pad = (max - min) * 0.08; min -= pad; max += pad;
+  const step = niceStep((max - min) / 5);
+  const X = (i) => left + (labels.length === 1 ? cw / 2 : (i * cw) / (labels.length - 1)), Y = (v) => top + ch - ((v - min) / (max - min)) * ch;
+  let out = "";
+  for (let v = Math.ceil(min / step) * step; v <= max; v += step) out += `<line x1="${left}" x2="${W - right}" y1="${Y(v)}" y2="${Y(v)}" stroke="${Math.abs(v) < 1e-9 ? C.mute : C.grid}"/>` + t(left - 6, Y(v), f(v), { anchor: "end", size: 10, fill: C.gray });
+  labels.forEach((l, i) => { if (labels.length < 12 || i % 2 === 0) out += t(X(i), top + ch + 13, l, { anchor: "middle", size: 10, fill: C.gray }); });
+  (o.vlines || []).forEach((vl) => { out += `<line x1="${vl.x}" x2="${vl.x}" y1="${top}" y2="${top + ch}" stroke="${C.gold}" stroke-dasharray="4 3"/>` + t(vl.x + 4, top + 8, vl.label, { size: 10, fill: "#8A6A1F", bold: true }); });
+  series.forEach((s) => {
+    out += `<polyline fill="none" stroke="${s.color}" stroke-width="3" points="${s.values.map((v, i) => X(i) + "," + Y(v)).join(" ")}"/>`;
+    if (s.dots !== false) s.values.forEach((v, i) => (out += `<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${s.color}"/>`));
+  });
+  return { svg: svg(h, out + legend(series.map((s) => [s.name, s.color]), h - 8)), X, Y };
+}
+function niceStep(x) { const p = Math.pow(10, Math.floor(Math.log10(x))); const n = x / p; return (n < 1.5 ? 1 : n < 3 ? 2 : n < 7 ? 5 : 10) * p; }
+
+function treppe(M) {
+  const J = M.jahre, V = M.volumen, A = M.anteil, L = J.length - 1, ga = M.v("gate_anteile");
+  const nx = (k) => (k >= 0 ? k : L + 1), i1 = nx(M.phasen.g1), i2 = nx(M.phasen.g2), iF = nx(M.phasen.g3), iW = nx(M.phasen.g4);
+  const yr = (k) => (k <= L ? String(J[k]) : "nach " + J[L]);
+  const span = (a, b) => (a > L ? "nach " + J[L] : b <= a ? String(J[a]) : `${J[a]}–${String(J[Math.min(b, L)]).slice(2)}`);
+  const rng = (a, b) => { if (a > L) return "–"; const x = f(V[a]), y = f(V[Math.min(b, L)]); return b <= a || x === y ? x : x + "–" + y; };
+  const rngA = (a, b) => { if (a > L) return "–"; const x = pct(A[a]), y = pct(A[Math.min(b, L)]); return b <= a || x === y ? x : x.replace(" %", "") + "–" + y; };
+  const ph = [
+    { p: `PHASE 1 · ${span(0, i1 - 1)}`, price: chf(M.p1), model: "Basis-Pricing", kpi: `${rng(0, i1 - 1)} · ${rngA(0, i1 - 1)}`, fill: C.gold, fc: C.navy, val: M.p1 },
+    { p: `PHASE 2 · ${span(i1, iF - 1)}`, price: `CHF ${f(M.pG1)} → ${f(M.preisCostPlus)}`, model: "Cost-Plus", kpi: `${rng(i1, iF - 1)} · ${rngA(i1, iF - 1)}`, fill: C.lteal, fc: C.navy, val: M.preisCostPlus },
+    { p: `PHASE 3 · ${span(iF, iW - 1)}`, price: chf(M.fleetPaket), model: "Mitbewerber (Fleet)", kpi: `${rng(iF, iW - 1)} · ${rngA(iF, iW - 1)}`, fill: C.teal, fc: "#fff", val: M.fleetPaket },
+    { p: `PHASE 4 · AB ${yr(iW)}`, price: chf(M.carePaket), model: "Wertorientiert (Care)", kpi: `${rng(iW, L)} · ${rngA(iW, L)}`, fill: C.navy, fc: "#fff", val: M.carePaket },
+  ];
+  const h = 270, base = 205, maxV = Math.max(...ph.map((p) => p.val)), minV = Math.min(...ph.map((p) => p.val)) * 0.6, colW = (W - 20) / 4;
+  let out = "";
+  ph.forEach((p, i) => {
+    const hh = 60 + ((p.val - minV) / (maxV - minV || 1)) * 120, x = 10 + i * colW, y = base - hh;
+    out += `<rect x="${x}" y="${y}" width="${colW - 6}" height="${hh}" fill="${p.fill}"/>`;
+    out += t(x + 8, y + 12, p.p, { size: 10, bold: true, fill: p.fc });
+    out += t(x + 8, y + 32, p.price, { size: p.price.length > 12 ? 14 : 18, bold: true, fill: p.fc });
+    out += t(x + 8, y + 50, p.model, { size: 11, fill: p.fc });
+    out += t(x + 2, base + 14, "Durchdringung:", { size: 10, bold: true }) + t(x + 2, base + 28, p.kpi, { size: 10, fill: C.gray });
+    if (i > 0) out += `<circle cx="${x}" cy="${y}" r="9" fill="${C.red}"/>` + t(x, y, "G" + (i === 1 ? 1 : i + 1), { anchor: "middle", size: 8, fill: "#fff", bold: true });
+  });
+  out += `<line x1="10" x2="${W - 10}" y1="${base}" y2="${base}" stroke="${C.navy}"/>`;
+  out += t(10, h - 14, `Gates (Anteil Vorjahr): G1 ${pct(ga[0])} → ${yr(i1)} · G2 ${pct(ga[1])} → ${yr(i2)} · G3 ${pct(ga[2])} → ${yr(iF)} · G4 ${pct(ga[3])} → ${yr(iW)} · Zielsegment ~${f(M.zielsegment)} Bäder/Jahr`, { size: 10, fill: C.gray });
+  return svg(h, out);
+}
+
+// ======================= Rendern =======================
+let LAST = null;
+function render() {
+  let M;
+  try { M = AlbaModell.berechne(P); } catch (e) { $("checks").innerHTML = `<div class="warn">Fehler im Modell: ${esc(e.message)}</div>`; return; }
+  const B = AlbaModell.berechne(BASE);
+  LAST = M;
+  const J = M.jahre, PL = M.plan;
+  const be = (s) => s.breakEvenJahr || "nach " + J[J.length - 1];
+  const row = (n, a, fm, hl) => `<tr${hl ? ' class="hl"' : ""}><td>${n}</td>${a.map((x) => `<td>${fm(x)}</td>`).join("")}</tr>`;
+
+  // KPIs
+  const kpis = [
+    [chf(M.preisCostPlus), "Cost-Plus-Preis", M.preisCostPlus, B.preisCostPlus],
+    [chf(M.vollkosten), "Vollkosten pro Gerät", M.vollkosten, B.vollkosten],
+    [chf(M.fleetPaket), "Fleet-Paket", M.fleetPaket, B.fleetPaket],
+    [chf(M.carePaket), "Care-Paket", M.carePaket, B.carePaket],
+    [String(be(PL)), "Break-even (Plan)", PL.breakEvenJahr || 0, B.plan.breakEvenJahr || 0],
+    ["CHF " + (PL.endwert / 1e6).toFixed(2) + " Mio.", `kumuliert bis ${J[J.length - 1]}`, PL.endwert, B.plan.endwert],
+    ["CHF " + f(PL.maxInvest / 1000) + "k", "max. Investition", PL.maxInvest, B.plan.maxInvest],
+    [M.rappenProNacht.toFixed(1) + " Rp.", "pro Gästenacht", M.rappenProNacht, B.rappenProNacht],
+  ];
+  $("kpis").innerHTML = kpis.map(([a, b, x, y]) => { const d = x - y; const ds = Math.abs(d) > 1e-6 ? (d > 0 ? "▲ " : "▼ ") + (Math.abs(d) >= 1000 ? f(Math.abs(d) / 1000) + "k" : f(Math.abs(d), Math.abs(d) < 10 && !Number.isInteger(d) ? 1 : 0)) : ""; return `<div class="kpi ${ds ? "delta" : ""}"><b data-delta="${ds}">${esc(a)}</b><span>${esc(b)}</span></div>`; }).join("");
+
+  // Prüfungen
+  const nWarn = M.checks.filter((c) => !c.ok).length;
+  $("checks").innerHTML = (nWarn ? `<div class="warn">${nWarn} Prüfung(en) verletzt</div>` : `<div class="ok"><b>Alle ${M.checks.length} Prüfungen erfüllt</b></div>`) + M.checks.map((c) => `<div class="${c.ok ? "ok" : "warn"}">${c.ok ? "✓" : "✗"} ${esc(c.msg)}</div>`).join("");
+
+  // Änderungen
+  const ch = [];
+  document.querySelectorAll(".param").forEach((el) => { const k = el.dataset.key; const diff = JSON.stringify(P[k].wert) !== JSON.stringify(BASE[k].wert); el.classList.toggle("changed", diff); if (diff) ch.push(k); });
+  $("nChanged").textContent = ch.length ? ch.length + " geändert" : "";
+  $("changes").innerHTML = ch.length ? ch.map((k) => `<div><b>${esc(P[k].label || k)}:</b> ${esc(show(BASE[k].wert))} → <b>${esc(show(P[k].wert))}</b></div>`).join("") : `<div class="sub">Noch nichts geändert – Werte links anpassen.</div>`;
+
+  // Diagramme
+  W = 1100; $("c_treppe").innerHTML = treppe(M); W = 640;
+  $("c_anker").innerHTML = hbar([
+    { label: "Geberit Renova WC-Set", value: M.anker.renova, color: C.mute }, { label: "Designkeramik", value: M.anker.design, color: C.mute },
+    { label: "Alba Hotel-Einführung", value: M.p1, color: C.gold }, { label: "Alba Ladenpreis", value: M.anker.laden, color: C.mute },
+    { label: M.peerMin.kurz + " (günstigster Peer)", value: M.peerMin.netto, color: C.mute }]);
+  const pr = [M.p1, M.pG1, M.preisCostPlus];
+  $("c_kosten").innerHTML = stackH(pr.map((p, i) => ({ label: ["Phase 1 · ", "Stufe G1 · ", "Cost-Plus · "][i] + f(p), parts: [M.hk, M.weitereVar, M.gemeinkostenProGeraet, M.ebitda(p)] })), ["Herstellkosten", "Weitere var. Kosten", "Programm/Gemeinkosten", "EBITDA"], [C.gold, C.lgold, C.mute, C.teal]);
+  $("f_kosten").innerHTML = `Vollkosten ${chf(M.vollkosten)} ÷ (1 − ${pct(M.marge, 0)}) = ${chf(M.costPlusExakt)} → gerundet <b>${chf(M.preisCostPlus)}</b> · Schritte +${pct(M.schritt1)} / +${pct(M.schritt2)}`;
+  $("c_peers").innerHTML = hbar([{ label: "Alba Grundgerät", value: M.preisCostPlus, color: C.teal }, { label: "Alba Fleet-Paket", value: M.fleetPaket, color: C.teal }].concat(M.peers.map((p) => ({ label: p.kurz, value: p.netto, color: C.mute }))));
+  $("f_peers").innerHTML = `Fleet-Paket = Schwellenpreis unter günstigstem Peer (${chf(M.peerMin.netto)}) → Fleet-Aufpreis <b>${chf(M.preisFleet)}</b> (Mindestpreis ${chf(M.mindest.fleet)})`;
+  $("c_wert").innerHTML = groupCol(["Fleet", "Predict", "Care"], [
+    { name: "Mindestpreis", color: C.mute, values: [M.mindest.fleet, M.mindest.predict, M.mindest.care] },
+    { name: "Unser Preis", color: C.teal, values: [M.preisFleet, M.preisPredict, M.preisCare] },
+    { name: "Hotelnutzen", color: C.navy, values: [M.nutzen.fleet, M.nutzen.predict, M.nutzen.care] }]);
+  $("f_wert").innerHTML = `Wertabschöpfung: Fleet ${pct(M.preisFleet / M.nutzen.fleet, 0)}, Predict ${pct(M.preisPredict / M.nutzen.predict, 0)}, Care ${pct(M.preisCare / M.nutzen.care, 0)} · Rentenbarwertfaktor ${M.rbf.toFixed(3)}`;
+
+  $("vm").innerHTML = `«Bieten Sie Ihren Gästen schon im Standardzimmer ein Dusch-WC – für rund <b>${M.rappenGerundet} Rappen</b> pro belegter Nacht, mit ${M.v("hotelstars_punkte")} Punkten mehr in der Klassifizierung …»`;
+  $("f_vm").innerHTML = `Mehrinvestition ${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte = ${M.rappenProNacht.toFixed(1)} Rp. (auf 5 Rp. gerundet)`;
+
+  const fa = M.v("staffel_fleet_ab"), ca = M.v("staffel_care_ab");
+  $("t_staffel").innerHTML = `<table><tr><th>CHF netto pro Gerät</th><th>1–${fa - 1} Geräte</th><th>ab ${fa} · Fleet</th><th>ab ${ca} · Care</th></tr>
+    <tr><td>Alba-Grundgerät</td><td>${f(M.preisCostPlus)}</td><td>inkl.</td><td>inkl.</td></tr>
+    <tr><td>Fleet-Monitoring</td><td>+${f(M.einzel.fleet)}</td><td>inkl.</td><td>inkl.</td></tr>
+    <tr><td>Predict</td><td>+${f(M.einzel.predict)}</td><td>+${f(M.preisPredict)}</td><td>inkl.</td></tr>
+    <tr><td>Care</td><td>+${f(M.einzel.care)}</td><td>+${f(M.preisCare)}</td><td>inkl.</td></tr>
+    <tr class="hl"><td>Vollausstattung</td><td>${f(M.vollEinzel)}</td><td>${f(M.vollFleet)} (${pct(M.vorteilFleet, 0)})</td><td>${f(M.vollCare)} (${pct(M.vorteilCare, 0)})</td></tr></table>
+    <div class="formula">Care-Anteil im Care-Paket ${chf(M.careImPaket)} vs. Mindestpreis bei Bündelung ${chf(M.mindest.careBundle)}</div>`;
+
+  const SC = { penetration: C.teal, skimming: C.red, konstant: C.gold };
+  $("c_preiszeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.preise })).concat(isFinite(M.dbOptimalKurzfristig) ? [{ name: "kurzfristig DB-optimal (ohne Diffusion)", color: C.mute, values: J.map(() => M.dbOptimalKurzfristig), dots: false }] : [])).svg;
+  $("c_absatzzeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.vol })), { zero: true }).svg;
+  W = 1100;
+  const lc = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.kum.map((x) => x / 1000) })).concat([{ name: "Penetration, halber Referenzeffekt", color: C.lteal, values: M.halb.kum.map((x) => x / 1000) }]), { zero: true });
+  $("c_bc").innerHTML = lc.svg; W = 640;
+  $("t_paf").innerHTML = `<table><tr><th>Diffusion (Bass)</th>${J.map((j) => `<th>${j}</th>`).join("")}</tr>${M.szenarien.map((z) => row(esc(z.kurz) + ": Anteil Alba / Konkurrenz", z.anteil.map((x, k) => pct(x) + " / " + pct(z.wettbewerb[k], 0)), (x) => x)).join("")}${row("Penetration: Preisstufe", M.plan.stufe.map((x, k) => (M.plan.wert[k] ? "Care" : M.plan.fleet[k] ? "Fleet" : ["Basis", "G1", "Cost-Plus"][x])), (x) => x)}${row("Zahlungsbereitschaft (ZB)", M.plan.zb, (x) => f(x))}</table>
+    <div class="formula">ΔAlba = (p + q·Alba/s<sub>max</sub>)·frei·(Preis/ZB)<sup>−ε</sup> · ΔKonkurrenz = (p<sub>W</sub> + q·(Konk. + θ·Alba)/s<sub>max</sub>)·frei · frei = s<sub>max</sub> − Alba − Konkurrenz · ZB = Referenzpreis·(1 + δ·Kategorie/s<sub>max</sub>) · kurzfristig DB-optimal (ohne Diffusion): ${chf(M.dbOptimalKurzfristig)}</div>`;
+  const best = M.szenarien.reduce((a, b) => (b.endwert > a.endwert ? b : a));
+  $("t_bc").innerHTML = `<table><tr><th>Szenario</th>${J.map((j) => `<th>${j}</th>`).join("")}<th>Break-even</th></tr>${M.szenarien.map((z) => `<tr><td colspan="${J.length + 2}" style="background:#F6F9FA"><b style="color:${SC[z.key]}">${esc(z.name)}</b></td></tr>${row("&nbsp;&nbsp;Preis Grundgerät", z.preise.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;Absatz", z.vol.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;DB pro Gerät", z.db.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;DB vor Programmkosten (TCHF)", z.dbTotal.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}${row("&nbsp;&nbsp;Ergebnis nach Programmkosten (TCHF)", z.ergebnis.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}<tr${z === best ? ' class="hl"' : ""}><td>&nbsp;&nbsp;Kumuliert (TCHF)</td>${z.kum.map((x) => `<td>${f(x / 1000)}</td>`).join("")}<td>${be(z)}</td></tr>`).join("")}</table>
+    <div class="formula">Bestes Szenario bis ${J[J.length - 1]}: <b>${esc(best.kurz)}</b> · Penetration mit halbem Referenzeffekt: Break-even ${be(M.halb)}</div>`;
+
+  const de = M.v("strassenpreis_de_eur");
+  $("t_int").innerHTML = `<table><tr><th></th><th>CH</th><th>DE</th><th>AT</th></tr>
+    <tr class="hl"><td>Einstieg netto</td><td>${chf(M.p1)}</td><td>€ ${f(M.preisDE)}</td><td>€ ${f(M.preisAT)}</td></tr>
+    <tr><td>Strassenpreis netto</td><td>${chf(M.chStrasseNetto)}</td><td>€ ${f(M.deStrasseNetto)}</td><td>€ ${f(M.atStrasseNetto)}</td></tr>
+    <tr><td>Strassenpreis brutto</td><td>${chf(M.v("alba_ladenpreis"))}</td><td>€ ${f(de[0])}–${f(de[1])}</td><td>€ ${f(M.v("strassenpreis_at_eur"))}</td></tr></table>`;
+  $("f_int").innerHTML = `Hotelpreis = Schwellenpreis aus ${pct(M.v("faktor_strassenpreis"), 0)} des lokalen Strassenpreises netto`;
+
+  const xs = []; for (let x = 0; x <= Math.max(2000, M.ppfBreakEven * 2); x += 250) xs.push(x);
+  const fee = M.v("ppf_gebuehr");
+  const pc = lineChart(xs.map((x) => f(x)), [
+    { name: `Erlös bei CHF ${fee.toFixed(2)}/Nutzung`, color: C.teal, values: xs.map((x) => x * fee), dots: false },
+    { name: "Kosten Geberit/Jahr", color: C.navy, values: xs.map(() => M.ppfKostenJahr), dots: false }], { zero: true, h: 240 });
+  $("c_ppf").innerHTML = pc.svg;
+  $("f_ppf").innerHTML = `Kosten ${chf(M.ppfKostenJahr)}/Jahr → Break-even <b>${f(M.ppfBreakEven)} Nutzungen/Jahr</b> (~${M.ppfProNacht.toFixed(1)} pro belegter Nacht)`;
+}
+function show(x) { return Array.isArray(x) ? x.map((y) => (typeof y === "object" ? y.brutto : y)).join(" / ") : x; }
+
+// ======================= Export, Speichern, Bauen =======================
+function json() { return JSON.stringify(P, null, 2) + "\n"; }
+function download(name, data, type) { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([data], { type })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+function toast(msg, ms = 5000) { const el = $("toast"); el.textContent = msg; el.style.display = "block"; clearTimeout(el._t); el._t = setTimeout(() => (el.style.display = "none"), ms); }
+async function save() {
+  const r = await fetch("/api/params", { method: "POST", headers: { "Content-Type": "application/json" }, body: json() });
+  const j = await r.json(); if (!j.ok) throw new Error(j.error || "Speichern fehlgeschlagen");
+  BASE = clone(P); render(); return j;
+}
+$("btnDownload").onclick = () => download("params.json", json(), "application/json");
+$("btnReset").onclick = () => { if (!BASE) return; P = clone(BASE); buildInputs(); render(); toast("Auf geladenen Stand zurückgesetzt"); };
+$("btnLoad").onclick = () => $("file").click();
+$("btnPick").onclick = () => $("file").click();
+$("file").onchange = (e) => e.target.files[0] && loadFile(e.target.files[0]);
+const drop = $("drop");
+["dragover", "dragenter"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.style.background = "#EAF3F2"; }));
+drop.addEventListener("drop", (e) => { e.preventDefault(); e.dataTransfer.files[0] && loadFile(e.dataTransfer.files[0]); });
+$("btnSave").onclick = async () => { try { const j = await save(); toast("params.json gespeichert (Backup: " + j.backup + ")"); } catch (e) { toast("Fehler: " + e.message); } };
+$("btnBuild").onclick = async () => {
+  const b = $("btnBuild"); b.disabled = true; b.textContent = "Baue Deck …";
+  try { await save(); const r = await fetch("/api/build", { method: "POST" }); const j = await r.json(); toast((j.ok ? "✓ " : "✗ ") + (j.stdout || "") + (j.stderr ? "\n" + j.stderr : ""), 9000); }
+  catch (e) { toast("Fehler: " + e.message); }
+  b.disabled = false; b.textContent = "Speichern + Deck bauen";
+};
+// Diagramm-Export (SVG/PNG) pro Karte
+document.querySelectorAll(".card[data-chart]").forEach((card) => {
+  const name = card.dataset.chart, dl = card.querySelector(".dl");
+  const bS = document.createElement("button"); bS.textContent = "SVG"; const bP = document.createElement("button"); bP.textContent = "PNG";
+  dl.append(bS, bP);
+  const get = () => card.querySelector("svg");
+  bS.onclick = () => download(name + ".svg", new XMLSerializer().serializeToString(get()), "image/svg+xml");
+  bP.onclick = () => {
+    const s = get(), vb = s.viewBox.baseVal, scale = 3, img = new Image();
+    img.onload = () => { const c = document.createElement("canvas"); c.width = vb.width * scale; c.height = vb.height * scale; const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height); c.toBlob((b) => download(name + ".png", b, "image/png")); };
+    img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(s));
+  };
+});
+init();
+</script>
+</body>
+</html>

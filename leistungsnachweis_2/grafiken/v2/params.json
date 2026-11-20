@@ -1,0 +1,514 @@
+{
+  "_hinweis": "ZENTRALE PARAMETER fuer LN2 v2. Nur hier Werte aendern, dann 'node model.js' (Pruefung) und 'node build_v2.js' (Deck neu bauen). Alle abgeleiteten Zahlen (Vollkosten, Cost-Plus-Preis, Fleet-Preis, Mindestpreise, Hotelnutzen, Business Case, DE/AT-Preise, Value Message) werden in model.js berechnet. Typ: Fakt | Teaminput | Annahme.",
+  "_favoriten": [
+    "preis_phase1",
+    "bass_q",
+    "bass_eps",
+    "wettbewerb_p",
+    "herstellkosten"
+  ],
+  "jahre": {
+    "wert": [
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036
+    ],
+    "label": "Planjahre",
+    "typ": "Annahme"
+  },
+  "mwst_ch": {
+    "wert": 0.081,
+    "label": "MwSt. Schweiz",
+    "typ": "Fakt"
+  },
+  "herstellkosten": {
+    "wert": 250,
+    "label": "Herstellkosten",
+    "typ": "Teaminput",
+    "herleitung": "Interne Angabe; mit Controlling als Ist-Kosten bestätigen",
+    "folien": "5"
+  },
+  "kosten_logistik": {
+    "wert": 40,
+    "label": "Logistik/Grosshandels-Fee",
+    "typ": "Annahme"
+  },
+  "kosten_garantie": {
+    "wert": 50,
+    "label": "Garantie/Retouren",
+    "typ": "Annahme"
+  },
+  "kosten_projektsupport": {
+    "wert": 60,
+    "label": "Projektsupport",
+    "typ": "Annahme"
+  },
+  "gemeinkosten_pro_geraet": {
+    "wert": 300,
+    "label": "Programm- und Gemeinkosten pro Gerät (für Cost-Plus)",
+    "typ": "Annahme",
+    "herleitung": "CHF 300'000 Programmkosten bei ~1'000 Geräten pro Jahr",
+    "folien": "5"
+  },
+  "ziel_ebitda_marge": {
+    "wert": 0.3,
+    "label": "Ziel-EBITDA-Marge",
+    "typ": "Annahme",
+    "herleitung": "Orientierung an Geberit-Konzern 2025: 29.4 % (Fakt, Geschäftsbericht)",
+    "folien": "5"
+  },
+  "geberit_ebitda_2025": {
+    "wert": 0.294,
+    "label": "Geberit EBITDA-Marge 2025",
+    "typ": "Fakt"
+  },
+  "preis_phase1": {
+    "wert": 790,
+    "label": "Einführungspreis Phase 1 (netto)",
+    "typ": "Teaminput",
+    "folien": "2, 5"
+  },
+  "preis_stufe_g1": {
+    "wert": 890,
+    "label": "Zwischenstufe nach Gate G1 (netto)",
+    "typ": "Annahme",
+    "folien": "2, 5"
+  },
+  "preis_predict": {
+    "wert": 99,
+    "label": "Predict, Preis im Fleet-Bundle",
+    "typ": "Annahme",
+    "folien": "6, 7"
+  },
+  "preis_care": {
+    "wert": 249,
+    "label": "Care 3 Jahre, Preis im Fleet-Bundle",
+    "typ": "Annahme",
+    "folien": "6, 7"
+  },
+  "preis_care_paket": {
+    "wert": 1499,
+    "label": "Care-Paket ab 10 Geräten (alles inkl.)",
+    "typ": "Annahme",
+    "folien": "2, 6, 7"
+  },
+  "einzelpreis_fleet": {
+    "wert": 249,
+    "label": "Fleet einzeln (1–4 Geräte)",
+    "typ": "Annahme"
+  },
+  "einzelpreis_predict": {
+    "wert": 129,
+    "label": "Predict einzeln (1–4 Geräte)",
+    "typ": "Annahme"
+  },
+  "einzelpreis_care": {
+    "wert": 299,
+    "label": "Care einzeln (1–4 Geräte)",
+    "typ": "Annahme"
+  },
+  "abo_fleet_monat": {
+    "wert": 7,
+    "label": "Fleet/Predict als Abo pro Gerät und Monat",
+    "typ": "Annahme"
+  },
+  "featurekosten_fleet": {
+    "wert": 70,
+    "label": "Kosten Fleet pro Gerät",
+    "typ": "Annahme"
+  },
+  "featurekosten_predict": {
+    "wert": 45,
+    "label": "Kosten Predict pro Gerät",
+    "typ": "Annahme"
+  },
+  "featurekosten_care": {
+    "wert": 160,
+    "label": "Kosten Care pro Gerät (3 Jahre)",
+    "typ": "Annahme"
+  },
+  "featurekosten_care_bundle": {
+    "wert": 130,
+    "label": "Kosten Care bei ≥10 Geräten (gebündelte Anfahrt)",
+    "typ": "Annahme"
+  },
+  "takerate_fleet": {
+    "wert": 0.5,
+    "label": "Take-Rate Fleet",
+    "typ": "Annahme"
+  },
+  "takerate_predict": {
+    "wert": 0.3,
+    "label": "Take-Rate Predict",
+    "typ": "Annahme"
+  },
+  "takerate_care": {
+    "wert": 0.25,
+    "label": "Take-Rate Care",
+    "typ": "Annahme"
+  },
+  "fleet_ab_jahr": {
+    "wert": 2030,
+    "label": "Start Phase 3 (Fleet)",
+    "typ": "Annahme"
+  },
+  "wert_ab_jahr": {
+    "wert": 2031,
+    "label": "Start Phase 4 (Predict/Care)",
+    "typ": "Annahme"
+  },
+  "staffel_fleet_ab": {
+    "wert": 5,
+    "label": "Fleet-Bundle ab Geräten je Standort",
+    "typ": "Annahme"
+  },
+  "staffel_care_ab": {
+    "wert": 10,
+    "label": "Care-Bundle ab Geräten je Standort",
+    "typ": "Annahme"
+  },
+  "szenario_skimming_preise": {
+    "wert": [
+      1149,
+      1049,
+      999,
+      949,
+      899,
+      849,
+      849,
+      849,
+      849,
+      849
+    ],
+    "label": "Szenario Skimming: Preis Grundgerät pro Jahr (netto) – hoch einsteigen, dann senken",
+    "typ": "Annahme",
+    "folien": "9"
+  },
+  "szenario_konstant_preis": {
+    "wert": 0,
+    "label": "Szenario Konstant: Preis Grundgerät (netto); 0 = automatisch Privatkunden-Listenpreis",
+    "typ": "Annahme",
+    "folien": "9"
+  },
+  "programmkosten": {
+    "wert": [
+      170000,
+      250000,
+      300000,
+      450000,
+      550000,
+      600000,
+      600000,
+      600000,
+      600000,
+      600000
+    ],
+    "label": "Programmkosten pro Jahr (CHF)",
+    "typ": "Annahme",
+    "herleitung": "2027: KAM 0.5 FTE 70k, Referenzprogramm 40k, Interviews 20k, Fleet-Feldtest 40k",
+    "folien": "9, 10"
+  },
+  "pilot_hotels": {
+    "wert": 10,
+    "label": "Pilot-Hotels 2027",
+    "typ": "Teaminput"
+  },
+  "exit_min_geraete": {
+    "wert": 50,
+    "label": "Stopp-Kriterium: Mindestgeräte nach 12 Monaten",
+    "typ": "Annahme"
+  },
+  "bass_p": {
+    "wert": 0.011,
+    "label": "Bass p: Innovationskoeffizient (Hotels, die ohne Vorbild kaufen)",
+    "typ": "Annahme",
+    "herleitung": "Kalibriert auf ~100 Geräte im Pilotjahr",
+    "folien": "9"
+  },
+  "bass_q": {
+    "wert": 1.0,
+    "label": "Bass q: Imitationskoeffizient (Kauf wegen Referenzen = Create the Category)",
+    "typ": "Annahme",
+    "herleitung": "Starker Referenzeffekt im Objektgeschäft; im Pilot messen",
+    "folien": "9"
+  },
+  "bass_smax": {
+    "wert": 0.3,
+    "label": "Sättigung: maximaler Alba-Anteil an den Zielsegment-Bädern",
+    "typ": "Annahme",
+    "herleitung": "Hotelstars-Schwelle 30 % der Bäder",
+    "folien": "9"
+  },
+  "bass_eps": {
+    "wert": 1.5,
+    "label": "Preisreaktion ε der Diffusion (Elastizität)",
+    "typ": "Annahme",
+    "herleitung": "Elastische Nachfrage in der Einführungsphase",
+    "folien": "9"
+  },
+  "bass_delta": {
+    "wert": 1.0,
+    "label": "δ: Zahlungsbereitschaft steigt mit der Durchdringung (ZB = Referenzpreis × (1 + δ·s/s_max))",
+    "typ": "Annahme",
+    "folien": "9"
+  },
+  "bass_referenzpreis": {
+    "wert": 790,
+    "label": "Referenzpreis der Diffusion (bei diesem Preis wirken p und q unverändert)",
+    "typ": "Annahme",
+    "folien": "9"
+  },
+  "risiko_faktor_imitation": {
+    "wert": 0.5,
+    "label": "Risiko-Szenario: Imitationseffekt q × Faktor",
+    "typ": "Annahme",
+    "folien": "9"
+  },
+  "wettbewerb_p": {
+    "wert": 0.005,
+    "label": "Wettbewerb: Innovationskoeffizient der Konkurrenz (TOTO, VitrA, Duravit …)",
+    "typ": "Annahme",
+    "herleitung": "Konkurrenz gewinnt Hotels auch ohne Alba; im Pilot über Win/Loss messen",
+    "folien": "9"
+  },
+  "wettbewerb_spillover": {
+    "wert": 0.3,
+    "label": "Wettbewerb: Anteil von Albas Kategorieaufbau, der der Konkurrenz zugutekommt (θ)",
+    "typ": "Annahme",
+    "herleitung": "Hotels lernen die Kategorie bei Alba kennen, kaufen aber teils bei der Konkurrenz",
+    "folien": "9"
+  },
+  "hotelstars_zimmer": {
+    "wert": 1200000,
+    "label": "Klassifizierte Zimmer Hotelstars Union (21 Länder)",
+    "typ": "Fakt"
+  },
+  "anteil_dach": {
+    "wert": 0.5,
+    "label": "Anteil DACH an Hotelstars-Zimmern",
+    "typ": "Annahme"
+  },
+  "renovationszyklus": {
+    "wert": 12,
+    "label": "Renovationszyklus Hotelbad (Jahre)",
+    "typ": "Fakt"
+  },
+  "anteil_zielsegment": {
+    "wert": 0.6,
+    "label": "Anteil Zielsegment",
+    "typ": "Annahme"
+  },
+  "gate_anteile": {
+    "wert": [
+      0.03,
+      0.08,
+      0.12,
+      0.15
+    ],
+    "label": "Gate-Schwellen G1–G4 (Alba-Anteil an den Zielsegment-Bädern)",
+    "typ": "Annahme"
+  },
+  "hotelstars_punkte": {
+    "wert": 5,
+    "label": "Hotelstars-Punkte für Dusch-WC",
+    "typ": "Fakt"
+  },
+  "hotelstars_schwelle": {
+    "wert": 0.3,
+    "label": "Anteil Bäder mit Dusch-WC für Punkte",
+    "typ": "Fakt"
+  },
+  "vorfaelle_pro_jahr": {
+    "wert": 0.3333333333,
+    "label": "Vorfälle pro Gerät und Jahr (1 in 3 Jahren)",
+    "typ": "Teaminput"
+  },
+  "kosten_pro_vorfall": {
+    "wert": 400,
+    "label": "Kosten pro Vorfall (Service + Gästewiedergutmachung)",
+    "typ": "Annahme"
+  },
+  "vermeidbar_fleet": {
+    "wert": 0.5,
+    "label": "Durch Fleet vermeidbarer Anteil",
+    "typ": "Annahme"
+  },
+  "vermeidbar_predict": {
+    "wert": 0.25,
+    "label": "Zusätzlich durch Predict vermeidbar",
+    "typ": "Annahme"
+  },
+  "admin_ersparnis_jahr": {
+    "wert": 10,
+    "label": "Koordinationsersparnis pro Gerät/Jahr",
+    "typ": "Annahme"
+  },
+  "zimmer_db_nacht": {
+    "wert": 150,
+    "label": "Zimmer-Deckungsbeitrag pro Nacht",
+    "typ": "Annahme"
+  },
+  "naechte_ausfall_vorfall": {
+    "wert": 1,
+    "label": "Gesperrte Nächte pro Vorfall",
+    "typ": "Annahme"
+  },
+  "kalkulationszins": {
+    "wert": 0.05,
+    "label": "Kalkulationszins",
+    "typ": "Annahme"
+  },
+  "nutzen_jahre": {
+    "wert": 3,
+    "label": "Bewertungszeitraum Hotelnutzen",
+    "typ": "Annahme"
+  },
+  "kosten_elektroanschluss": {
+    "wert": 150,
+    "label": "Elektroanschluss pro Zimmer",
+    "typ": "Annahme"
+  },
+  "preis_standard_wc": {
+    "wert": 500,
+    "label": "Hochwertiges Standard-WC im Projekt (netto)",
+    "typ": "Annahme"
+  },
+  "nutzungsdauer_jahre": {
+    "wert": 12,
+    "label": "Nutzungsdauer Hotelbad",
+    "typ": "Annahme"
+  },
+  "auslastung": {
+    "wert": 0.7,
+    "label": "Zimmerauslastung",
+    "typ": "Annahme"
+  },
+  "anker_renova_set": {
+    "wert": 279,
+    "label": "Geberit Renova WC-Set (CH, brutto)",
+    "typ": "Fakt"
+  },
+  "anker_designkeramik": {
+    "wert": 790,
+    "label": "Designkeramik Richtpreis (CH, brutto)",
+    "typ": "Fakt"
+  },
+  "alba_ladenpreis": {
+    "wert": 899,
+    "label": "Alba Ladenpreis (CH, brutto)",
+    "typ": "Fakt"
+  },
+  "alba_richtpreis": {
+    "wert": 1143,
+    "label": "Alba Richtpreis (CH, brutto)",
+    "typ": "Fakt"
+  },
+  "alba_listenpreis_privat_netto": {
+    "wert": 1000,
+    "label": "Alba Privatkunden-Listenpreis exkl. MwSt.",
+    "typ": "Teaminput",
+    "herleitung": "Interner Listen-/Richtpreis Privatkunden; Basis für Szenario «Konstant»",
+    "folien": "9"
+  },
+  "peers": {
+    "wert": [
+      {
+        "name": "VitrA V-Care Comfort",
+        "kurz": "VitrA V-Care",
+        "brutto": 1299
+      },
+      {
+        "name": "Duravit ME SensoWash",
+        "kurz": "Duravit SensoWash",
+        "brutto": 1390
+      },
+      {
+        "name": "Grohe Sensia Arena",
+        "kurz": "Grohe Sensia",
+        "brutto": 1999
+      },
+      {
+        "name": "Laufen Cleanet Navia",
+        "kurz": "Laufen Navia",
+        "brutto": 1999
+      }
+    ],
+    "label": "Direkte Peers (CH-Händlerpreise, brutto)",
+    "typ": "Fakt"
+  },
+  "mera_uvp_at_eur": {
+    "wert": 6234,
+    "label": "Mera Comfort UVP Österreich (EUR)",
+    "typ": "Fakt"
+  },
+  "strassenpreis_de_eur": {
+    "wert": [
+      735,
+      900
+    ],
+    "label": "Alba online DE (EUR brutto)",
+    "typ": "Fakt"
+  },
+  "mwst_de": {
+    "wert": 0.19,
+    "label": "MwSt. Deutschland",
+    "typ": "Fakt"
+  },
+  "strassenpreis_at_eur": {
+    "wert": 850,
+    "label": "Alba Strassenpreis AT (EUR brutto)",
+    "typ": "Annahme"
+  },
+  "uvp_at_eur": {
+    "wert": 1194,
+    "label": "Alba UVP Österreich",
+    "typ": "Fakt"
+  },
+  "mwst_at": {
+    "wert": 0.2,
+    "label": "MwSt. Österreich",
+    "typ": "Fakt"
+  },
+  "faktor_strassenpreis": {
+    "wert": 0.95,
+    "label": "Hotelpreis in % des lokalen Strassenpreises netto",
+    "typ": "Annahme"
+  },
+  "ppf_installation": {
+    "wert": 150,
+    "label": "Pay-per-Flush: Installation",
+    "typ": "Annahme"
+  },
+  "ppf_abschreibung_jahre": {
+    "wert": 5,
+    "label": "Pay-per-Flush: Abschreibung (Jahre)",
+    "typ": "Annahme"
+  },
+  "ppf_service_jahr": {
+    "wert": 45,
+    "label": "Pay-per-Flush: Service pro Jahr",
+    "typ": "Annahme"
+  },
+  "ppf_connectivity_jahr": {
+    "wert": 25,
+    "label": "Pay-per-Flush: Connectivity/Admin pro Jahr",
+    "typ": "Annahme"
+  },
+  "ppf_gebuehr": {
+    "wert": 0.2,
+    "label": "Pay-per-Flush: Gebühr pro Nutzung",
+    "typ": "Annahme"
+  },
+  "max_preisschritt": {
+    "wert": 0.13,
+    "label": "Maximale Erhöhung pro Preisschritt",
+    "typ": "Annahme"
+  }
+}

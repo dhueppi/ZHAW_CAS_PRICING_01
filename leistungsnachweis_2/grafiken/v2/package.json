@@ -1,0 +1,15 @@
+{
+  "name": "ln2-aquaclean-v2",
+  "version": "2.0.0",
+  "private": true,
+  "description": "LN2 Slidedoc v2 aus zentralen Parametern (params.json)",
+  "scripts": {
+    "check": "node model.js",
+    "build": "node model.js && node build_v2.js",
+    "gui": "node gui_server.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^3.12.0",
+    "jszip": "^3.10.1"
+  }
+}
