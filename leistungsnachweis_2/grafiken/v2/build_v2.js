@@ -6,6 +6,7 @@ const OUT = process.argv[2] || path.join(__dirname, "..", "..", "LN2_AquaClean_A
 const v = M.v, J = M.jahre;
 // ---------- Formatierung (Schweizer Schreibweise) ----------
 const f = (x, d = 0) => { const s = Math.abs(x).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g, "'"); return (Math.round(Math.abs(x) * 10 ** d) === 0 ? "" : x < 0 ? "−" : "") + s; };
+const k3 = (x) => f(Math.round(x / 1000) * 1000);
 const chf = (x) => "CHF " + f(x);
 const pct = (x, d = 1) => { let s = (x * 100).toFixed(d); if (s.endsWith(".0")) s = s.slice(0, -2); return s + " %"; };
 const tchf = (x) => f(x / 1000);
@@ -13,12 +14,12 @@ const mio = (x) => (x / 1e6).toFixed(1) + " Mio.";
 const nextRound = (x) => Math.ceil((x + 1) / 100) * 100;
 const L = J.length - 1;
 const nx = (i) => (i >= 0 ? i : L + 1);                       // Gate nicht erreicht → nach dem Horizont
-const iG1 = nx(M.phasen.g1), iG2 = nx(M.phasen.g2), iFleet = nx(M.phasen.g3), iWert = nx(M.phasen.g4);
+const iG1 = nx(M.phasen.g1), iFleet = nx(M.phasen.g3), iWert = nx(M.phasen.g4);
 const yr = (i) => (i <= L ? String(J[i]) : "nach " + J[L]);
 const span = (a, b) => (a > L ? "nach " + J[L] : b <= a ? String(J[a]) : `${J[a]}–${String(J[Math.min(b, L)]).slice(2)}`);
 const cp = M.preisCostPlus, p1 = M.p1, pG1 = M.pG1;
 const pilotRund = Math.round(M.pilotGeraete / 10) * 10;
-const pfad = `CHF ${f(p1)} → ${f(pG1)} → ${f(cp)} → ${f(M.fleetPaket)} → ${f(M.carePaket)}`;
+const pfad = `CHF ${f(p1)} → ${f(cp)} → ${f(M.fleetPaket)} → ${f(M.carePaket)}`;
 const beJ = (s) => (s.breakEvenJahr ? String(s.breakEvenJahr) : "nach " + J[J.length - 1]);
 const ga = v("gate_anteile");
 const pptxgen = require("pptxgenjs");
@@ -150,7 +151,7 @@ pres.addSection({ title: "Einstieg" });
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.8, y: 3.6, w: 11.7, h: 1.5, rectRadius: 0.08, fill: { color: "1E3A52" }, line: { type: "none" }, objectName: "rec_box" });
   txt(s, [
     { text: "Empfehlung an die Geschäftsleitung: ", options: { bold: true, color: C.accent2 } },
-    { text: `Penetrationsstrategie in vier Preisphasen freigeben – Start ${J[0]} mit ${chf(p1)} netto pro Gerät, jede weitere Preisstufe erst nach erreichtem Durchdringungs-Gate, Pilotbudget ${chf(M.pilotBudget)}, Break-even ${beJ(M.plan)}.`, options: { color: C.background1 } },
+    { text: `Penetrationsstrategie in vier Preisphasen freigeben – Start ${J[0]} mit ${chf(p1)} netto pro Gerät, zwei Jahre Einführungsangebot, danach Cost-Plus; Feature-Stufen erst nach erreichtem Durchdringungs-Gate, Pilotbudget ${chf(M.pilotBudget)}, Break-even ${beJ(M.plan)}.`, options: { color: C.background1 } },
   ], { x: 1.1, y: 3.8, w: 11.1, h: 1.1, fontSize: 18 });
   const steps = [["PHASE 1", "Basis-Pricing", chf(p1)], ["PHASE 2", "Cost-Plus", chf(cp)], ["PHASE 3", "Mitbewerber", chf(M.fleetPaket)], ["PHASE 4", "Wertorientiert", chf(M.carePaket)]];
   steps.forEach((st, i) => {
@@ -164,19 +165,19 @@ pres.addSection({ title: "Einstieg" });
 // 2 BIG PICTURE
 pres.addSection({ title: "Big Picture" });
 {
-  const s = content("Big Picture", "BIG PICTURE · PENETRATIONSSTRATEGIE (LEITFRAGE 9: PREISVERÄNDERUNGEN)", "Tief einsteigen, mit jeder erreichten Durchdringungsstufe den Preis anheben",
-    `Durchdringung = Alba-Anteil an jährlich renovierten oder neu gebauten Bädern im Zielsegment DACH (rund ${f(M.zielsegment)} pro Jahr). Verlauf aus dem Bass-Diffusionsmodell (Folie 9); Jahre = Zeitpunkt, an dem das Gate im Modell erreicht wird. Preise netto exkl. MwSt./Montage. Gates: Anhang A1.`);
+  const s = content("Big Picture", "BIG PICTURE · PENETRATIONSSTRATEGIE (LEITFRAGE 9: PREISVERÄNDERUNGEN)", "Tief einsteigen, dann den Preis in drei Schritten anheben – zweimal nur mit neuer Leistung",
+    `Durchdringung = Alba-Anteil an jährlich renovierten oder neu gebauten Bädern im Zielsegment DACH (rund ${k3(M.zielsegment)} pro Jahr = ${k3(M.renovationen)} Renovation + ${k3(M.neubau)} Neubau). Verlauf aus dem Bass-Diffusionsmodell (Folie 9), Obergrenze ${pct(M.bass.smax, 0)} = Hotelstars-Kriterium 147. Schritt 1 = Kalender (Ende Einführungsangebot), G2/G3 = Gate im Modell erreicht; Preise netto. Gates: A1.`);
   txt(s, [
     { text: "So lesen: ", options: { bold: true } },
-    { text: "Jede Stufe ist ein höherer Netto-Preis pro Gerät und folgt einem anderen Preismodell aus dem Unterricht (Reifegrad der Preismodelle). Ausgelöst wird ein Schritt nicht vom Kalender, sondern von erreichter Marktdurchdringung. Wird ein Gate verfehlt, bleibt der Preis stehen – gesenkt wird er nicht." },
+    { text: `Jede Stufe folgt einem anderen Preismodell aus dem Unterricht. Schritt 1 ist das Ende des Einführungsangebots «Geberit AquaClean Jahre» (${span(0, iG1 - 1)}) – Rückkehr zum regulären Hotelpreis, keine Preiserhöhung. Schritte 2 und 3 kommen nur mit neuer Leistung und erst nach erreichtem Gate. Gesenkt wird nie.` },
   ], { x: 0.6, y: 1.55, w: 6.0, h: 1.5, fontSize: 13 });
   const V = M.volumen, A = M.anteil;
   const rng = (a, b) => { if (a > L) return "–"; const x = f(V[a]), y = f(V[Math.min(b, L)]); return b <= a || x === y ? x : `${x}–${y}`; };
   const rngA = (a, b) => { if (a > L) return "–"; const x = pct(A[a]), y = pct(A[Math.min(b, L)]); return b <= a || x === y ? x : `${x.replace(" %", "")}–${y}`; };
   const ph = [
-    { h: 1.35, fill: C.accent2, fc: C.text2, p: `PHASE 1 · ${span(0, iG1 - 1)}`, price: chf(p1), model: "Basis-Pricing", anchor: "Anker: Standard-WC", kpi: `${rng(0, iG1 - 1)} Geräte/Jahr · ${rngA(0, iG1 - 1)}`, gate: `G1 → ${chf(pG1)}: ≥${pct(ga[0])} Anteil (${yr(iG1)})` },
-    { h: 2.0, fill: C.accent3, fc: C.text2, p: `PHASE 2 · ${span(iG1, iFleet - 1)}`, price: `CHF ${f(pG1)} → ${f(cp)}`, model: "Cost-Plus", anchor: "Anker: Alba-Listenpreis", kpi: `${rng(iG1, iFleet - 1)} Geräte/Jahr · ${rngA(iG1, iFleet - 1)}`, gate: `G2 → ${chf(cp)}: ≥${pct(ga[1])} (${yr(iG2)}) · G3 → Fleet: ≥${pct(ga[2])}` },
-    { h: 2.65, fill: C.accent1, fc: C.background1, p: `PHASE 3 · ${span(iFleet, iWert - 1)}`, price: chf(M.fleetPaket), model: "Mitbewerber-Pricing", anchor: "Fleet-Paket · Anker: günstigster Peer", kpi: `${rng(iFleet, iWert - 1)} Geräte/Jahr · ${rngA(iFleet, iWert - 1)}`, gate: `G4 → Care: ≥${pct(ga[3])} Anteil (${yr(iWert)}), Nutzen gemessen` },
+    { h: 1.35, fill: C.accent2, fc: C.text2, p: `PHASE 1 · ${span(0, iG1 - 1)}`, price: chf(p1), model: "Basis-Pricing", anchor: `Liste −${pct(M.einfuehrungRabatt, 0)} · Anker: Standard-WC`, kpi: `${rng(0, iG1 - 1)} Geräte/Jahr · ${rngA(0, iG1 - 1)}`, gate: `Ende Einführungsangebot ${J[iG1 - 1]} → ${chf(cp)} (${yr(iG1)})` },
+    { h: 2.0, fill: C.accent3, fc: C.text2, p: `PHASE 2 · ${span(iG1, iFleet - 1)}`, price: chf(cp), model: "Cost-Plus", anchor: `Projektpreis ab 5 Geräten (Liste −${pct(M.projektRabatt, 0)})`, kpi: `${rng(iG1, iFleet - 1)} Geräte/Jahr · ${rngA(iG1, iFleet - 1)}`, gate: `G2 → Fleet: ≥${pct(ga[1])} Anteil (${yr(iFleet)}), Feldtest bestanden` },
+    { h: 2.65, fill: C.accent1, fc: C.background1, p: `PHASE 3 · ${span(iFleet, iWert - 1)}`, price: chf(M.fleetPaket), model: "Mitbewerber-Pricing", anchor: "Fleet-Paket · Anker: günstigster Peer", kpi: `${rng(iFleet, iWert - 1)} Geräte/Jahr · ${rngA(iFleet, iWert - 1)}`, gate: `G3 → Care: ≥${pct(ga[2])} Anteil (${yr(iWert)}), Nutzen gemessen` },
     { h: 3.3, fill: C.text2, fc: C.background1, p: `PHASE 4 · AB ${yr(iWert)}`, price: chf(M.carePaket), model: "Wertorientiert", anchor: "Care-Paket · Anker: Hotelnutzen", kpi: `${rng(iWert, L)} Geräte/Jahr · ${rngA(iWert, L)}`, gate: `Endanteil Alba ${pct(A[L])}, Konkurrenz ${pct(M.plan.wettbewerb[L])}; Upselling Sela/Mera` },
   ];
   const base = 5.25;
@@ -193,7 +194,7 @@ pres.addSection({ title: "Big Picture" });
       { text: "Durchdringung: ", options: { bold: true } }, { text: p.kpi, options: { breakLine: true } },
       { text: p.gate, options: { color: C.accent4 } },
     ], { x, y: base + 0.1, w, h: 1.2, fontSize: 11 });
-    if (i > 0) circ(s, "G" + (i === 1 ? 1 : i + 1), x - 0.25, y - 0.2, 0.38, C.accent5, 10);
+    if (i > 0) circ(s, i === 1 ? "1" : "G" + i, x - 0.25, y - 0.2, 0.38, C.accent5, 10);
   });
   s.addShape(pres.shapes.LINE, { x: 0.6, y: base, w: 12.12, h: 0, line: { color: HEX.navy, width: 1 }, objectName: "baseline" });
 }
@@ -202,8 +203,8 @@ pres.addSection({ title: "Big Picture" });
 pres.addSection({ title: "Angebot & Wert" });
 {
   const s = content("Angebot & Wert", "LEITFRAGE 1 · ANGEBOT, ZIELKUNDE UND WETTBEWERB", "Dusch-WCs fehlen im Hotel – Alba macht sie zum Preis eines guten Standard-WCs möglich",
-    "Quellen: Projekt-Marktanalyse Abschn. 1–5, 8, 11–12 (CH-Händlerpreise inkl. MwSt., SBZ 2021); Geberit Geschäftsbericht 2025; Hotelstars Union Kriterien 2025.");
-  const stats = [["~1 %", "der Haushalte in DE haben ein Dusch-WC (CH ~10 %)"], ["1–3 %", "der Hotel-WCs in Europa sind Dusch-WCs (Schätzung)"], [">900", "Hotels in Europa nutzen bereits AquaClean"], [`+${v("hotelstars_punkte")} Punkte`, `Hotelstars Union ab ${pct(v("hotelstars_schwelle"))} Bäder mit Dusch-WC`]];
+    "Quellen: Projekt-Marktanalyse Abschn. 1–5, 8, 11–12 (CH-Händlerpreise inkl. MwSt., SBZ 2021); Geberit Geschäftsbericht 2025; Hotelstars Union Kriterien 2025; TOPHOTELPROJECTS 11/2026; CoStar 2023.");
+  const stats = [["~1 %", "der Haushalte in DE haben ein Dusch-WC (CH ~10 %)"], [`${f(M.zimmerDACH / 1e6, 2)} Mio.`, `Hotelzimmer in DACH, rund ${pct(v("anteil_zielsegment"), 0)} davon 4/5★`], [`~${k3(M.zielsegment)}`, "Zielsegment-Bäder pro Jahr in DACH (Renovation + Neubau)"], [`+${v("hotelstars_punkte")} Punkte`, `Hotelstars Union (Kriterium 147) ab ${pct(v("hotelstars_schwelle"))} der Zimmer mit Dusch-WC`]];
   stats.forEach((st, i) => {
     const x = 0.6 + i * 3.08;
     txt(s, st[0], { x, y: 1.55, w: 2.9, h: 0.5, fontSize: 26, bold: true, color: C.accent1, margin: 0 });
@@ -218,7 +219,7 @@ pres.addSection({ title: "Angebot & Wert" });
     ]],
     ["Zielkunde und Vertrieb", [
       { b: "B2B-Objektgeschäft:", t: "Geberit verhandelt direkt mit Hotel oder Kettenzentrale; Lieferung über Grosshandel, Montage durch Installateure." },
-      { b: "Zielsegment:", t: "4-Sterne Business- und Wellnessketten bei Renovation oder Neubau in DACH." },
+      { b: "Zielsegment:", t: `4-Sterne-Ketten bei Renovation oder Neubau in DACH; Pipeline: ${f(M.pipeline.projekte)} Projekte, ${pct(M.pipeline.anteil45, 0)} davon 4/5★.` },
       { b: `Pilot ${J[0]}:`, t: `${v("pilot_hotels")} Hotels, rund ${f(pilotRund)} Geräte.` },
     ]],
     ["Wettbewerb", [
@@ -262,7 +263,7 @@ pres.addSection({ title: "Angebot & Wert" });
   head(s, "Value Proposition für den Hotelier", 6.15, 1.55, 6.6);
   const vp = [
     ["Gäste:", "Dusch-WC schon im Standardzimmer – bisher meist Suiten vorbehalten."],
-    ["Klassifizierung:", `+${v("hotelstars_punkte")} Punkte Hotelstars Union ab ${pct(v("hotelstars_schwelle"))} der Bäder.`],
+    ["Klassifizierung:", `+${v("hotelstars_punkte")} Punkte nach Hotelstars-Kriterium 147 ab ${pct(v("hotelstars_schwelle"))} der Zimmer.`],
     ["Betrieb:", "verdeckte Anschlüsse, Ersatzteilgarantie; ab Phase 3 Flottenüberwachung."],
   ];
   vp.forEach((x, i) => {
@@ -289,7 +290,7 @@ function phaseHead(s, x, label, fill, fc) {
 {
   const s = content("Preisfestsetzung", "LEITFRAGE 4 · PREISFESTSETZUNG · PHASEN 1 UND 2", `Einstieg mit ${chf(p1)} (Basis-Pricing), dann Cost-Plus auf ${chf(cp)}`,
     `Vergleichspreise: CH-Händlerpreise ÷ ${(1 + v("mwst_ch")).toFixed(3)} (ohne MwSt.); Hotel-WC Geberit iCon 503.045.00.8 = Reuter.com CHF ${v("anker_hotel_wc").toFixed(2)}. Kosten: HK ${chf(M.hk)} = Teaminput; übrige Kosten und Gemeinkosten ${chf(M.gemeinkostenProGeraet)} pro Gerät = Annahmen (Anhang A3). ${pct(M.marge, 0)} ≈ Geberit-EBITDA-Marge 2025 (${pct(v("geberit_ebitda_2025"))}).`);
-  phaseHead(s, 0.6, `PHASE 1 · BASIS-PRICING · ${J[0]}`, C.accent2, C.text2);
+  phaseHead(s, 0.6, `PHASE 1 · BASIS-PRICING · ${span(0, iG1 - 1)}`, C.accent2, C.text2);
   const labels = ["Hotel-WC Geberit iCon", "Alba Hotel-Einführung", "Alba Ladenpreis", "Alba Privatkunden-Liste", `${M.peerMin.kurz} (günstigster Peer)`];
   s.addChart(pres.charts.BAR, [
     { name: "Vergleich", labels, values: [M.anker.hotelWC, 0, M.anker.laden, v("alba_listenpreis_privat_netto"), M.peerMin.netto].map(Math.round) },
@@ -300,34 +301,34 @@ function phaseHead(s, x, label, fill, fc) {
     showLegend: false, showTitle: true, title: "Preisanker, CHF netto pro Gerät", titleFontSize: 11, valAxisHidden: true, valGridLine: { style: "none" }, barGapWidthPct: 40,
   }));
   bullets(s, [
-    { b: "Ein Preis:", t: `${chf(p1)} netto, exkl. MwSt. und Montage; keine weiteren Rabatte.` },
+    { b: "Ein Preis:", t: `${chf(p1)} netto = ${pct(M.einfuehrungRabatt, 0)} Einführungsrabatt auf den Listenpreis ${chf(M.liste)}; keine weiteren Rabatte.` },
     { b: "Anker Hotel-WC:", t: `${chf(p1 - Math.round(M.anker.hotelWC))} mehr als das Hotel-Standard-WC Geberit iCon (${chf(M.anker.hotelWC)} netto) – für die Duschfunktion; unter dem Ladenpreis.` },
-    { b: "Floor:", t: `DB ${chf(p1 - M.varKosten)}, EBITDA ${chf(M.ebitda(p1))} bei Vollkosten ${chf(M.vollkosten)}; als befristeter Einführungspreis kommuniziert.` },
+    { b: "Floor:", t: `Geberit erhält nach ${pct(1 - M.kanal, 0)} Kanalmarge ${chf(M.netto_(p1))}: DB ${chf(M.dbGeraet(p1))} positiv, Vollkosten noch nicht gedeckt (Penetrationsinvestition); Einführungsangebot nur bis ${J[iG1 - 1]}, Kampagne «Geberit AquaClean Jahre».` },
   ], { x: 0.6, y: 4.8, w: 5.95, h: 1.8, fontSize: 13 });
 
   phaseHead(s, 6.8, `PHASE 2 · COST-PLUS · ${span(iG1, iFleet - 1)}`, C.accent3, C.text2);
-  const l2 = [`Phase 1 · ${f(p1)}`, `Stufe G1 · ${f(pG1)}`, `Cost-Plus · ${f(cp)}`];
-  const pr = [p1, pG1, cp];
+  const l2 = [`Einführung · ${f(p1)}`, `Cost-Plus · ${f(cp)}`];
+  const pr = [p1, cp];
   s.addChart(pres.charts.BAR, [
+    { name: `Kanalmarge (${pct(1 - M.kanal, 0)})`, labels: l2, values: pr.map((p) => Math.round(M.kanalmarge(p))) },
     { name: "Herstellkosten", labels: l2, values: pr.map(() => M.hk) },
     { name: "Weitere var. Kosten", labels: l2, values: pr.map(() => M.weitereVar) },
-    { name: "Programm/Gemeinkosten", labels: l2, values: pr.map(() => Math.round(M.gemeinkostenProGeraet)) },
-    { name: "EBITDA", labels: l2, values: pr.map((p) => Math.round(M.ebitda(p))) },
+    { name: "DB Geberit", labels: l2, values: pr.map((p) => Math.round(M.dbGeraet(p))) },
   ], chartOpts({
     x: 6.7, y: 2.0, w: 6.1, h: 2.7, barDir: "bar", barGrouping: "stacked", catAxisOrientation: "maxMin", catAxisLabelFontSize: 10,
-    chartColors: [HEX.gold, "E8C987", HEX.mute, HEX.teal], showValue: true, dataLabelPosition: "ctr", dataLabelColor: HEX.navy, dataLabelFontSize: 10,
-    showLegend: true, legendPos: "b", legendFontSize: 10, showTitle: true, title: "Kosten und Marge, CHF pro Gerät", titleFontSize: 11, valAxisHidden: true, barGapWidthPct: 35,
+    chartColors: [HEX.mute, HEX.gold, "E8C987", HEX.teal], showValue: true, dataLabelPosition: "ctr", dataLabelColor: HEX.navy, dataLabelFontSize: 10,
+    showLegend: true, legendPos: "b", legendFontSize: 10, showTitle: true, title: "Hotelpreis aufgeteilt, CHF pro Gerät", titleFontSize: 11, valAxisHidden: true, barGapWidthPct: 35,
   }));
   bullets(s, [
-    { b: "Formel:", t: `Vollkosten ${chf(M.vollkosten)} ÷ (1 − ${pct(M.marge, 0)} EBITDA) = ${chf(cp)}.` },
-    { b: `Zwei Schritte ≤${pct(v("max_preisschritt"), 0)}:`, t: `${f(p1)} → ${f(pG1)} (+${pct(M.schritt1)}, Gate G1) → ${f(cp)} (+${pct(M.schritt2)}, Gate G2), höchstens einer pro Jahr.` },
-    { b: "Penetrationsinvestition:", t: `${chf(M.penetrationsInvest)} pro Gerät in Phase 1 (rund ${chf(M.penetrationsInvest * pilotRund)} im Pilot); danach bleibt Cost-Plus der Floor.` },
+    { b: "Formel:", t: `(Vollkosten ${chf(M.vollkosten)} + ${pct(M.zuschlag, 0)} Gewinnzuschlag) ÷ Kanalanteil ${pct(M.kanal, 0)} = ${chf(cp)} = Projektpreis ab 5 Geräten (Liste −${pct(M.projektRabatt, 0)}).` },
+    { b: "Ein Schritt:", t: `${f(p1)} → ${f(cp)} (+${pct(M.schritt1, 0)}) Ende ${J[iG1 - 1]}: Aktion endet, Projektrabatt bleibt.` },
+    { b: "Zwei Kostensichten:", t: `Cost-Plus mit Vollkosten (inkl. ${chf(M.gemeinkostenProGeraet)} Vertrieb/Overhead), Business Case nur mit Zusatzkosten (~${chf(Math.round(M.programmkosten[L] / M.volumen[L]))}/Gerät).` },
   ], { x: 6.8, y: 4.8, w: 5.95, h: 1.8, fontSize: 13 });
 }
 
 // 6 PHASE 3 + 4
 {
-  const s = content("Preisfestsetzung", "LEITFRAGE 4 · PREISFESTSETZUNG · PHASEN 3 UND 4", "Fleet-Paket knapp unter dem günstigsten Peer, dann Features nach Hotelnutzen",
+  const s = content("Preisfestsetzung", "LEITFRAGE 4 · PREISFESTSETZUNG · PHASEN 3 UND 4", `Features nach Hotelnutzen: Geberit schöpft ${pct(M.wertanteil, 0)} ab – Fleet-Paket klar unter dem günstigsten Peer`,
     `Peers: CH-Händlerpreise ohne MwSt. (Momentaufnahme). Nutzen = Kosten/Vorfall × Vorfälle/Jahr × vermeidbarer Anteil, Barwert ${v("nutzen_jahre")} J. @ ${pct(v("kalkulationszins"), 0)}; ${chf(v("kosten_pro_vorfall"))} pro Vorfall (Anhang A3).`);
   phaseHead(s, 0.6, `PHASE 3 · MITBEWERBER-PRICING · ${span(iFleet, iWert - 1)}`, C.accent1, C.background1);
   const labels = ["Alba Grundgerät", "Alba Fleet-Paket"].concat(M.peers.map((p) => p.kurz));
@@ -340,8 +341,8 @@ function phaseHead(s, x, label, fill, fc) {
     showLegend: false, showTitle: true, title: "CHF netto pro Gerät", titleFontSize: 11, valAxisHidden: true, valGridLine: { style: "none" }, barGapWidthPct: 40,
   }));
   bullets(s, [
-    { b: "Ankerwechsel:", t: `ab ≥${pct(ga[2])} Anteil vergleicht der Hotelier mit anderen Dusch-WCs.` },
-    { b: `Fleet-Paket ${chf(M.fleetPaket)}:`, t: `Gerät + Flottenmonitoring, knapp unter dem günstigsten Peer (${chf(M.peerMin.netto)}).` },
+    { b: "Ankerwechsel:", t: `ab ≥${pct(ga[1])} Anteil vergleicht der Hotelier mit anderen Dusch-WCs.` },
+    { b: `Fleet-Paket ${chf(M.fleetPaket)}:`, t: `Gerät + Flottenmonitoring, ${pct(1 - M.fleetPaket / M.peerMin.netto, 0)} unter dem günstigsten Peer (${chf(M.peerMin.netto)}).` },
     { b: "Floor:", t: `Fleet-Kosten ~${chf(M.featureKosten.fleet)} → Mindestpreis ${chf(M.mindest.fleet)}, Fleet-Aufpreis ${chf(M.preisFleet)}.` },
   ], { x: 0.6, y: 4.8, w: 5.95, h: 1.8, fontSize: 13 });
 
@@ -357,9 +358,9 @@ function phaseHead(s, x, label, fill, fc) {
     showLegend: true, legendPos: "r", legendFontSize: 10, showTitle: true, title: "CHF netto pro Gerät, einmalig", titleFontSize: 11, valAxisHidden: true, valGridLine: { style: "none" }, valAxisMinVal: 0, barGapWidthPct: 50,
   }));
   bullets(s, [
-    { b: "Regel:", t: "Preis über dem Mindestpreis, unter dem Hotelnutzen – der Rest ist Kaufanreiz." },
+    { b: "Regel:", t: `Preis = ${pct(M.wertanteil, 0)} des Hotelnutzens, über dem Mindestpreis; ${pct(1 - M.wertanteil, 0)} bleiben als Kaufanreiz beim Hotel.` },
     { b: `Care-Paket ${chf(M.carePaket)}:`, t: `ab ${v("staffel_care_ab")} Geräten alles inklusive – statt ${chf(M.vollFleet)} mit Predict (${chf(M.preisPredict)}) und Care (${chf(M.preisCare)}) als Optionen.` },
-    { b: "Beleg:", t: "Hotelnutzen wird im Pilot gemessen, bevor Gate G4 öffnet." },
+    { b: "Beleg:", t: "Hotelnutzen wird im Pilot gemessen, bevor Gate G3 öffnet." },
   ], { x: 6.8, y: 4.8, w: 5.95, h: 1.8, fontSize: 13 });
 }
 
@@ -380,9 +381,9 @@ pres.addSection({ title: "Markt & Umsetzung" });
   card(s, 0.6, 4.4, 6.3, 2.15);
   txt(s, [
     { text: "Weitere Dimensionen: ", options: { bold: true, color: C.accent1 } },
-    { text: `Zeit (Einführungspreis ${J[0]}), Referenzstatus (nur gegen Referenzfreigabe), Kette vs. Einzelhotel (Rahmenvertrag), Land (lokal hergeleitet).`, options: { breakLine: true } },
+    { text: `Zeit (Einführungspreis ${span(0, iG1 - 1)}), Referenzstatus (nur gegen Referenzfreigabe), Kette vs. Einzelhotel (Rahmenvertrag), Land (lokal hergeleitet).`, options: { breakLine: true } },
     { text: "Online: ", options: { bold: true, color: C.accent1 } },
-    { text: `kein Online-Gerätepreis, weil Hotels projektbezogen kaufen. Fleet/Predict im Hotelportal auch als Abo (${chf(v("abo_fleet_monat"))} pro Gerät/Monat); Pay-per-Flush als Option (Anhang A4).` },
+    { text: `kein Online-Gerätepreis, weil Hotels projektbezogen kaufen. Features (Fleet, Predict, Care) werden separat pro Gerät bepreist und von Geberit direkt verkauft.` },
   ], { x: 0.8, y: 4.5, w: 5.9, h: 1.95, fontSize: 12, paraSpaceAfter: 6, valign: "middle" });
   head(s, "Behavioral Pricing", 7.3, 1.55, 5.4);
   const items = [
@@ -403,11 +404,11 @@ pres.addSection({ title: "Markt & Umsetzung" });
 // 8 UMSETZUNG & INTERNATIONAL
 {
   const s = content("Markt & Umsetzung", "LEITFRAGEN 7 UND 8 · UMSETZUNG UND INTERNATIONALE PREISPOLITIK", "Klare Preishoheit, Anreize auf Nettopreis – und Deutschland als erstes Zielland",
-    `Voraussetzungen: Vollkosten aus dem Controlling, CRM-Erfassung jedes Hotelprojekts, Fleet-Technik bis ${yr(iFleet)}, Referenzrechte. DE/AT-Preise: ~${pct(v("faktor_strassenpreis"), 0)} des lokalen Strassenpreises netto, vor Start zu prüfen. Konzepte: Seyfang (Net Price, Sales Waterfall).`);
+    `Voraussetzungen: Vollkosten aus dem Controlling, CRM-Erfassung jedes Hotelprojekts, Fleet-Technik bis ${yr(iFleet)}, Referenzrechte. DE/AT-Einführungspreis: gleicher Abstand zum lokalen Strassenpreis netto wie in CH (${pct(M.faktorStrasse, 0)}), vor Start zu prüfen. Konzepte: Seyfang (Net Price, Sales Waterfall).`);
   const cols = [
     ["Verantwortung", ["Pricing Lead AquaClean: Listenpreise, Korridore, Gate-Anträge", "GL gibt jede Preisstufe frei; Deal Desk ab 5 % Abweichung"]],
-    ["Konditionen", ["Listenpreis + befristeter Einführungspreis", `Staffel ${v("staffel_fleet_ab")}/${v("staffel_care_ab")} je Standort, Kettenrahmenvertrag, keine Zusatzrabatte`]],
-    ["Vertriebssteuerung", ["Bonus pro installiertem Gerät UND auf Nettopreis, nicht auf Umsatz", `KAM Hotels ab ${J[1]}; Installateur-Schulungen`]],
+    ["Konditionen", ["Hotelpreis ab 5 Geräten; Einführungsangebot nur für registrierte Projekte, Lieferung nach Bauprogramm", `Staffel ${v("staffel_fleet_ab")}/${v("staffel_care_ab")} je Standort, Kettenrahmenvertrag, keine Zusatzrabatte`]],
+    ["Vertriebssteuerung", ["Bonus pro installiertem Gerät UND auf Nettopreis, nicht auf Umsatz", `B2B-PM je Land: ${f(M.pipeline.planung)} DACH-Projekte in (Vor-)Planung vor der Sanitärspezifikation ansprechen`]],
     ["Kommunikation und Controlling", ["Value-Selling-Kit; Preisstufen 6 Monate vorher ankündigen", "Price Waterfall; Quartals-Review der Gate-KPIs"]],
   ];
   cols.forEach((c, i) => {
@@ -429,7 +430,7 @@ pres.addSection({ title: "Markt & Umsetzung" });
   bullets(s, [
     "Deutschland zuerst: grösster Geberit-Markt (29 % Umsatz), erst ~1 % Verbreitung",
     "Hotelpreis bleibt unter dem sichtbaren Online-Strassenpreis",
-    "Korridor DE/AT ±5 % gegen Ketten-Arbitrage; CH eigenständig; NL/FR nach Gate G1",
+    "Korridor DE/AT ±5 % gegen Ketten-Arbitrage; CH eigenständig; Fokus DACH",
   ], { x: 7.85, y: 4.0, w: 4.9, h: 2.55, fontSize: 12 });
 }
 
@@ -438,33 +439,36 @@ pres.addSection({ title: "Entscheid" });
 {
   const S = M.szenarien, P = M.plan, B = M.bass;
   const COL = { penetration: HEX.teal, skimming: HEX.red, konstant: HEX.gold };
-  const best = S.reduce((a, b) => (b.endwert > a.endwert ? b : a));
+  const best = S.reduce((a, b) => (b.barwert > a.barwert ? b : a));
   const titel = best.key === "penetration"
-    ? `Create the Category: die Penetration bringt bis ${J[L]} den höchsten Deckungsbeitrag`
+    ? (best.barwert >= 0 ? `Create the Category: die Penetration bringt den höchsten Barwert – auch nach Kanal und Kannibalisierung` : `Create the Category: im DACH-Mix ist die Penetration klar die beste Variante – positiv aber erst nach ${J[L]}`)
     : `Szenarienvergleich: «${best.kurz}» bringt bis ${J[L]} mehr als die Penetration – Preispfad prüfen`;
   const s = content("Entscheid", "BUSINESS CASE · PREISSZENARIEN (BASS-DIFFUSIONSMODELL)", titel,
-    `Bass-Diffusion mit Wettbewerb: ΔAlba = (p + q·Alba/s_max)·frei·(Preis/ZB)^−ε; ΔKonkurrenz = (p_W + q·(Konk. + θ·Alba)/s_max)·frei; frei = s_max − Alba − Konkurrenz. p = ${B.p}, q = ${B.q}, p_W = ${B.pW}, θ = ${B.theta}, s_max = ${pct(B.smax, 0)}, ε = ${B.eps}, δ = ${B.delta}. Gleiche Programmkosten in allen Szenarien. Anhang A3.`);
+    `▲ = Feature-Paket: Fleet ${f(M.fleetPaket)} ab ${yr(iFleet)}, Care ${f(M.carePaket)} ab ${yr(iWert)}. DACH-Mix nach Zimmern (DE ${pct(M.laenderAnteil.de, 0)} / AT ${pct(M.laenderAnteil.at, 0)} / CH ${pct(M.laenderAnteil.ch, 0)}), DE/AT zu lokalen Preisen = Ø ${pct(M.preisfaktorDACH, 0)} des CH-Preises. DB nach ${pct(1 - M.kanal, 0)} Kanalmarge (Gerät) und Kannibalisierung; Features direkt. Absatz: Bass mit Wettbewerb, Obergrenze ${pct(M.bass.smax, 0)} = Kriterium 147; A3.`);
   const labels = J.map(String);
   const base = (extra) => chartOpts(Object.assign({ lineSize: 2.5, lineDataSymbol: "circle", lineDataSymbolSize: 4, showLegend: true, legendPos: "b", legendFontSize: 9, catAxisLabelFontSize: 8, valAxisLabelFontSize: 9, showTitle: true, titleFontSize: 11, valAxisLabelFormatCode: "#,##0" }, extra));
-  s.addChart(pres.charts.LINE, S.map((z) => ({ name: z.kurz, labels, values: z.preise.map(Math.round) })),
-    base({ x: 0.5, y: 1.6, w: 3.85, h: 2.95, chartColors: S.map((z) => COL[z.key]), title: "Preis Grundgerät über Zeit, CHF netto", valAxisMinVal: 600, valAxisMaxVal: 1200, valAxisMajorUnit: 100 }));
-  s.addChart(pres.charts.LINE, S.map((z) => ({ name: z.kurz, labels, values: z.vol.map(Math.round) })),
-    base({ x: 4.35, y: 1.6, w: 3.85, h: 2.95, chartColors: S.map((z) => COL[z.key]), title: "Absatz über Zeit, Geräte pro Jahr" }));
+  // Zeitachse mit Markierung der Feature-Preiserhöhungen (Penetration): ▲ Fleet-Paket, ▲ Care-Paket
+  const mark = (t) => (t === iFleet ? `${J[t]} ▲Fleet` : t === iWert ? `${J[t]} ▲Care` : String(J[t]));
+  const labelsM = J.map((_, t) => mark(t));
+  s.addChart(pres.charts.LINE, S.map((z) => ({ name: z.kurz, labels: labelsM, values: z.preise.map(Math.round) })),
+    base({ x: 0.5, y: 1.6, w: 3.85, h: 2.95, chartColors: S.map((z) => COL[z.key]), title: "Preis Grundgerät (CH-Liste), CHF netto", valAxisMinVal: 600, valAxisMaxVal: 1200, valAxisMajorUnit: 100 }));
+  s.addChart(pres.charts.LINE, S.map((z) => ({ name: z.kurz, labels: labelsM, values: z.vol.map(Math.round) })),
+    base({ x: 4.35, y: 1.6, w: 3.85, h: 2.95, chartColors: S.map((z) => COL[z.key]), title: "Absatz Geräte über Zeit, pro Jahr" }));
   const yrsT = [0, 2, 4, 6, L].filter((x, k, a) => x <= L && a.indexOf(x) === k);
   table(s, [
-    ["Kumulierter DB (TCHF)"].concat(yrsT.map((t) => String(J[t])), ["Break-even"]),
-  ].concat(S.map((z) => [z.kurz].concat(yrsT.map((t) => tchf(z.kum[t])), [beJ(z)]))), { x: 0.6, y: 4.65, w: 7.6, h: 1.4 }, [2.0].concat(yrsT.map(() => 4.6 / yrsT.length), [1.0]), { fs: 11, align: "center", boldFirstCol: true, hlRows: [1 + S.indexOf(best)] });
-  txt(s, S.map((z, k) => ({ text: `${z.kurz}: ${z.key === "penetration" ? `${f(z.preise[0])} → ${f(z.preise[L])}, Stufen bei ${pct(ga[0], 0)} / ${pct(ga[1], 0)} Anteil` : z.name.replace(/^[^:]*: ?/, "")}${k < S.length - 1 ? "  ·  " : ""}`, options: { color: COL[z.key] === HEX.gold ? "8A6A1F" : COL[z.key] } })), { x: 0.6, y: 6.1, w: 7.6, h: 0.45, fontSize: 10, margin: 0 });
+    ["Kumulierter DB (TCHF)"].concat(yrsT.map((t) => String(J[t])), ["Break-even", `Barwert ${pct(v("kalkulationszins_bc"), 0)}`]),
+  ].concat(S.map((z) => [z.kurz].concat(yrsT.map((t) => tchf(z.kum[t])), [beJ(z), tchf(z.barwert)]))), { x: 0.6, y: 4.62, w: 7.6, h: 1.35 }, [1.6].concat(yrsT.map(() => 4.0 / yrsT.length), [1.0, 1.0]), { fs: 11, align: "center", boldFirstCol: true, hlRows: [1 + S.indexOf(best)] });
+  txt(s, S.map((z, k) => ({ text: `${z.kurz}: ${z.key === "penetration" ? `${f(z.preise[0])} (${M.einfuehrungJahre} J.) → ${f(z.preise[L])}, Features ab Gate` : z.name.replace(/^[^:]*: ?/, "")}${k < S.length - 1 ? "  ·  " : ""}`, options: { color: COL[z.key] === HEX.gold ? "8A6A1F" : COL[z.key] } })), { x: 0.6, y: 6.1, w: 7.6, h: 0.45, fontSize: 10, margin: 0 });
   S.forEach((z, k) => {
     const y = 1.5 + k * 0.82;
-    txt(s, "CHF " + mio(z.endwert), { x: 8.5, y, w: 4.25, h: 0.45, fontSize: 24, bold: true, color: COL[z.key] === HEX.gold ? "B8862B" : COL[z.key], margin: 0 });
-    txt(s, `${z.kurz} · kumuliert bis ${J[L]} · Break-even ${beJ(z)}`, { x: 8.5, y: y + 0.44, w: 4.25, h: 0.3, fontSize: 11, color: C.accent4, margin: 0 });
+    txt(s, "CHF " + mio(z.barwert), { x: 8.5, y, w: 4.25, h: 0.45, fontSize: 24, bold: true, color: COL[z.key] === HEX.gold ? "B8862B" : COL[z.key], margin: 0 });
+    txt(s, `${z.kurz} · Barwert ${pct(v("kalkulationszins_bc"), 0)} · kumuliert ${mio(z.endwert)} · BE ${beJ(z)}`, { x: 8.5, y: y + 0.44, w: 4.25, h: 0.3, fontSize: 11, color: C.accent4, margin: 0 });
   });
   const sk = M.szenario("skimming"), ko = M.szenario("konstant");
   bullets(s, [
     { b: "Create the Category:", t: `Tiefer Einstieg = schnellere Referenzen. ${J[3]}: ${f(P.vol[3])} Geräte bei Penetration, ${f(ko.vol[3])} bei «Konstant», ${f(sk.vol[3])} bei Skimming.` },
     { b: "First-Mover:", t: `Wer langsam ist, verliert den Markt: Endanteil Alba ${pct(P.anteil[L])} (Konkurrenz ${pct(P.wettbewerb[L])}) gegenüber ${pct(ko.anteil[L])} bei «Konstant» (Konkurrenz ${pct(ko.wettbewerb[L])}).` },
-    { b: "Ernten:", t: `Sobald die Kategorie steht, erhöht die Penetration auf ${chf(cp)} (kurzfristig DB-optimal wären ${chf(M.dbOptimalKurzfristig)}).` },
+    { b: "Ernten:", t: `Nach der Einführung Cost-Plus ${chf(cp)}; Fleet ab ${yr(iFleet)} und Care ab ${yr(iWert)} verkauft Geberit direkt – ohne Kanalmarge.` },
     { b: "Risiko:", t: `halber Referenzeffekt (q × ${v("risiko_faktor_imitation")}) → Break-even ${beJ(M.halb)}.` },
   ], { x: 8.5, y: 3.95, w: 4.25, h: 2.65, fontSize: 11 });
 }
@@ -475,8 +479,8 @@ pres.addSection({ title: "Entscheid" });
   s.addText("ENTSCHEID HEUTE", { placeholder: "kicker" });
   s.addText(`Pilot ${J[0]} freigeben und den Penetrationspfad als Leitplanke beschliessen`, { placeholder: "title" });
   const asks = [
-    ["1", "Strategie", `Penetrationspfad ${pfad} mit Gates G1–G4 beschliessen.`],
-    ["2", "Budget", `${chf(M.pilotBudget)} für ${J[0]}: ${v("pilot_hotels")} Hotels, rund ${f(pilotRund)} Geräte, Key Account, Referenzprogramm, Interviews, Fleet-Feldtest.`],
+    ["1", "Strategie", `Penetrationspfad ${pfad}: Einführungsangebot ${span(0, iG1 - 1)}, Features über Gates G2/G3.`],
+    ["2", "Budget", `${chf(M.pilotBudget)} für ${J[0]}: ${v("pilot_hotels")} Hotels, rund ${f(pilotRund)} Geräte, B2B-PM-Zeit, Referenzprogramm, Interviews, Fleet-Feldtest.`],
     ["3", "Governance", `GL-Freigabe pro Gate; quartalsweiser Pricing Review; Stopp bei < ${v("exit_min_geraete")} Geräten oder negativem DB.`],
   ];
   asks.forEach((a, i) => {
@@ -487,7 +491,7 @@ pres.addSection({ title: "Entscheid" });
     txt(s, a[2], { x: x + 0.2, y: 3.6, w: 3.4, h: 1.2, fontSize: 13, color: C.background1, margin: 0 });
   });
   txt(s, `Nächste Schritte ${J[0]}`, { x: 0.8, y: 5.15, w: 6, h: 0.35, fontSize: 14, bold: true, color: C.accent3, margin: 0 });
-  const nx = [["Q1", "Vollkosten validieren, Pilotverträge"], ["Q2", "Hotel-Interviews, Gabor-Granger"], ["Q3", "Fleet-Feldtest auswerten"], ["Q4", `Gate-Review G1 → ${chf(pG1)}`]];
+  const nx = [["Q1", "Vollkosten validieren, Pilotverträge"], ["Q2", "Hotel-Interviews, Gabor-Granger"], ["Q3", "Fleet-Feldtest auswerten"], ["Q4", `Review Einführung, Pipeline ${J[1]}`]];
   nx.forEach((q, i) => {
     const x = 0.8 + i * 2.95;
     txt(s, [{ text: q[0] + "  ", options: { bold: true, color: C.accent2 } }, { text: q[1], options: { color: C.background1 } }], { x, y: 5.55, w: 2.85, h: 0.7, fontSize: 13, margin: 0 });
@@ -498,15 +502,14 @@ pres.addSection({ title: "Entscheid" });
 pres.addSection({ title: "Anhang" });
 // A1 GATES
 {
-  const s = content("Anhang", "ANHANG A1 · GATES UND KPI-COCKPIT", "Jede Preisstufe braucht Durchdringung, Kundenbeleg und Ökonomie zugleich",
-    `Regeln: höchstens ein Preisschritt pro Jahr und ≤ ${pct(v("max_preisschritt"), 0)}; Gate verfehlt → Preis hält, keine Senkung; Ankündigung 6 Monate vorher; Preisschutz für laufende Projekte. Anteil bezogen auf ~${f(M.zielsegment)} Zielsegment-Bäder pro Jahr.`);
+  const s = content("Anhang", "ANHANG A1 · GATES UND KPI-COCKPIT", "Drei Preisschritte: einer nach Kalender, zwei nur mit Gate und neuer Leistung",
+    `Einführungsangebot gilt für Projekte, die bis Ende ${J[iG1 - 1]} registriert und bestellt sind; Lieferung nach Bauprogramm, spätestens Ende ${J[iG1]}; Menge ≤ Zimmerzahl des Projekts (keine Vorratskäufe). Gate verfehlt → kein Feature-Schritt, keine Senkung; Ankündigung 6 Monate vorher.`);
   const g = M.gateGeraete;
   table(s, [
-    ["Gate", "Preisschritt", "Durchdringung", "Markt und Kunde", "Ökonomie"],
-    ["G1", `CHF ${f(p1)} → ${f(pG1)} (${yr(iG1)})`, `≥${pct(ga[0])} Anteil (~${f(g[0])} Geräte/Jahr), ≥6 Referenzhotels`, "≥3 Referenzfreigaben, Win-Rate ≥25 %", "DB pro Gerät > 0; Nettopreis-Realisierung ≥95 %"],
-    ["G2", `CHF ${f(pG1)} → ${f(cp)} (${yr(iG2)})`, `≥${pct(ga[1])} Anteil (~${f(g[1])} Geräte/Jahr)`, "≥2 Ketten mit Folgeauftrag", `DB ≥ ${chf(pG1 - M.varKosten)} pro Gerät`],
-    ["G3", `Fleet-Paket ${chf(M.fleetPaket)} (${yr(iFleet)})`, `≥${pct(ga[2])} Anteil (~${f(g[2])} Geräte/Jahr)`, "Fleet-Feldtest: Alarm < 15 Min., Ausfallquote < 2 %", `Fleet-Kosten ≤ ${chf(M.featureKosten.fleet)} pro Gerät`],
-    ["G4", `Care-Paket ${chf(M.carePaket)} (${yr(iWert)})`, `≥${pct(ga[3])} Anteil (~${f(g[3])} Geräte/Jahr)`, "Hotelnutzen bestätigt (Interviews, Pilotdaten)", `Care-Kosten ≤ ${chf(M.featureKosten.care)} pro Gerät`],
+    ["Schritt", "Preisschritt", "Auslöser / Durchdringung", "Markt und Kunde", "Ökonomie"],
+    ["1", `Ende Einführung: ${f(p1)} → ${f(cp)} (${yr(iG1)})`, `Review: ≥${pct(ga[0])} Anteil (~${f(g[0])} Geräte/Jahr), ≥6 Referenzhotels`, "≥3 Referenzfreigaben; Pipeline für Cost-Plus-Preis gesichert", "DB pro Gerät > 0; Nettopreis-Realisierung ≥95 %"],
+    ["G2", `Fleet-Paket ${chf(M.fleetPaket)} (${yr(iFleet)})`, `≥${pct(ga[1])} Anteil (~${f(g[1])} Geräte/Jahr)`, "Fleet-Feldtest: Alarm < 15 Min., Ausfallquote < 2 %", `Fleet-Kosten ≤ ${chf(M.featureKosten.fleet)} pro Gerät`],
+    ["G3", `Care-Paket ${chf(M.carePaket)} (${yr(iWert)})`, `≥${pct(ga[2])} Anteil (~${f(g[2])} Geräte/Jahr)`, "Hotelnutzen bestätigt (Interviews, Pilotdaten)", `Care-Kosten ≤ ${chf(M.featureKosten.care)} pro Gerät`],
   ], { x: 0.6, y: 1.6, w: 12.15, h: 2.8 }, [0.8, 2.6, 2.75, 3.2, 2.8], { fs: 13, boldFirstCol: true });
   head(s, "KPI-Cockpit für den Quartals-Review", 0.6, 4.6, 12);
   const k = [["Durchdringung", "Geräte, Hotels, Anteil Zielsegment"], ["Preis", "Nettopreis nach Rabatten, Price Waterfall"], ["Ökonomie", "DB pro Gerät und Projekt, Payback"], ["Vertrieb", "Win-Rate, Pipeline, Folgeaufträge, Take-Rate Features"]];
@@ -526,12 +529,12 @@ pres.addSection({ title: "Anhang" });
     ["Kosten", `Herstellkosten ${chf(M.hk)} (intern); Vollkosten-Annahme ${chf(M.vollkosten)}`, "Ist-Vollkosten, Garantie- und Servicekosten", `Kalkulation mit Controlling (vor Gate G1, Q2 ${J[0]})`],
     ["Wettbewerb", `CH-Händlerpreise von ${M.peers.length} direkten Peers; Geberit-Preisleiter; Hotelreferenzen TOTO/Geberit`, "Projektpreise der Wettbewerber im Hotel", "Win/Loss-Erfassung im CRM; Interviews mit Installateuren"],
     ["Kunde (Hotelier)", "Feldtest Arlberg: 10 Geräte, 6 Monate (Betrieb); LN1-Gästedaten", "Zahlungsbereitschaft des Hoteliers für Gerät und Features", `8–10 Interviews Einkauf/Technik + Gabor-Granger im Pilot (Q1–Q3 ${J[0]})`],
-    ["Markt", "Dusch-WC ~2–2.5 % der neu verkauften WCs (Top-10 Europa); CH ~10 %, DE ~1 % der Haushalte", "Verbreitung speziell in Hotels", "Hotelstars-Auswertung; Stichprobe 100 Hotels auf Buchungsplattformen"],
+    ["Markt", `Dusch-WC: CH ~10 %, DE ~1 % der Haushalte; Hotelbestand DACH ${f(M.zimmerDACH / 1e6, 2)} Mio. Zimmer (CoStar); Pipeline ${f(M.pipeline.projekte)} Projekte, ${f(M.pipeline.eroeffnungen)} Eröffnungen ${J[0]}`, "Verbreitung in Hotels; 4/5★-Anteil DE", "Hotelstars-Auswertung; Projektliste TOPHOTELPROJECTS (Zimmer, Phase)"],
   ], { x: 0.6, y: 1.6, w: 12.15, h: 3.55 }, [1.7, 3.8, 3.1, 3.55], { fs: 13, boldFirstCol: true });
   card(s, 0.6, 5.35, 12.15, 1.15);
   txt(s, [
     { text: "Wichtigste Erkenntnis: ", options: { bold: true, color: C.accent1 } },
-    { text: "Kosten und Wettbewerb sind gut genug bekannt, um Phase 1–3 zu bepreisen. Für Phase 4 fehlt die Zahlungsbereitschaft des Hoteliers – genau diese Daten sammelt der Pilot, bevor Gate G4 den wertorientierten Preis freigibt." },
+    { text: "Kosten und Wettbewerb sind gut genug bekannt, um Phase 1–3 zu bepreisen. Für Phase 4 fehlt die Zahlungsbereitschaft des Hoteliers – genau diese Daten sammelt der Pilot, bevor Gate G3 den wertorientierten Preis freigibt." },
   ], { x: 0.85, y: 5.45, w: 11.7, h: 0.95, fontSize: 13, valign: "middle" });
 }
 
@@ -540,26 +543,23 @@ pres.addSection({ title: "Anhang" });
   const s = content("Anhang", "ANHANG A3 · ANNAHMENREGISTER", "Jede Zahl mit Herkunft und Prüfschritt",
     "Typ: Fakt = Quelle vorhanden · Teaminput = interne Angabe · Annahme = begründete Modellannahme, im Pilot zu validieren. Alle Werte stammen aus params.json (grafiken/v2).");
   const T = (k) => v(k) !== undefined && M.P[k].typ;
-  const prog = v("programmkosten"), vol = M.volumen;
+  const prog = M.programmkosten, vol = M.volumen;
   const peersB = M.peers.map((p) => p.brutto);
   table(s, [
     ["Grösse", "Wert", "Typ", "Herleitung / Prüfung", "Folie"],
     ["Herstellkosten", `${chf(M.hk)} pro Gerät`, T("herstellkosten"), M.P.herstellkosten.herleitung, "5"],
-    ["Weitere variable Kosten", `${chf(M.weitereVar)} pro Gerät`, "Annahme", `Logistik/Grosshandels-Fee ${v("kosten_logistik")} + Garantie ${v("kosten_garantie")} + Projektsupport ${v("kosten_projektsupport")}`, "5, 9"],
+    ["Weitere variable Kosten", `${chf(M.weitereVar)} pro Gerät`, "Teaminput", `Logistik ${v("kosten_logistik")} + Garantie ${v("kosten_garantie")} + Projektsupport ${v("kosten_projektsupport")}`, "5, 9"],
     ["Programm- und Gemeinkosten", `${chf(M.gemeinkostenProGeraet)} pro Gerät`, "Annahme", M.P.gemeinkosten_pro_geraet.herleitung, "5"],
-    ["Ziel-EBITDA-Marge", pct(M.marge, 0), T("ziel_ebitda_marge"), M.P.ziel_ebitda_marge.herleitung, "5"],
     ["Vergleichspreise Schweiz", `CHF ${f(v("anker_hotel_wc"))}–${f(Math.max(...peersB))} inkl. MwSt.`, "Fakt", `Händlerpreise (Momentaufnahme); ÷ ${(1 + v("mwst_ch")).toFixed(3)} auf netto umgerechnet`, "3, 5, 6"],
-    ["Zielsegment-Bäder DACH", `~${f(M.zielsegment)} pro Jahr`, "Annahme", `${f(v("hotelstars_zimmer") / 1e6, 1)} Mio. Zimmer Hotelstars Union × ${pct(v("anteil_dach"), 0)} DACH ÷ ${v("renovationszyklus")} J. Zyklus × ${pct(v("anteil_zielsegment"), 0)} Zielsegment`, "2, 9"],
-    ["Bass-Diffusion", `p = ${M.bass.p}, q = ${M.bass.q}, s_max = ${pct(M.bass.smax, 0)}`, "Annahme", "p kalibriert auf ~100 Geräte im Pilotjahr; q = Referenzeffekt; s_max = Hotelstars-Schwelle", "2, 9"],
-    ["Wettbewerb", `p_W = ${M.bass.pW}, Spillover θ = ${M.bass.theta}`, "Annahme", "Konkurrenz teilt dasselbe Potenzial; profitiert zu θ von Albas Kategorieaufbau", "9"],
-    ["Preisreaktion, Zahlungsbereitschaft", `ε = ${M.bass.eps}, δ = ${M.bass.delta}, Ref. ${chf(M.bass.ref)}`, "Annahme", "ZB = Referenzpreis × (1 + δ · Anteil/s_max); ε > 1 = elastisch", "9"],
-    ["Programmkosten", `TCHF ${tchf(prog[0])} (${J[0]}) → ${tchf(prog[prog.length - 1])} (${J[J.length - 1]})`, T("programmkosten"), M.P.programmkosten.herleitung, "9, 10"],
-    ["Take-Rates Features", `Fleet ${pct(v("takerate_fleet"), 0)}, Predict ${pct(v("takerate_predict"), 0)}, Care ${pct(v("takerate_care"), 0)}`, "Annahme", `ab Gate G3/G4, frühestens ${v("fleet_ab_jahr")} bzw. ${v("wert_ab_jahr")}`, "9"],
-    ["Feature-Kosten", `Fleet ${M.featureKosten.fleet}, Predict ${M.featureKosten.predict}, Care ${M.featureKosten.care}`, "Annahme", `Care bei ≥${v("staffel_care_ab")} Geräten ~${M.featureKosten.careBundle} (gebündelte Anfahrt); Kalkulation vor G3/G4`, "6, 7"],
-    ["Vorfallrate", `1 pro Gerät in ${f(1 / v("vorfaelle_pro_jahr"))} Jahren`, T("vorfaelle_pro_jahr"), "Mit Feldtest Arlberg (10 Geräte, 6 Monate) und Servicedaten prüfen", "6"],
-    ["Hotelnutzen-Parameter", `${chf(v("kosten_pro_vorfall"))}/Vorfall; Zimmer-DB ${v("zimmer_db_nacht")}`, "Annahme", `Vermeidbar: Fleet ${pct(v("vermeidbar_fleet"), 0)}, Predict +${pct(v("vermeidbar_predict"), 0)}; Barwert ${v("nutzen_jahre")} J. @ ${pct(v("kalkulationszins"), 0)}`, "6"],
+    ["Zielsegment-Bäder DACH", `~${k3(M.zielsegment)} pro Jahr`, "Quelle/ Annahme", `Renov. ${f(M.zimmerDACH / 1e6, 2)} Mio. × ${pct(v("anteil_zielsegment"), 0)} ÷ ${v("renovationszyklus")} J. = ${k3(M.renovationen)}; Neubau ${f(M.pipeline.eroeffnungen)} × ${pct(M.pipeline.anteil45, 0)} × ${f(M.zimmerProProjekt)} = ${k3(M.neubau)}`, "2, 9"],
+    ["Bass-Diffusion", `p ${M.bass.p}, q ${M.bass.q}, s_max ${pct(M.bass.smax, 0)}, ε ${M.bass.eps}, δ ${M.bass.delta}`, "Annahme", `s_max = Hotelstars-Kriterium 147; q knapp über Literatur (0.38)`, "2, 9"],
+    ["Wettbewerb", `p_W = ${M.bass.pW}, Spillover θ = ${M.bass.theta}`, "Annahme", "Konkurrenz teilt das Potenzial; θ = gegenseitiger Spillover", "9"],
+    ["Programmkosten, Zins", `TCHF ${tchf(prog[0])} → ${tchf(prog[prog.length - 1])}; Barwert @ ${pct(v("kalkulationszins_bc"), 0)}`, "Team/ Annahme", `Zusatzkosten: ${v("b2b_pm_anzahl")} PM × ${pct(v("b2b_pm_zeitanteil"), 0)} × ${tchf(v("b2b_pm_kosten_fte"))}k + Referenz, Schulung, Fleet`, "9, 10"],
+    ["Features", `Take ${pct(v("takerate_fleet"), 0)}/${pct(v("takerate_predict"), 0)}/${pct(v("takerate_care"), 0)}; Kosten ${M.featureKosten.fleet}/${M.featureKosten.predict}/${M.featureKosten.care}`, "Annahme", `Preis = ${pct(M.wertanteil, 0)} des Hotelnutzens (${M.preisFleet}/${M.preisPredict}/${M.preisCare}); Fleet ab G2, Care ab G3`, "6, 7, 9"],
+    ["Hotelnutzen", `1 Vorfall in ${f(1 / v("vorfaelle_pro_jahr"))} J.; ${chf(v("kosten_pro_vorfall"))}/Vorfall`, "Team/Annahme", `Vermeidbar: Fleet ${pct(v("vermeidbar_fleet"), 0)}, Predict +${pct(v("vermeidbar_predict"), 0)}; Barwert ${v("nutzen_jahre")} J. @ ${pct(v("kalkulationszins"), 0)}; Feldtest prüfen`, "6"],
+    ["Kanal, Kannibalisierung", `${pct(M.kanal, 0)} Nettoanteil; ${pct(v("kannibalisierung_anteil"), 0)} × CHF ${v("db_geberit_keramik")}`, "Annahme", "Features direkt (100 %); 80 % der ersetzten WCs sind Konkurrenzprodukte", "5, 9"],
     ["Value Message", `${chf(M.mehrinvestition)} ÷ ${f(M.naechte)} Nächte`, "Annahme", `Alba ${f(p1)} + Elektro ~${v("kosten_elektroanschluss")} − Geberit iCon ${f(M.anker.hotelWC)}; ${v("nutzungsdauer_jahre")} J. × 365 × ${pct(v("auslastung"), 0)}`, "4"],
-    ["Einstieg DE / AT", `€ ${f(M.preisDE)} / € ${f(M.preisAT)} netto`, "Annahme", `~${pct(v("faktor_strassenpreis"), 0)} des lokalen Strassenpreises netto (DE online € ${f(v("strassenpreis_de_eur")[0])}–${f(v("strassenpreis_de_eur")[1])} brutto)`, "8"],
+    ["Ländermix DE / AT / CH", `€ ${f(M.preisDE)} / € ${f(M.preisAT)} / CHF ${f(M.p1)}`, "Annahme", `Gewicht ${pct(M.laenderAnteil.de, 0)} / ${pct(M.laenderAnteil.at, 0)} / ${pct(M.laenderAnteil.ch, 0)} (Zimmer); DE/AT lokal → Ø ${pct(M.preisfaktorDACH, 0)} des CH-Preises`, "8, 9"],
     ["Preisszenarien", `Skim ${f(M.szenario("skimming").preise[0])} → ${f(M.szenario("skimming").preise[L])}; konstant ${f(M.szenario("konstant").preise[0])}`, "Annahme", "Konstant = Privatkunden-Listenpreis netto (Teaminput); gleiche Programmkosten", "9"],
   ], { x: 0.6, y: 1.4, w: 12.15, h: 5.05 }, [2.45, 2.75, 1.0, 5.3, 0.65], { fs: 10, boldFirstCol: true });
 }
@@ -601,10 +601,10 @@ pres.addSection({ title: "Anhang" });
     ["3 · Analyse und Informationen", "A2, A3", "Kosten und Wettbewerb ausreichend; Hotelier-WTP kommt aus dem Pilot"],
     ["4 · Preisfestsetzung", "5, 6", "Ein Preismodell pro Phase: Basis, Cost-Plus, Mitbewerber, wertorientiert"],
     ["5 · Behavioral Pricing", "7", "Ankerwechsel, Referenzpreis, Framing, Kompromisseffekt, Schwellenpreise"],
-    ["6 · Preisdifferenzierung und Online", "7, A4", "Mengenstaffel je Standort; Software-Abo online; Pay-per-Flush als Option"],
+    ["6 · Preisdifferenzierung und Online", "7, A4", "Mengenstaffel je Standort; Features separat bepreist; Pay-per-Flush als Option (Anhang)"],
     ["7 · Umsetzung", "8, A1", "Preishoheit, Konditionen, Vertriebsanreize, Controlling"],
     ["8 · Internationale Preispolitik", "8", "Deutschland zuerst, lokaler Euro-Preis, Korridor DE/AT"],
-    ["9 · Preisveränderungen", "2, 5, 9, A1", `Preisanstieg über Gates gekoppelt an Durchdringung, ≤ ${pct(v("max_preisschritt"), 0)} pro Schritt`],
+    ["9 · Preisveränderungen", "2, 5, 9, A1", `Einführungsangebot ${M.einfuehrungJahre} J., dann Cost-Plus; Features über Gates`],
   ], { x: 0.6, y: 1.6, w: 12.15, h: 4.8 }, [3.6, 1.3, 7.25], { fs: 13, boldFirstCol: true });
 }
 

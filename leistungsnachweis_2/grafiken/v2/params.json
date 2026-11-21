@@ -1,10 +1,10 @@
 {
   "_hinweis": "ZENTRALE PARAMETER fuer LN2 v2. Nur hier Werte aendern, dann 'node model.js' (Pruefung) und 'node build_v2.js' (Deck neu bauen). Alle abgeleiteten Zahlen (Vollkosten, Cost-Plus-Preis, Fleet-Preis, Mindestpreise, Hotelnutzen, Business Case, DE/AT-Preise, Value Message) werden in model.js berechnet. Typ: Fakt | Teaminput | Annahme.",
   "_favoriten": [
-    "preis_phase1",
+    "einfuehrung_rabatt",
+    "costplus_zuschlag",
+    "wertabschoepfung_features",
     "bass_q",
-    "bass_eps",
-    "wettbewerb_p",
     "herstellkosten"
   ],
   "jahre": {
@@ -36,30 +36,82 @@
     "folien": "5"
   },
   "kosten_logistik": {
-    "wert": 40,
-    "label": "Logistik/Grosshandels-Fee",
-    "typ": "Annahme"
+    "wert": 15,
+    "label": "Logistik/Verpackung",
+    "typ": "Teaminput",
+    "herleitung": "Teamvorgabe: variable Kosten total max. CHF 300 (HK 250 + 50); Aufteilung im Team festgelegt"
   },
   "kosten_garantie": {
-    "wert": 50,
+    "wert": 15,
     "label": "Garantie/Retouren",
-    "typ": "Annahme"
+    "typ": "Teaminput",
+    "herleitung": "Teamvorgabe: variable Kosten total max. CHF 300 (HK 250 + 50); Aufteilung im Team festgelegt"
   },
   "kosten_projektsupport": {
-    "wert": 60,
+    "wert": 20,
     "label": "Projektsupport",
-    "typ": "Annahme"
+    "typ": "Teaminput",
+    "herleitung": "Teamvorgabe: variable Kosten total max. CHF 300 (HK 250 + 50); Aufteilung im Team festgelegt"
+  },
+  "kanal_nettoanteil": {
+    "wert": 0.7,
+    "label": "Kanal: Geberit-Nettoerlös in % des Hotelpreises (Grundgerät, über Grosshandel/Installateur)",
+    "typ": "Annahme",
+    "herleitung": "Dreistufiger Vertrieb; 30 % bleiben bei Grosshandel und Installateur",
+    "folien": "5, 9"
+  },
+  "kanal_nettoanteil_features": {
+    "wert": 1.0,
+    "label": "Kanal: Nettoerlös-Anteil der Features (Fleet, Predict, Care – Direktverkauf)",
+    "typ": "Annahme",
+    "herleitung": "Software und Service direkt über Hotelportal/Servicevertrag",
+    "folien": "9"
+  },
+  "kannibalisierung_anteil": {
+    "wert": 0.2,
+    "label": "Kannibalisierung: Anteil der ersetzten WCs, die sonst eine Geberit-Keramik wären",
+    "typ": "Annahme",
+    "herleitung": "Geberit ist bei Hotel-Keramik kleiner als der Wettbewerb; 80 % wären Konkurrenzprodukte",
+    "folien": "9"
+  },
+  "db_geberit_keramik": {
+    "wert": 120,
+    "label": "Kannibalisierung: entgangener DB je ersetzter Geberit-Keramik (z. B. iCon)",
+    "typ": "Annahme",
+    "herleitung": "iCon netto ~CHF 429 × 70 % Kanal ≈ CHF 300 Erlös, ~40 % DB",
+    "folien": "9"
   },
   "gemeinkosten_pro_geraet": {
     "wert": 300,
-    "label": "Programm- und Gemeinkosten pro Gerät (für Cost-Plus)",
+    "label": "Programm- und Gemeinkosten pro Gerät beim Referenzvolumen (für Cost-Plus)",
     "typ": "Annahme",
-    "herleitung": "CHF 300'000 Programmkosten bei ~1'000 Geräten pro Jahr",
+    "herleitung": "Vollkostensicht inkl. geteiltem Vertrieb/Overhead (~300k bei ~1'000 Geräten)",
     "folien": "5"
+  },
+  "costplus_zuschlag": {
+    "wert": 0.05,
+    "label": "Gewinnzuschlag auf Vollkosten (Cost-Plus)",
+    "typ": "Annahme",
+    "herleitung": "Projektpreis ab 5 Geräten ≈ Listenpreis −10 %; Platzhalter, bis Projekt-Vollkosten (Logistik/Support pro Projekt statt pro Gerät) ausgearbeitet sind",
+    "folien": "2, 5"
+  },
+  "wertabschoepfung_features": {
+    "wert": 0.6,
+    "label": "Wertabschöpfung Features (Anteil des Hotelnutzens im Preis)",
+    "typ": "Annahme",
+    "herleitung": "Einheitliche Regel: Geberit schöpft 60 % des Hotelnutzens ab, 40 % bleiben als Kaufanreiz beim Hotel; im Pilot zu validieren",
+    "folien": "6, A3"
+  },
+  "buendelrabatt_care": {
+    "wert": 0.01,
+    "label": "Bündelrabatt Care-Paket ggü. Summe Fleet-Paket + Predict + Care",
+    "typ": "Annahme",
+    "herleitung": "Care-Paket als Schwellenpreis knapp unter der Summe der Einzelteile",
+    "folien": "6"
   },
   "ziel_ebitda_marge": {
     "wert": 0.3,
-    "label": "Ziel-EBITDA-Marge",
+    "label": "Ziel-EBITDA-Marge (Benchmark: ab wann erreicht das Alba-Programm Konzernniveau?)",
     "typ": "Annahme",
     "herleitung": "Orientierung an Geberit-Konzern 2025: 29.4 % (Fakt, Geschäftsbericht)",
     "folien": "5"
@@ -69,35 +121,19 @@
     "label": "Geberit EBITDA-Marge 2025",
     "typ": "Fakt"
   },
-  "preis_phase1": {
-    "wert": 790,
-    "label": "Einführungspreis Phase 1 (netto)",
+  "einfuehrung_rabatt": {
+    "wert": 0.3,
+    "label": "Einführungsrabatt auf Listenpreis («Geberit AquaClean Jahre»)",
     "typ": "Teaminput",
+    "herleitung": "30 % auf den Privat-Listenpreis CHF 1'000 = CHF 700; öffentlicher Listenpreis als Anker",
     "folien": "2, 5"
   },
-  "preis_stufe_g1": {
-    "wert": 890,
-    "label": "Zwischenstufe nach Gate G1 (netto)",
-    "typ": "Annahme",
-    "folien": "2, 5"
-  },
-  "preis_predict": {
-    "wert": 99,
-    "label": "Predict, Preis im Fleet-Bundle",
-    "typ": "Annahme",
-    "folien": "6, 7"
-  },
-  "preis_care": {
-    "wert": 249,
-    "label": "Care 3 Jahre, Preis im Fleet-Bundle",
-    "typ": "Annahme",
-    "folien": "6, 7"
-  },
-  "preis_care_paket": {
-    "wert": 1499,
-    "label": "Care-Paket ab 10 Geräten (alles inkl.)",
-    "typ": "Annahme",
-    "folien": "2, 6, 7"
+  "einfuehrung_jahre": {
+    "wert": 2,
+    "label": "Dauer Einführungsangebot (Jahre)",
+    "typ": "Teaminput",
+    "herleitung": "2 Jahre (2027–2028): länger wäre ein Dauerrabatt und würde Vorratsbestellungen fördern",
+    "folien": "2, 5, A1"
   },
   "einzelpreis_fleet": {
     "wert": 249,
@@ -112,11 +148,6 @@
   "einzelpreis_care": {
     "wert": 299,
     "label": "Care einzeln (1–4 Geräte)",
-    "typ": "Annahme"
-  },
-  "abo_fleet_monat": {
-    "wert": 7,
-    "label": "Fleet/Predict als Abo pro Gerät und Monat",
     "typ": "Annahme"
   },
   "featurekosten_fleet": {
@@ -197,23 +228,101 @@
     "typ": "Annahme",
     "folien": "9"
   },
-  "programmkosten": {
-    "wert": [
-      170000,
-      250000,
-      300000,
-      450000,
-      550000,
-      600000,
-      600000,
-      600000,
-      600000,
-      600000
-    ],
-    "label": "Programmkosten pro Jahr (CHF)",
+  "b2b_pm_anzahl": {
+    "wert": 3,
+    "label": "B2B-Produktmanager (1 pro Land: DE, AT, CH)",
+    "typ": "Fakt",
+    "herleitung": "Geberit-Organisation: ein B2B-PM pro Land; Stellen bestehen bereits",
+    "folien": "9, A3"
+  },
+  "b2b_pm_kosten_fte": {
+    "wert": 140000,
+    "label": "Kosten pro FTE B2B-PM (CHF/Jahr, inkl. Sozialleistungen)",
     "typ": "Annahme",
-    "herleitung": "2027: KAM 0.5 FTE 70k, Referenzprogramm 40k, Interviews 20k, Fleet-Feldtest 40k",
-    "folien": "9, 10"
+    "herleitung": "Aus Teaminput 2027 (0.5 FTE = 70k) abgeleitet",
+    "folien": "A3"
+  },
+  "b2b_pm_zeitanteil": {
+    "wert": 0.2,
+    "label": "Zeitanteil der B2B-PMs für das Alba-Programm",
+    "typ": "Teaminput",
+    "herleitung": "PMs betreuen Hotels über alle Produkte und sind ohnehin da; dem Programm wird nur der Opportunitätsanteil von max. 20 % belastet",
+    "folien": "9, A3"
+  },
+  "prog_referenzprogramm": {
+    "wert": [
+      40000,
+      50000,
+      60000,
+      70000,
+      80000,
+      80000,
+      80000,
+      80000,
+      80000,
+      80000
+    ],
+    "label": "Referenzprogramm (Referenzhotels, Messen, Value-Selling-Kit), CHF/Jahr",
+    "typ": "Annahme",
+    "folien": "A3"
+  },
+  "prog_schulungen": {
+    "wert": [
+      0,
+      30000,
+      30000,
+      40000,
+      40000,
+      30000,
+      30000,
+      30000,
+      30000,
+      30000
+    ],
+    "label": "Installateur-Schulungen, CHF/Jahr",
+    "typ": "Annahme",
+    "folien": "A3"
+  },
+  "prog_marktforschung": {
+    "wert": [
+      20000,
+      10000,
+      10000,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "label": "Marktforschung (Interviews, Gabor-Granger), CHF/Jahr",
+    "typ": "Annahme",
+    "folien": "A3"
+  },
+  "prog_fleet_care": {
+    "wert": [
+      40000,
+      20000,
+      60000,
+      60000,
+      80000,
+      70000,
+      70000,
+      70000,
+      70000,
+      70000
+    ],
+    "label": "Fleet/Care: Feldtest, Entwicklung, Plattformbetrieb, CHF/Jahr",
+    "typ": "Annahme",
+    "folien": "A3"
+  },
+  "kalkulationszins_bc": {
+    "wert": 0.08,
+    "label": "Kalkulationszins für den Barwert des Business Case",
+    "typ": "Annahme",
+    "herleitung": "Orientierung an üblichen Industrie-WACC (7–9 %)",
+    "folien": "9"
   },
   "pilot_hotels": {
     "wert": 10,
@@ -226,24 +335,24 @@
     "typ": "Annahme"
   },
   "bass_p": {
-    "wert": 0.011,
+    "wert": 0.0165,
     "label": "Bass p: Innovationskoeffizient (Hotels, die ohne Vorbild kaufen)",
     "typ": "Annahme",
-    "herleitung": "Kalibriert auf ~100 Geräte im Pilotjahr",
+    "herleitung": "Kalibriert auf ~100 Geräte im Pilotjahr (bei s_max 20 %)",
     "folien": "9"
   },
   "bass_q": {
-    "wert": 1.0,
+    "wert": 0.5,
     "label": "Bass q: Imitationskoeffizient (Kauf wegen Referenzen = Create the Category)",
     "typ": "Annahme",
-    "herleitung": "Starker Referenzeffekt im Objektgeschäft; im Pilot messen",
+    "herleitung": "Referenzeffekt (Imitation); Literaturmittel q ≈ 0.38 (Sultan/Farley/Lehmann 1990), leicht höher wegen Sichtbarkeit im Hotel (Gäste, Kettenrollout)",
     "folien": "9"
   },
   "bass_smax": {
     "wert": 0.3,
     "label": "Sättigung: maximaler Alba-Anteil an den Zielsegment-Bädern",
-    "typ": "Annahme",
-    "herleitung": "Hotelstars-Schwelle 30 % der Bäder",
+    "typ": "Annahme (Quelle)",
+    "herleitung": "Hotelstars Union Kriterium 147 (2025–2030): «30 % der Zimmer mit Dusch-WC» = 5 Klassifikationspunkte, optional. Wer die Punkte will, rüstet ≥30 % der Zimmer aus → Obergrenze 30 % der renovierten Zielsegment-Bäder (alle Marken)",
     "folien": "9"
   },
   "bass_eps": {
@@ -252,6 +361,13 @@
     "typ": "Annahme",
     "herleitung": "Elastische Nachfrage in der Einführungsphase",
     "folien": "9"
+  },
+  "bass_preiseffekt_max": {
+    "wert": 1.5,
+    "label": "Max. Beschleunigung durch Preis unter Zahlungsbereitschaft (Faktor)",
+    "typ": "Annahme",
+    "herleitung": "Ein Preis unter der Zahlungsbereitschaft beschleunigt die Adoption mit (Preis/ZB)^−ε, begrenzt auf ×1.5 (Kapazität Vertrieb, Projektzyklen)",
+    "folien": "9, A3"
   },
   "bass_delta": {
     "wert": 1.0,
@@ -285,45 +401,103 @@
     "herleitung": "Hotels lernen die Kategorie bei Alba kennen, kaufen aber teils bei der Konkurrenz",
     "folien": "9"
   },
-  "hotelstars_zimmer": {
-    "wert": 1200000,
-    "label": "Klassifizierte Zimmer Hotelstars Union (21 Länder)",
-    "typ": "Fakt"
+  "hotel_zimmer_de": {
+    "wert": 755000,
+    "label": "Hotelzimmer Bestand Deutschland",
+    "typ": "Fakt",
+    "herleitung": "CoStar via Hotel Inside, «Wie entwickelt sich der Hotelmarkt im DACH-Raum?» (24.10.2023): fast 755'000 Zimmer in 11'280 Betrieben",
+    "folien": "A3"
   },
-  "anteil_dach": {
-    "wert": 0.5,
-    "label": "Anteil DACH an Hotelstars-Zimmern",
-    "typ": "Annahme"
+  "hotel_zimmer_at": {
+    "wert": 153000,
+    "label": "Hotelzimmer Bestand Österreich",
+    "typ": "Fakt",
+    "herleitung": "CoStar via Hotel Inside, «Wie entwickelt sich der Hotelmarkt im DACH-Raum?» (24.10.2023): über 153'000 Zimmer in 2'783 Betrieben",
+    "folien": "A3"
+  },
+  "hotel_zimmer_ch": {
+    "wert": 128000,
+    "label": "Hotelzimmer Bestand Schweiz",
+    "typ": "Fakt",
+    "herleitung": "CoStar via Hotel Inside, «Wie entwickelt sich der Hotelmarkt im DACH-Raum?» (24.10.2023): knapp 128'000 Zimmer (BFS 2024: 135'170 verfügbare Zimmer)",
+    "folien": "A3"
   },
   "renovationszyklus": {
-    "wert": 12,
+    "wert": 15,
     "label": "Renovationszyklus Hotelbad (Jahre)",
-    "typ": "Fakt"
+    "typ": "Annahme (Quelle)",
+    "herleitung": "Hotelbäder nach 15–20 Jahren renovierungsbedürftig (Furnirent, Hogapage); Bäder im Schnitt alle 10 Jahre renoviert (Hogapage 2018) → Mitte 15 Jahre",
+    "folien": "A3"
   },
   "anteil_zielsegment": {
-    "wert": 0.6,
-    "label": "Anteil Zielsegment",
-    "typ": "Annahme"
+    "wert": 0.45,
+    "label": "Anteil 4/5-Sterne-Zimmer am Bestand",
+    "typ": "Annahme (Quelle)",
+    "herleitung": "CH 37 % (50'582 Zimmer 4/5★ von 135'170; HotellerieSuisse/BFS), AT 51 % (5/4★-Betten 2025; Statistik Austria); Neubau-Pipeline 56 % → Bestand 45 %",
+    "folien": "A3"
+  },
+  "thp_projekte_dach": {
+    "wert": 661,
+    "label": "Aktive Hotelprojekte DACH (Pipeline)",
+    "typ": "Fakt",
+    "herleitung": "TOPHOTELPROJECTS, «Die DACH-Pipeline in Zahlen» (16.11.2026): DE 494, AT 78, CH 89",
+    "folien": "3, A2"
+  },
+  "thp_projekte_4_5_sterne": {
+    "wert": 371,
+    "label": "davon 4- und 5-Sterne-Projekte",
+    "typ": "Fakt",
+    "herleitung": "TOPHOTELPROJECTS, «Die DACH-Pipeline in Zahlen» (16.11.2026): 283 × 4★ + 88 × 5★",
+    "folien": "3, A3"
+  },
+  "thp_projekte_planung": {
+    "wert": 385,
+    "label": "Projekte in Vorplanung/Planung (vor Sanitärspezifikation)",
+    "typ": "Fakt",
+    "herleitung": "TOPHOTELPROJECTS, «Die DACH-Pipeline in Zahlen» (16.11.2026): Vorplanung 124 + Planung 261",
+    "folien": "8"
+  },
+  "thp_eroeffnungen_2027": {
+    "wert": 239,
+    "label": "Geplante Hoteleröffnungen 2027 DACH",
+    "typ": "Fakt",
+    "herleitung": "TOPHOTELPROJECTS, «Die DACH-Pipeline in Zahlen» (16.11.2026): 162 im Bau + 70 Planung + 7 Vorplanung; als jährliches Neubauniveau angenommen",
+    "folien": "A2"
+  },
+  "costar_pipeline_zimmer": {
+    "wert": 152780,
+    "label": "Pipeline DACH: Zimmer",
+    "typ": "Fakt",
+    "herleitung": "CoStar via Hotel Inside, «Wie entwickelt sich der Hotelmarkt im DACH-Raum?» (24.10.2023): 152'780 Zimmer",
+    "folien": "A3"
+  },
+  "costar_pipeline_projekte": {
+    "wert": 1724,
+    "label": "Pipeline DACH: Projekte",
+    "typ": "Fakt",
+    "herleitung": "CoStar via Hotel Inside, «Wie entwickelt sich der Hotelmarkt im DACH-Raum?» (24.10.2023): 1'724 Betriebe → Ø 89 Zimmer pro Projekt",
+    "folien": "A3"
   },
   "gate_anteile": {
     "wert": [
-      0.03,
-      0.08,
-      0.12,
-      0.15
+      0.008,
+      0.06,
+      0.08
     ],
-    "label": "Gate-Schwellen G1–G4 (Alba-Anteil an den Zielsegment-Bädern)",
+    "label": "Gates: G1 Review Einführung (Anteil), G2 Fleet, G3 Care",
     "typ": "Annahme"
   },
   "hotelstars_punkte": {
     "wert": 5,
     "label": "Hotelstars-Punkte für Dusch-WC",
-    "typ": "Fakt"
+    "typ": "Fakt",
+    "herleitung": "Hotelstars Union Kriterienkatalog 2025–2030, Kriterium 147"
   },
   "hotelstars_schwelle": {
     "wert": 0.3,
     "label": "Anteil Bäder mit Dusch-WC für Punkte",
-    "typ": "Fakt"
+    "typ": "Fakt",
+    "herleitung": "Hotelstars Union Kriterienkatalog 2025–2030, Kriterium 147: «30 % der Zimmer mit Dusch-WC» (optional, 5 Punkte)"
   },
   "vorfaelle_pro_jahr": {
     "wert": 0.3333333333,
@@ -468,10 +642,12 @@
     "label": "MwSt. Österreich",
     "typ": "Fakt"
   },
-  "faktor_strassenpreis": {
-    "wert": 0.95,
-    "label": "Hotelpreis in % des lokalen Strassenpreises netto",
-    "typ": "Annahme"
+  "wechselkurs_eur_chf": {
+    "wert": 0.924,
+    "label": "Wechselkurs CHF pro EUR",
+    "typ": "Fakt",
+    "herleitung": "Mittelkurs 18.11.2026 (1 EUR = 0.924 CHF)",
+    "folien": "8, 9"
   },
   "ppf_installation": {
     "wert": 150,
@@ -496,11 +672,6 @@
   "ppf_gebuehr": {
     "wert": 0.2,
     "label": "Pay-per-Flush: Gebühr pro Nutzung",
-    "typ": "Annahme"
-  },
-  "max_preisschritt": {
-    "wert": 0.13,
-    "label": "Maximale Erhöhung pro Preisschritt",
     "typ": "Annahme"
   }
 }

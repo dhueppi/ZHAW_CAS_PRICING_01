@@ -41,8 +41,8 @@ Dann **http://localhost:8080** im Browser öffnen.
 ## Beispiel: Herstellkosten ändern
 
 In `params.json` `"herstellkosten": { "wert": 250 … }` auf 300 setzen. Danach ändern sich automatisch:
-Vollkosten (750), Cost-Plus-Preis (CHF 1'070), Fleet-Aufpreis, Deckungsbeiträge, alle Szenarien, Break-even und das Annahmenregister.
-`node model.js` meldet dann zusätzlich `WARN Preisschritte 12.7 % / 20.2 % ≤ 13 %` – also: Zwischenstufe (`preis_stufe_g1`) anpassen oder einen dritten Schritt einplanen.
+Vollkosten (650), Cost-Plus-Preis (CHF 1'080), Fleet-Aufpreis, Deckungsbeiträge, alle Szenarien, Break-even und das Annahmenregister.
+Preispfad Penetration: Einführungsangebot = Listenpreis × (1 − `einfuehrung_rabatt`) während `einfuehrung_jahre` (Kalender), danach Cost-Plus = Projektpreis ab 5 Geräten (`costplus_zuschlag`); Fleet ab Gate G2, Care ab Gate G3. Feature-Preise = `wertabschoepfung_features` × Hotelnutzen (Schwellenpreise), Fleet-Paket höchstens knapp unter dem günstigsten Peer; Care-Paket = Summe × (1 − `buendelrabatt_care`).
 
 ## Absatzmodell: Bass-Diffusion («Create the Category», Folie 9)
 
@@ -50,11 +50,14 @@ Der Absatz ist kein Eingabewert mehr, sondern wird aus einem **Bass-Diffusionsmo
 
 ```
 frei_t        = s_max − Alba_t−1 − Konkurrenz_t−1
-ΔAlba         = (p   + q · Alba/s_max)                 · frei · (Preis_t / ZB_t)^(−ε)
+ZB_t          = Referenzpreis · (1 + δ · (Alba + θ·Konkurrenz)/s_max)     (v. a. Albas eigene Referenzen)
+frei_Alba     = s_max · min(1, (ZB_t / Preis_t)^ε) − Alba − Konkurrenz     (preisabhängiges Potenzial, Kalish 1985)
+ΔAlba         = (p   + q · Alba/s_max)                 · frei_Alba · min(z_max, (Preis_t / ZB_t)^(−ε))
 ΔKonkurrenz   = (p_W + q · (Konkurrenz + θ·Alba)/s_max) · frei
-ZB_t          = Referenzpreis · (1 + δ · (Alba + Konkurrenz)/s_max)
 Absatz_t      = Alba_t × Zielsegment-Bäder pro Jahr (~30'000)
 ```
+
+Jedes Preisszenario wird **eigenständig** gerechnet (Entweder-oder: Geberit fährt genau eine Strategie). Ein Preis über der Zahlungsbereitschaft bremst das Tempo **und** verkleinert das erreichbare Potenzial; ein Preis unter der Zahlungsbereitschaft beschleunigt, begrenzt auf `bass_preiseffekt_max` (×1.5).
 
 Wer schneller Referenzen aufbaut, besetzt das Potenzial, bevor die Konkurrenz es holt (First-Mover). Ein hoher Einstiegspreis bremst Alba und überlässt der Konkurrenz den Markt – dauerhaft.
 
@@ -76,15 +79,22 @@ Wer schneller Referenzen aufbaut, besetzt das Potenzial, bevor die Konkurrenz es
 
 | Szenario | Preis Grundgerät | Parameter |
 |---|---|---|
-| Penetration (unsere Strategie) | 790 → 890 → Cost-Plus, über Gates | `preis_phase1`, `preis_stufe_g1`, `gate_anteile` |
+| Penetration (unsere Strategie) | 700 (Liste −30 %, 2 Jahre) → 900 (Projektpreis) → + Fleet (G2) → + Care (G3) | `einfuehrung_rabatt`, `einfuehrung_jahre`, `costplus_zuschlag`, `wertabschoepfung_features`, `gate_anteile` |
 | Skimming | hoch einsteigen, dann senken | `szenario_skimming_preise` (ein Preis pro Jahr) |
 | Konstant | heutiger Privatkunden-Listenpreis netto (CHF 1'000), gehalten | `szenario_konstant_preis` (0 = automatisch `alba_listenpreis_privat_netto`) |
 
-Programmkosten und Feature-Regeln sind in allen Szenarien gleich. Warum die Penetration gewinnt: Ein tiefer Einstieg beschleunigt die Referenzen (q), Alba besetzt mehr vom Markt, bevor die Konkurrenz ihn holt (Endanteil 17.5 % statt 13–15 %), und danach erntet die Penetration über den höheren Preis. Theorie: Bei starkem Imitationseffekt ist ein steigender Preispfad optimal (Dolan & Jeuland 1981).
+Programmkosten und Feature-Regeln sind in allen Szenarien gleich. Programmkosten enthalten nur **zusätzliche** Kosten (Relevanzprinzip): `b2b_pm_anzahl` (1 B2B-PM pro Land) × `b2b_pm_kosten_fte` × `b2b_pm_zeitanteil` (20 %) plus die Positionen `prog_*` (Referenzprogramm, Schulungen, Marktforschung, Fleet/Care). Cost-Plus rechnet dagegen bewusst mit Vollkosten inkl. geteiltem Vertrieb (`gemeinkosten_pro_geraet`).
+
+**Kanal, Kannibalisierung, Barwert:** Geberit erhält beim Grundgerät nur `kanal_nettoanteil` (70 %) des Hotelpreises; Features laufen direkt (`kanal_nettoanteil_features` = 100 %). Cost-Plus = Vollkosten × (1 + `costplus_zuschlag`) ÷ Kanalanteil (klassisches Cost-Plus mit Gewinnzuschlag). Pro verkauftem Alba fällt `kannibalisierung_anteil` × `db_geberit_keramik` an entgangenem Geberit-Keramik-DB weg. Szenarien werden über den Barwert (`kalkulationszins_bc`, 8 %) verglichen. Warum die Penetration gewinnt: Ein tiefer Einstieg beschleunigt die Referenzen (q), Alba besetzt mehr vom Markt, bevor die Konkurrenz ihn holt (Endanteil 17.5 % statt 13–15 %), und danach erntet die Penetration über den höheren Preis. Theorie: Bei starkem Imitationseffekt ist ein steigender Preispfad optimal (Dolan & Jeuland 1981).
+
+## DACH-Ausrichtung (Markt und Ländermix)
+
+- **Marktvolumen:** Zielsegment-Bäder pro Jahr = Renovation (Hotelzimmer DE + AT + CH × 4/5★-Anteil ÷ Renovationszyklus) + Neubau (Eröffnungen × 4/5★-Anteil × Ø Zimmer pro Projekt). Quellen in `params.json`.
+- **Ländermix im Business Case:** Volumen nach Zimmerbestand gewichtet; DE/AT zu lokalen Preisen (`preisDE`/`preisAT` in EUR × `wechselkurs_eur_chf`). Daraus `preisfaktorDACH` (Ø Erlös in % des CH-Preises), der auf Gerät und Features wirkt. Der Preispfad selbst ist als CH-Listenpreis angegeben; DE/AT folgen ihm proportional.
 
 ## Was bewusst Eingabe ist und was gerechnet wird
 
-- **Eingabe (Entscheide/Annahmen):** Einführungspreis 790, Zwischenstufe 890, Predict 99, Care 249, Care-Paket 1'499, Einzelpreise, Take-Rates, Programmkosten, Bass-Parameter, Gate-Schwellen.
+- **Eingabe (Entscheide/Annahmen):** Einführungsrabatt 30 % und Dauer 2 Jahre, Cost-Plus-Zuschlag, Wertabschöpfung Features 60 %, Bündelrabatt, Einzelpreise, Take-Rates, Programmkosten, Bass-Parameter, Gate-Schwellen.
 - **Gerechnet:** Absatz je Szenario (Bass-Diffusion), Zeitpunkte der Gates, Cost-Plus-Preis (gerundet auf 10), Fleet-Paket (Schwellenpreis unter dem günstigsten Peer netto), DE/AT-Preise (Schwellenpreis aus 95 % des Strassenpreises netto), alle Nutzen-, Margen- und Business-Case-Werte.
 
 ## Hinweise

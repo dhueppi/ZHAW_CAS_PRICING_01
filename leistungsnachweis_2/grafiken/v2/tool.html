@@ -109,8 +109,8 @@
       <div class="card"><h2>Folie 4 · Value Message</h2><div class="vm" id="vm"></div><div class="formula" id="f_vm"></div></div>
       <div class="card"><h2>Folie 7 · Mengenstaffel</h2><div id="t_staffel"></div></div>
 
-      <div class="card" data-chart="preiszeit"><h2>Folie 9 · Preis über Zeit <span class="dl"></span></h2><div class="sub">Preis Grundgerät je Szenario, CHF netto · grau = kurzfristig DB-optimal ohne Diffusion</div><div id="c_preiszeit"></div></div>
-      <div class="card" data-chart="absatzzeit"><h2>Folie 9 · Absatz über Zeit <span class="dl"></span></h2><div class="sub">Alba-Geräte pro Jahr je Szenario (Bass-Diffusion mit Wettbewerb)</div><div id="c_absatzzeit"></div></div>
+      <div class="card" data-chart="preiszeit"><h2>Folie 9 · Preis über Zeit <span class="dl"></span></h2><div class="sub">Preis Grundgerät je Szenario (CH-Liste; DACH-Erlös = Ländermix), CHF netto · ▲ = Preiserhöhung über Feature-Paket (Penetration)</div><div id="c_preiszeit"></div></div>
+      <div class="card" data-chart="absatzzeit"><h2>Folie 9 · Absatz über Zeit <span class="dl"></span></h2><div class="sub">Alba-Geräte pro Jahr je Szenario (Bass-Diffusion mit Wettbewerb) · ▲ = Start Feature-Paket</div><div id="c_absatzzeit"></div></div>
       <div class="card wide" data-chart="bc"><h2>Folie 9 · Business Case je Szenario <span class="dl"></span></h2><div class="sub">Kumulierter Deckungsbeitrag nach Programmkosten, TCHF</div><div id="c_bc"></div><div id="t_bc"></div><div id="t_paf"></div></div>
 
       <div class="card"><h2>Folie 8 · International</h2><div id="t_int"></div><div class="formula" id="f_int"></div></div>
@@ -136,16 +136,17 @@
 // Parameter, die hier fehlen, erscheinen automatisch unter «Weitere Parameter».
 const GROUPS = [
   ["Kosten und Marge", [["herstellkosten", 100, 600, 5], ["kosten_logistik", 0, 150, 5], ["kosten_garantie", 0, 150, 5], ["kosten_projektsupport", 0, 200, 5], ["ziel_ebitda_marge", 0.05, 0.5, 0.01, "pct"], ["gemeinkosten_pro_geraet", 0, 800, 10]]],
-  ["Preise", [["preis_phase1", 500, 1200, 10], ["preis_stufe_g1", 600, 1400, 10], ["preis_predict", 0, 300, 1], ["preis_care", 0, 500, 1], ["preis_care_paket", 1000, 2500, 1], ["einzelpreis_fleet", 0, 500, 1], ["einzelpreis_predict", 0, 300, 1], ["einzelpreis_care", 0, 600, 1], ["abo_fleet_monat", 0, 30, 1], ["max_preisschritt", 0.05, 0.3, 0.01, "pct"]]],
+  ["Kanal und Kannibalisierung", [["kanal_nettoanteil", 0.4, 1, 0.01, "pct"], ["kanal_nettoanteil_features", 0.4, 1, 0.01, "pct"], ["kannibalisierung_anteil", 0, 1, 0.05, "pct"], ["db_geberit_keramik", 0, 400, 10]]],
+  ["Preise", [["einfuehrung_rabatt", 0, 0.5, 0.01, "pct"], ["einfuehrung_jahre", 1, 5, 1, "int"], ["costplus_zuschlag", 0, 0.5, 0.005, "pct"], ["wertabschoepfung_features", 0.2, 1, 0.05, "pct"], ["buendelrabatt_care", 0, 0.2, 0.005, "pct"], ["einzelpreis_fleet", 0, 500, 1], ["einzelpreis_predict", 0, 300, 1], ["einzelpreis_care", 0, 600, 1]]],
   ["Features", [["featurekosten_fleet", 0, 300, 5], ["featurekosten_predict", 0, 200, 5], ["featurekosten_care", 0, 400, 5], ["featurekosten_care_bundle", 0, 400, 5], ["takerate_fleet", 0, 1, 0.05, "pct"], ["takerate_predict", 0, 1, 0.05, "pct"], ["takerate_care", 0, 1, 0.05, "pct"], ["fleet_ab_jahr", 0, 0, 1, "year"], ["wert_ab_jahr", 0, 0, 1, "year"], ["staffel_fleet_ab", 2, 20, 1, "int"], ["staffel_care_ab", 3, 40, 1, "int"]]],
-  ["Programmkosten und Pilot", [["programmkosten"], ["pilot_hotels", 1, 50, 1, "int"], ["exit_min_geraete", 0, 200, 5, "int"]]],
+  ["Programmkosten und Pilot", [["b2b_pm_anzahl", 0, 10, 1, "int"], ["b2b_pm_kosten_fte", 50000, 250000, 5000, "int"], ["b2b_pm_zeitanteil", 0, 1, 0.05, "pct"], ["prog_referenzprogramm"], ["prog_schulungen"], ["prog_marktforschung"], ["prog_fleet_care"], ["kalkulationszins_bc", 0, 0.2, 0.005, "pct"], ["pilot_hotels", 1, 50, 1, "int"], ["exit_min_geraete", 0, 200, 5, "int"]]],
   ["Preisszenarien", [["szenario_skimming_preise", 0, 0, 1], ["szenario_konstant_preis", 0, 1500, 1], ["alba_listenpreis_privat_netto", 500, 1500, 10]]],
-  ["Diffusion (Bass)", [["bass_p", 0, 0.05, 0.001], ["bass_q", 0, 2, 0.05], ["bass_smax", 0.05, 0.6, 0.01, "pct"], ["bass_eps", 0.5, 4, 0.05], ["bass_delta", 0, 3, 0.05], ["bass_referenzpreis", 500, 1200, 10], ["wettbewerb_p", 0, 0.05, 0.001], ["wettbewerb_spillover", 0, 1, 0.05], ["risiko_faktor_imitation", 0, 1, 0.05, "pct"]]],
-  ["Markt und Gates", [["hotelstars_zimmer", 200000, 2000000, 50000], ["anteil_dach", 0.1, 1, 0.05, "pct"], ["renovationszyklus", 5, 25, 1, "int"], ["anteil_zielsegment", 0.1, 1, 0.05, "pct"], ["gate_anteile", 0, 0, 0.005, "pct"], ["gate_g2_min_db", 0, 1000, 10]]],
+  ["Diffusion (Bass)", [["bass_p", 0, 0.05, 0.001], ["bass_q", 0, 2, 0.05], ["bass_smax", 0.05, 0.6, 0.01, "pct"], ["bass_eps", 0.5, 4, 0.05], ["bass_preiseffekt_max", 1, 3, 0.05], ["bass_delta", 0, 3, 0.05], ["bass_referenzpreis", 500, 1200, 10], ["wettbewerb_p", 0, 0.05, 0.001], ["wettbewerb_spillover", 0, 1, 0.05], ["risiko_faktor_imitation", 0, 1, 0.05, "pct"]]],
+  ["Markt und Gates", [["hotel_zimmer_de", 300000, 1200000, 5000, "int"], ["hotel_zimmer_at", 50000, 300000, 1000, "int"], ["hotel_zimmer_ch", 50000, 300000, 1000, "int"], ["renovationszyklus", 5, 25, 1, "int"], ["anteil_zielsegment", 0.1, 1, 0.05, "pct"], ["thp_projekte_dach", 100, 2000, 1, "int"], ["thp_projekte_4_5_sterne", 0, 2000, 1, "int"], ["thp_projekte_planung", 0, 2000, 1, "int"], ["thp_eroeffnungen_2027", 0, 1000, 1, "int"], ["costar_pipeline_zimmer", 0, 400000, 1000, "int"], ["costar_pipeline_projekte", 100, 5000, 10, "int"], ["gate_anteile", 0, 0, 0.005, "pct"]]],
   ["Hotelnutzen", [["vorfaelle_pro_jahr", 0, 1, 0.01], ["kosten_pro_vorfall", 0, 1500, 10], ["vermeidbar_fleet", 0, 1, 0.05, "pct"], ["vermeidbar_predict", 0, 1, 0.05, "pct"], ["admin_ersparnis_jahr", 0, 100, 1], ["zimmer_db_nacht", 0, 500, 5], ["naechte_ausfall_vorfall", 0, 5, 0.5], ["kalkulationszins", 0, 0.15, 0.005, "pct"], ["nutzen_jahre", 1, 10, 1, "int"]]],
   ["Value Message", [["kosten_elektroanschluss", 0, 500, 10], ["nutzungsdauer_jahre", 5, 25, 1, "int"], ["auslastung", 0.3, 1, 0.01, "pct"]]],
   ["Wettbewerb und Anker (CHF brutto)", [["anker_hotel_wc", 200, 1000, 1], ["alba_ladenpreis", 500, 1500, 1], ["alba_richtpreis", 700, 2000, 1], ["peers"], ["mwst_ch", 0, 0.2, 0.001, "pct"]]],
-  ["International", [["strassenpreis_de_eur"], ["mwst_de", 0, 0.3, 0.01, "pct"], ["strassenpreis_at_eur", 500, 1500, 5], ["mwst_at", 0, 0.3, 0.01, "pct"], ["faktor_strassenpreis", 0.7, 1.1, 0.01, "pct"]]],
+  ["International", [["strassenpreis_de_eur"], ["mwst_de", 0, 0.3, 0.01, "pct"], ["strassenpreis_at_eur", 500, 1500, 5], ["mwst_at", 0, 0.3, 0.01, "pct"], ["wechselkurs_eur_chf", 0.8, 1.2, 0.005]]],
   ["Pay-per-Flush", [["ppf_installation", 0, 500, 10], ["ppf_abschreibung_jahre", 1, 10, 1, "int"], ["ppf_service_jahr", 0, 200, 5], ["ppf_connectivity_jahr", 0, 100, 5], ["ppf_gebuehr", 0.05, 1, 0.01]]],
 ];
 
@@ -224,7 +225,7 @@ function buildInputs() {
       };
       if (Array.isArray(val) && typeof val[0] === "number") {
         const arr = document.createElement("div"); arr.className = "arr";
-        const names = key === "gate_anteile" ? ["G2", "G3", "G4"] : val.length === (P.jahre ? P.jahre.wert.length : 0) ? P.jahre.wert : val.map((_, i) => key.includes("strassenpreis") ? ["von", "bis"][i] : "#" + (i + 1));
+        const names = key === "gate_anteile" ? ["Review Einführung", "G2 Fleet", "G3 Care"] : val.length === (P.jahre ? P.jahre.wert.length : 0) ? P.jahre.wert : val.map((_, i) => key.includes("strassenpreis") ? ["von", "bis"][i] : "#" + (i + 1));
         val.forEach((x, i) => {
           const d = document.createElement("label"); d.innerHTML = `<div>${names[i]}</div>`;
           const inp = document.createElement("input"); inp.type = "number"; inp.step = cfg[3] ? (cfg[4] === "pct" ? cfg[3] * 100 : cfg[3]) : "any"; inp.value = fmtIn(cfg, x);
@@ -325,7 +326,7 @@ function lineChart(labels, series, o = {}) {
   let out = "";
   for (let v = Math.ceil(min / step) * step; v <= max; v += step) out += `<line x1="${left}" x2="${W - right}" y1="${Y(v)}" y2="${Y(v)}" stroke="${Math.abs(v) < 1e-9 ? C.mute : C.grid}"/>` + t(left - 6, Y(v), f(v), { anchor: "end", size: 10, fill: C.gray });
   labels.forEach((l, i) => { if (labels.length < 12 || i % 2 === 0) out += t(X(i), top + ch + 13, l, { anchor: "middle", size: 10, fill: C.gray }); });
-  (o.vlines || []).forEach((vl) => { out += `<line x1="${vl.x}" x2="${vl.x}" y1="${top}" y2="${top + ch}" stroke="${C.gold}" stroke-dasharray="4 3"/>` + t(vl.x + 4, top + 8, vl.label, { size: 10, fill: "#8A6A1F", bold: true }); });
+  (o.vlines || []).forEach((vl, k) => { if (vl.i !== undefined) { if (vl.i < 0 || vl.i >= labels.length) return; vl.x = X(vl.i); } out += `<line x1="${vl.x}" x2="${vl.x}" y1="${top}" y2="${top + ch}" stroke="${C.gold}" stroke-dasharray="4 3"/>` + t(vl.x - 4, top + 8 + k * 14, vl.label, { size: 10, fill: "#8A6A1F", bold: true, anchor: "end" }); });
   series.forEach((s) => {
     out += `<polyline fill="none" stroke="${s.color}" stroke-width="3" points="${s.values.map((v, i) => X(i) + "," + Y(v)).join(" ")}"/>`;
     if (s.dots !== false) s.values.forEach((v, i) => (out += `<circle cx="${X(i)}" cy="${Y(v)}" r="3.5" fill="${s.color}"/>`));
@@ -343,7 +344,7 @@ function treppe(M) {
   const rngA = (a, b) => { if (a > L) return "–"; const x = pct(A[a]), y = pct(A[Math.min(b, L)]); return b <= a || x === y ? x : x.replace(" %", "") + "–" + y; };
   const ph = [
     { p: `PHASE 1 · ${span(0, i1 - 1)}`, price: chf(M.p1), model: "Basis-Pricing", kpi: `${rng(0, i1 - 1)} · ${rngA(0, i1 - 1)}`, fill: C.gold, fc: C.navy, val: M.p1 },
-    { p: `PHASE 2 · ${span(i1, iF - 1)}`, price: `CHF ${f(M.pG1)} → ${f(M.preisCostPlus)}`, model: "Cost-Plus", kpi: `${rng(i1, iF - 1)} · ${rngA(i1, iF - 1)}`, fill: C.lteal, fc: C.navy, val: M.preisCostPlus },
+    { p: `PHASE 2 · ${span(i1, iF - 1)}`, price: `CHF ${f(M.preisCostPlus)}`, model: "Cost-Plus", kpi: `${rng(i1, iF - 1)} · ${rngA(i1, iF - 1)}`, fill: C.lteal, fc: C.navy, val: M.preisCostPlus },
     { p: `PHASE 3 · ${span(iF, iW - 1)}`, price: chf(M.fleetPaket), model: "Mitbewerber (Fleet)", kpi: `${rng(iF, iW - 1)} · ${rngA(iF, iW - 1)}`, fill: C.teal, fc: "#fff", val: M.fleetPaket },
     { p: `PHASE 4 · AB ${yr(iW)}`, price: chf(M.carePaket), model: "Wertorientiert (Care)", kpi: `${rng(iW, L)} · ${rngA(iW, L)}`, fill: C.navy, fc: "#fff", val: M.carePaket },
   ];
@@ -359,7 +360,7 @@ function treppe(M) {
     if (i > 0) out += `<circle cx="${x}" cy="${y}" r="9" fill="${C.red}"/>` + t(x, y, "G" + (i === 1 ? 1 : i + 1), { anchor: "middle", size: 8, fill: "#fff", bold: true });
   });
   out += `<line x1="10" x2="${W - 10}" y1="${base}" y2="${base}" stroke="${C.navy}"/>`;
-  out += t(10, h - 14, `Gates (Anteil Vorjahr): G1 ${pct(ga[0])} → ${yr(i1)} · G2 ${pct(ga[1])} → ${yr(i2)} · G3 ${pct(ga[2])} → ${yr(iF)} · G4 ${pct(ga[3])} → ${yr(iW)} · Zielsegment ~${f(M.zielsegment)} Bäder/Jahr`, { size: 10, fill: C.gray });
+  out += t(10, h - 14, `Einführung bis ${J[i1 - 1]} → Cost-Plus ${yr(i1)} · G2 Fleet ${pct(ga[1])} → ${yr(iF)} · G3 Care ${pct(ga[2])} → ${yr(iW)} · Zielsegment ~${f(M.zielsegment)} Bäder/Jahr (Renovation ${f(M.renovationen)} + Neubau ${f(M.neubau)})`, { size: 10, fill: C.gray });
   return svg(h, out);
 }
 
@@ -381,6 +382,7 @@ function render() {
     [chf(M.fleetPaket), "Fleet-Paket", M.fleetPaket, B.fleetPaket],
     [chf(M.carePaket), "Care-Paket", M.carePaket, B.carePaket],
     [String(be(PL)), "Break-even (Plan)", PL.breakEvenJahr || 0, B.plan.breakEvenJahr || 0],
+    ["CHF " + (PL.barwert / 1e6).toFixed(2) + " Mio.", `Barwert ${pct(M.v("kalkulationszins_bc"), 0)} (Penetration)`, PL.barwert, B.plan.barwert],
     ["CHF " + (PL.endwert / 1e6).toFixed(2) + " Mio.", `kumuliert bis ${J[J.length - 1]}`, PL.endwert, B.plan.endwert],
     ["CHF " + f(PL.maxInvest / 1000) + "k", "max. Investition", PL.maxInvest, B.plan.maxInvest],
     [M.rappenProNacht.toFixed(1) + " Rp.", "pro Gästenacht", M.rappenProNacht, B.rappenProNacht],
@@ -404,9 +406,9 @@ function render() {
     { label: "Alba Hotel-Einführung", value: M.p1, color: C.gold }, { label: "Alba Ladenpreis", value: M.anker.laden, color: C.mute },
     { label: "Alba Privatkunden-Liste", value: M.v("alba_listenpreis_privat_netto"), color: C.mute },
     { label: M.peerMin.kurz + " (günstigster Peer)", value: M.peerMin.netto, color: C.mute }]);
-  const pr = [M.p1, M.pG1, M.preisCostPlus];
-  $("c_kosten").innerHTML = stackH(pr.map((p, i) => ({ label: ["Phase 1 · ", "Stufe G1 · ", "Cost-Plus · "][i] + f(p), parts: [M.hk, M.weitereVar, M.gemeinkostenProGeraet, M.ebitda(p)] })), ["Herstellkosten", "Weitere var. Kosten", "Programm/Gemeinkosten", "EBITDA"], [C.gold, C.lgold, C.mute, C.teal]);
-  $("f_kosten").innerHTML = `Vollkosten ${chf(M.vollkosten)} ÷ (1 − ${pct(M.marge, 0)}) = ${chf(M.costPlusExakt)} → gerundet <b>${chf(M.preisCostPlus)}</b> · Schritte +${pct(M.schritt1)} / +${pct(M.schritt2)}`;
+  const pr = [M.p1, M.preisCostPlus];
+  $("c_kosten").innerHTML = stackH(pr.map((p, i) => ({ label: ["Einführung · ", "Cost-Plus · "][i] + f(p), parts: [M.kanalmarge(p), M.hk, M.weitereVar, M.dbGeraet(p)] })), ["Kanalmarge", "Herstellkosten", "Weitere var. Kosten", "DB Geberit"], [C.mute, C.gold, C.lgold, C.teal]);
+  $("f_kosten").innerHTML = `Cost-Plus = Vollkosten ${chf(M.vollkosten)} × (1 + ${pct(M.zuschlag, 1)} Zuschlag) ÷ Kanalanteil ${pct(M.kanal, 0)} = ${chf(M.costPlusExakt)} → gerundet <b>${chf(M.preisCostPlus)}</b> · Einführung ${M.einfuehrungJahre} J. → +${pct(M.schritt1, 0)} · Gemeinkosten ${J[J.length - 1]}: ${chf(M.programmkosten[J.length - 1] / M.volumen[J.length - 1])}/Gerät`;
   $("c_peers").innerHTML = hbar([{ label: "Alba Grundgerät", value: M.preisCostPlus, color: C.teal }, { label: "Alba Fleet-Paket", value: M.fleetPaket, color: C.teal }].concat(M.peers.map((p) => ({ label: p.kurz, value: p.netto, color: C.mute }))));
   $("f_peers").innerHTML = `Fleet-Paket = Schwellenpreis unter günstigstem Peer (${chf(M.peerMin.netto)}) → Fleet-Aufpreis <b>${chf(M.preisFleet)}</b> (Mindestpreis ${chf(M.mindest.fleet)})`;
   $("c_wert").innerHTML = groupCol(["Fleet", "Predict", "Care"], [
@@ -428,23 +430,24 @@ function render() {
     <div class="formula">Care-Anteil im Care-Paket ${chf(M.careImPaket)} vs. Mindestpreis bei Bündelung ${chf(M.mindest.careBundle)}</div>`;
 
   const SC = { penetration: C.teal, skimming: C.red, konstant: C.gold };
-  $("c_preiszeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.preise })).concat(isFinite(M.dbOptimalKurzfristig) ? [{ name: "kurzfristig DB-optimal (ohne Diffusion)", color: C.mute, values: J.map(() => M.dbOptimalKurzfristig), dots: false }] : [])).svg;
-  $("c_absatzzeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.vol })), { zero: true }).svg;
+  const fMarks = [{ i: M.phasen.g3, label: "▲ Fleet-Paket " + f(M.fleetPaket) }, { i: M.phasen.g4, label: "▲ Care-Paket " + f(M.carePaket) }];
+  $("c_preiszeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.preise })), { vlines: fMarks }).svg;
+  $("c_absatzzeit").innerHTML = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.vol })), { zero: true, vlines: fMarks }).svg;
   W = 1100;
   const lc = lineChart(J.map(String), M.szenarien.map((z) => ({ name: z.kurz, color: SC[z.key], values: z.kum.map((x) => x / 1000) })).concat([{ name: "Penetration, halber Referenzeffekt", color: C.lteal, values: M.halb.kum.map((x) => x / 1000) }]), { zero: true });
   $("c_bc").innerHTML = lc.svg; W = 640;
   $("t_paf").innerHTML = `<table><tr><th>Diffusion (Bass)</th>${J.map((j) => `<th>${j}</th>`).join("")}</tr>${M.szenarien.map((z) => row(esc(z.kurz) + ": Anteil Alba / Konkurrenz", z.anteil.map((x, k) => pct(x) + " / " + pct(z.wettbewerb[k], 0)), (x) => x)).join("")}${row("Penetration: Preisstufe", M.plan.stufe.map((x, k) => (M.plan.wert[k] ? "Care" : M.plan.fleet[k] ? "Fleet" : ["Basis", "G1", "Cost-Plus"][x])), (x) => x)}${row("Zahlungsbereitschaft (ZB)", M.plan.zb, (x) => f(x))}</table>
-    <div class="formula">ΔAlba = (p + q·Alba/s<sub>max</sub>)·frei·(Preis/ZB)<sup>−ε</sup> · ΔKonkurrenz = (p<sub>W</sub> + q·(Konk. + θ·Alba)/s<sub>max</sub>)·frei · frei = s<sub>max</sub> − Alba − Konkurrenz · ZB = Referenzpreis·(1 + δ·Kategorie/s<sub>max</sub>) · kurzfristig DB-optimal (ohne Diffusion): ${chf(M.dbOptimalKurzfristig)}</div>`;
-  const best = M.szenarien.reduce((a, b) => (b.endwert > a.endwert ? b : a));
-  $("t_bc").innerHTML = `<table><tr><th>Szenario</th>${J.map((j) => `<th>${j}</th>`).join("")}<th>Break-even</th></tr>${M.szenarien.map((z) => `<tr><td colspan="${J.length + 2}" style="background:#F6F9FA"><b style="color:${SC[z.key]}">${esc(z.name)}</b></td></tr>${row("&nbsp;&nbsp;Preis Grundgerät", z.preise.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;Absatz", z.vol.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;DB pro Gerät", z.db.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;DB vor Programmkosten (TCHF)", z.dbTotal.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}${row("&nbsp;&nbsp;Ergebnis nach Programmkosten (TCHF)", z.ergebnis.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}<tr${z === best ? ' class="hl"' : ""}><td>&nbsp;&nbsp;Kumuliert (TCHF)</td>${z.kum.map((x) => `<td>${f(x / 1000)}</td>`).join("")}<td>${be(z)}</td></tr>`).join("")}</table>
-    <div class="formula">Bestes Szenario bis ${J[J.length - 1]}: <b>${esc(best.kurz)}</b> · Penetration mit halbem Referenzeffekt: Break-even ${be(M.halb)}</div>`;
+    <div class="formula">Jedes Szenario eigenständig (Entweder-oder) · ΔAlba = (p + q·Alba/s<sub>max</sub>)·frei<sub>Alba</sub>·min(z<sub>max</sub>, (Preis/ZB)<sup>−ε</sup>) · frei<sub>Alba</sub> = s<sub>max</sub>·min(1, (ZB/Preis)<sup>ε</sup>) − Alba − Konk. (Kalish) · ΔKonkurrenz = (p<sub>W</sub> + q·(Konk. + θ·Alba)/s<sub>max</sub>)·frei · ZB = Referenzpreis·(1 + δ·(Alba + θ·Konk.)/s<sub>max</sub>) · kurzfristig DB-optimal (ohne Diffusion): ${chf(M.dbOptimalKurzfristig)}</div>`;
+  const best = M.szenarien.reduce((a, b) => (b.barwert > a.barwert ? b : a));
+  $("t_bc").innerHTML = `<table><tr><th>Szenario</th>${J.map((j) => `<th>${j}</th>`).join("")}<th>Break-even</th></tr>${M.szenarien.map((z) => `<tr><td colspan="${J.length + 2}" style="background:#F6F9FA"><b style="color:${SC[z.key]}">${esc(z.name)}</b></td></tr>${row("&nbsp;&nbsp;Preis Grundgerät", z.preise.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;Ø Erlös inkl. Features", z.erloes.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;Absatz", z.vol.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;davon Fleet / Predict / Care", z.vol.map((_, k) => f(z.absatzFleet[k]) + " / " + f(z.absatzPredict[k]) + " / " + f(z.absatzCare[k])).concat([""]), (x) => x)}${row("&nbsp;&nbsp;DB pro Gerät", z.db.concat([""]), (x) => (x === "" ? "" : f(x)))}${row("&nbsp;&nbsp;DB vor Programmkosten (TCHF)", z.dbTotal.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}${row("&nbsp;&nbsp;Ergebnis nach Programmkosten (TCHF)", z.ergebnis.concat([""]), (x) => (x === "" ? "" : f(x / 1000)))}<tr${z === best ? ' class="hl"' : ""}><td>&nbsp;&nbsp;Kumuliert (TCHF)</td>${z.kum.map((x) => `<td>${f(x / 1000)}</td>`).join("")}<td>${be(z)}</td></tr><tr><td>&nbsp;&nbsp;Barwert ${pct(M.v("kalkulationszins_bc"), 0)} (TCHF)</td><td colspan="${J.length}" style="text-align:left"><b>${f(z.barwert / 1000)}</b></td><td></td></tr>`).join("")}</table>
+    <div class="formula">Bestes Szenario (Barwert): <b>${esc(best.kurz)}</b> · Penetration mit halbem Referenzeffekt: Break-even ${be(M.halb)}</div>`;
 
   const de = M.v("strassenpreis_de_eur");
   $("t_int").innerHTML = `<table><tr><th></th><th>CH</th><th>DE</th><th>AT</th></tr>
     <tr class="hl"><td>Einstieg netto</td><td>${chf(M.p1)}</td><td>€ ${f(M.preisDE)}</td><td>€ ${f(M.preisAT)}</td></tr>
     <tr><td>Strassenpreis netto</td><td>${chf(M.chStrasseNetto)}</td><td>€ ${f(M.deStrasseNetto)}</td><td>€ ${f(M.atStrasseNetto)}</td></tr>
     <tr><td>Strassenpreis brutto</td><td>${chf(M.v("alba_ladenpreis"))}</td><td>€ ${f(de[0])}–${f(de[1])}</td><td>€ ${f(M.v("strassenpreis_at_eur"))}</td></tr></table>`;
-  $("f_int").innerHTML = `Hotelpreis = Schwellenpreis aus ${pct(M.v("faktor_strassenpreis"), 0)} des lokalen Strassenpreises netto`;
+  $("f_int").innerHTML = `Einführungspreis DE/AT = gleicher Abstand zum lokalen Strassenpreis netto wie in CH (${pct(M.faktorStrasse, 0)}), als Schwellenpreis`;
 
   const xs = []; for (let x = 0; x <= Math.max(2000, M.ppfBreakEven * 2); x += 250) xs.push(x);
   const fee = M.v("ppf_gebuehr");
